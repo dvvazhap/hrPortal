@@ -1,0 +1,8 @@
+<div class="container-fluid px-0">
+  <app-header></app-header>
+  <div class="mx-auto" style="height: 30px;"></div>
+  <app-profile [hidden]="callComponent != 'profile'"></app-profile>
+  <app-post-requirement [hidden]="callComponent != 'post_requirement'"></app-post-requirement>
+  <app-find-candidates [hidden]="callComponent != 'find_candidates'"></app-find-candidates>
+  <app-feedback [hidden]="callComponent != 'feedback'"></app-feedback>
+</div>

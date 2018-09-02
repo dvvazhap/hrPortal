@@ -1,0 +1,11 @@
+.myskills{
+    color:#191919;
+    font-style: italic;
+    font-weight: 500;
+}
+.myskills .heading{
+    font-size: 30px;
+}
+.myskills .label{
+    font-size: 20px;
+}

@@ -1,0 +1,24 @@
+<div class="profile container">
+  <div class="form-row">
+    <div class="col-sm-12 heading">Feedback</div>
+  </div>
+  <div class="mx-auto" style="height: 15px;"></div>
+  <div class="form-row">
+    <div class="col-sm-12 label">
+      <div class="alert alert-danger" [hidden]="error==''">
+        <strong>{{error}}</strong>
+      </div>
+      <div class="alert alert-info" [hidden]="msg==''">
+        <strong>{{msg}}</strong>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-sm-8">
+        <textarea rows="5" maxlength="500" class="form-control" [(ngModel)]="subject" placeholder="Enter your valuable Feedback."></textarea>
+    </div>
+    <div class="col-sm-4">
+      <button type="button" class="btn btn-primary btn-lg btn-block align-middle" (click)="submitFeedback()">Submit Feedback</button>
+    </div>
+  </div>
+</div>

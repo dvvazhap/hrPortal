@@ -1,0 +1,116 @@
+<div class="container-fluid">
+  <div class="mx-auto" style="height: 100px;"></div>
+  <div class="row">
+    <div class="col-lg-7" style="text-align:center">
+      <h1>weRThere4U</h1>
+    </div>
+    <div class="col-lg-5" style="text-align:center">
+      <div class="form-row align-items-center">
+        <div class="col-sm-8">
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text">@</div>
+            </div>
+            <input type="text" maxlength="50" class="form-control" [(ngModel)]="email" placeholder="Email Address" [disabled]=" emailExists!=''? 'disabled' : null"
+            />
+          </div>
+        </div>
+        <div class="col-sm-4">
+
+          <button *ngIf="emailExists=='' && !loading" (click)="validateEmail()" type="submit" class="btn btn-success mb-2 btn-block">
+            <fa name="angle-double-right" size="lg" color="green"></fa>
+          </button>
+          <fa *ngIf="loading" name="spinner" animation="pulse" size="2x"></fa>
+
+        </div>
+      </div>
+      <div class="form-row align-items-center">
+        <div class="col-sm-8">
+          <div class="alert alert-danger" [hidden]="error==''">
+            <strong>{{error}}</strong>
+          </div>
+          <div class="alert alert-info" [hidden]="msg==''">
+            <strong>{{msg}}</strong>
+          </div>
+          <span [hidden]="!resendVerifyEmail" style="cursor:pointer" (click)="resendEmail()">
+              <b>Send Verification email again </b>
+            </span>
+        </div>
+        <div class="col-sm-4"></div>
+      </div>
+
+      <div *ngIf="getPassword" class="form-row align-items-center">
+        <div class="col-sm-8">
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text">***</div>
+            </div>
+            <input type="{{passwordType}}" class="form-control" [(ngModel)]="password" placeholder="Password" />
+            <div class="input-group-prepend">
+              <div class="input-group-text" (mouseenter)="showPassword()" (mouseleave)="hidePassword()" style="cursor:pointer">Show</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <button type="submit" class="btn btn-success mb-2 btn-block" (click)="logIn()">Sign In</button>
+        </div>
+        <div class="col-sm-8">
+          <span style="cursor:pointer" (click)="resetPassword()">
+            <b>Forgot Password </b>
+          </span>
+        </div>
+      </div>
+
+      <div *ngIf="getSignInData">
+        <div class="mx-auto" style="height: 30px;"></div>
+
+        <div class="form-row align-items-center">
+          <div class="col-sm-8">
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">Password</div>
+              </div>
+              <input type="password" class="form-control" [(ngModel)]="password" placeholder="Password" />
+            </div>
+          </div>
+          <div class="col-sm-4"></div>
+        </div>
+
+        <div class="form-row align-items-center">
+          <div class="col-sm-8">
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">Confirm Password</div>
+              </div>
+              <input type="password" class="form-control" [(ngModel)]="confirm_password" placeholder="Confirm Password" />
+            </div>
+          </div>
+          <div class="col-sm-4"></div>
+        </div>
+
+        <div class="mx-auto" style="height: 20px;"></div>
+
+        <div class="form-row align-items-center">
+          <div class="col-sm-4">
+            <label class="tgl">
+              <input type="checkbox" [(ngModel)]="user_type" checked/>
+              <span class="tgl_body">
+                <span class="tgl_switch"></span>
+                <span class="tgl_track">
+                  <span class="tgl_bgd"></span>
+                  <span class="tgl_bgd tgl_bgd-negative"></span>
+                </span>
+              </span>
+            </label>
+
+          </div>
+          <div class="col-sm-1"></div>
+          <div class="col-sm-3">
+            <button type="submit" class="btn btn-primary btn-lg btn-block" (click)="signUp()">Sign Up</button>
+          </div>
+          <div class="col-sm-4"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

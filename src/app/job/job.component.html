@@ -1,0 +1,64 @@
+<div class="mx-auto" style="height: 30px;"></div>
+<div class="container-fluid">
+    Copy this URL to share this job with others.
+  <div class="form-row requirement">
+    <div class="col-sm-12 heading">Job Description</div>
+  </div>
+
+  <div class="form-row requirement">
+    <!-- left side -->
+    <div class="col-sm-12">
+      <div class="mx-auto" style="height: 15px;"></div>
+      <div class="form-row">
+        <div class="col-sm-4 label">Job Type </div>
+        <div class="col-sm-8">
+          <span [hidden]="requirement.fullTime != 1">Full Time</span>
+          <span [hidden]="requirement.partTime == 0 || requirement.intern == 0"> /</span>
+          <span [hidden]="requirement.partTime != 1">Part Time</span>
+          <span [hidden]="requirement.intern != 1"> /</span>
+          <span [hidden]="requirement.intern != 1">Internship </span>
+        </div>
+      </div>
+      <div class="mx-auto" style="height: 15px;"></div>
+      <div class="form-row">
+        <div class="col-sm-4 label">Job Designation </div>
+        <div class="col-sm-8"> {{requirement.designation}} </div>
+      </div>
+      <div class="mx-auto" style="height: 15px;"></div>
+      <div class="form-row">
+        <div class="col-sm-4 label">Company Name </div>
+        <div class="col-sm-8"> {{requirement.company}} </div>
+      </div>
+      <div class="mx-auto" style="height: 15px;"></div>
+      <div class="form-row">
+        <div class="col-sm-4 label">Job location </div>
+        <div class="col-sm-8"> {{requirement.location}} </div>
+      </div>
+      <div class="mx-auto" style="height: 15px;"></div>
+      <div class="form-row">
+        <div class="col-sm-4 label">Contact No </div>
+        <div class="col-sm-8"> {{requirement.contact}} </div>
+      </div>
+      <div class="mx-auto" style="height: 15px;"></div>
+      <div class="form-row">
+        <div class="col-sm-4 label">Experience Required </div>
+        <div class="col-sm-8"> {{requirement.min_years}}yrs - {{requirement.max_years}}yrs </div>
+      </div>
+      <div class="mx-auto" style="height: 15px;"></div>
+      <div class="form-row">
+        <div class="col-sm-4 label">Notice period </div>
+        <div class="col-sm-8"> {{requirement.noticePeriod}} days </div>
+      </div>
+      <div class="mx-auto" style="height: 15px;"></div>
+      <div class="form-row">
+        <div class="col-sm-4 label">Skills Required </div>
+        <div class="col-sm-8"> {{requirement.skills}} </div>
+      </div>
+      <div class="mx-auto" style="height: 15px;"></div>
+      <div class="form-row">
+        <div class="col-sm-4 label">Any specific requirements</div>
+        <div class="col-sm-8"> {{requirement.specificReq}} </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+.candidates{
+    color:#000;
+}
+.heading{
+    background-color: #000;
+    color:#fff;
+}
+.overflow{
+    width:100%;
+    overflow-x: scroll;
+}

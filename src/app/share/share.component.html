@@ -1,0 +1,84 @@
+<div [hidden]="employee.looking == 1" class="container-fluid myskills employee">
+  This profile is not looking for a change.
+</div>
+<div [hidden]="employee.looking != 1" class="container-fluid myskills employee">
+
+  Copy this URL to share your profile to others.
+   
+  <div class="form-row">
+    <div class="col-sm-12 heading">Profile</div>
+  </div>
+
+  <div class="mx-auto" style="height: 15px;"></div>
+  <div class="form-row">
+    <div class="col-sm-4 label">Name </div>
+    <div class="col-sm-8"> {{employee.name}}</div>
+  </div>
+
+  <div class="mx-auto" style="height: 15px;"></div>
+  <div class="form-row">
+    <div class="col-sm-4 label">Phone </div>
+    <div class="col-sm-8"> {{employee.phone}} </div>
+  </div>
+  <div class="mx-auto" style="height: 15px;"></div>
+  <div class="form-row">
+    <div class="col-sm-4 label">Interested in </div>
+    <div class="col-sm-8">
+      <span [hidden]="employee.fullTime != 1">Full Time</span>
+      <span [hidden]="employee.partTime == 0 || employee.intern == 0"> /</span>
+      <span [hidden]="employee.partTime != 1">Part Time</span>
+      <span [hidden]="employee.intern != 1"> /</span>
+      <span [hidden]="employee.intern != 1">Internship </span>
+    </div>
+  </div>
+  <div class="mx-auto" style="height: 15px;"></div>
+  <div class="form-row">
+    <div class="col-sm-4 label">Current Designation </div>
+    <div class="col-sm-8"> {{employee.designation}} </div>
+  </div>
+  <div class="mx-auto" style="height: 15px;"></div>
+  <div class="form-row">
+    <div class="col-sm-4 label">Working for </div>
+    <div class="col-sm-8"> {{employee.company}} </div>
+  </div>
+  <div class="mx-auto" style="height: 15px;"></div>
+  <div class="form-row">
+    <div class="col-sm-4 label">Current location </div>
+    <div class="col-sm-8"> {{employee.cur_location}} </div>
+  </div>
+  <div class="mx-auto" style="height: 15px;"></div>
+  <div class="form-row">
+    <div class="col-sm-4 label">Looking for jobs in </div>
+    <div class="col-sm-8"> {{employee.fut_location}} </div>
+  </div>
+  <div class="mx-auto" style="height: 15px;"></div>
+  <div class="form-row">
+    <div class="col-sm-4 label">Total Experience </div>
+    <div class="col-sm-8"> {{employee.experience}} yrs </div>
+  </div>
+  <div class="mx-auto" style="height: 15px;"></div>
+  <div class="form-row">
+    <div class="col-sm-4 label">Notice period </div>
+    <div class="col-sm-8"> {{employee.noticePeriod}} </div>
+  </div>
+  <div class="mx-auto" style="height: 15px;"></div>
+  <div class="form-row">
+    <div class="col-sm-4 label">Educational Qualification </div>
+    <div class="col-sm-8"> {{employee.degree}} - {{employee.stream}} </div>
+  </div>
+  <div class="mx-auto" style="height: 15px;"></div>
+  <div class="form-row">
+    <div class="col-sm-4 label">Institution </div>
+    <div class="col-sm-8"> {{employee.institution}} ({{employee.passout}}) </div>
+  </div>
+  <div class="mx-auto" style="height: 15px;"></div>
+  <div class="form-row">
+    <div class="col-sm-4 label">Area of Expertise </div>
+    <div class="col-sm-8"> {{employee.skills}} </div>
+  </div>
+  <div class="mx-auto" style="height: 15px;"></div>
+  <div class="form-row">
+    <div class="col-sm-4 label">Any specific requirements </div>
+    <div class="col-sm-8"> {{employee.specificReq}} </div>
+  </div>
+</div>

@@ -1,0 +1,176 @@
+<div class="container-fluid">
+  <button type="submit" class="btn btn-primary btn-lg btn-block" (click)="logout()">LogOut</button>
+  <div class="mx-auto" style="height: 15px;"></div>
+
+  <div class="form-row">
+    <div class="col-sm-4">
+
+      <textarea rows="3" class="form-control" placeholder="sql" [(ngModel)]="sql"></textarea>
+
+    </div>
+    <div class="col-sm-2">
+      <button type="submit" class="btn btn-success btn-block" (click)="executeSQL()">Execute SQL</button>
+      <button type="submit" class="btn btn-success btn-block" (click)="clearSQL()">CLEAR</button>
+    </div>
+    <div class="col-sm-6">
+      {{sqlResponse}}
+    </div>
+  </div>
+  <div class="mx-auto" style="height: 15px;"></div>
+  <div class="form-row">
+    <div class="col-sm-4">
+      <input type="text" class="form-control" placeholder="email" [(ngModel)]="email">
+    </div>
+    <div class="col-sm-2">
+      <button type="submit" class="btn btn-success btn-block" (click)="getInfo()">GET</button>
+      <button type="submit" class="btn btn-success btn-block" (click)="clearInfo()">CLEAR</button>
+    </div>
+
+  </div>
+  <br/>
+
+
+
+
+
+  <h3>users db</h3>
+  <table datatable class="table hover table-bordered overflow" *ngIf="users">
+    <thead class="heading">
+      <tr>
+        <th>token </th>
+        <th>password</th>
+        <th>email</th>
+        <th>v_profile</th>
+        <th>validity</th>
+        <th>user_type</th>
+        <th>reset_code</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of this.users">
+        <td>{{user.token}}</td>
+        <td>{{user.password}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.v_profile}}</td>
+        <td>{{user.validity}}</td>
+        <td>{{user.user_type}}</td>
+        <td>{{user.reset_code}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <h3>employerinfo db</h3>
+  <table datatable class="table hover table-bordered overflow" *ngIf="employerinfo">
+    <thead class="heading">
+      <tr>
+        <th>email</th>
+        <th>name </th>
+        <th>designation</th>
+        <th>org_name</th>
+        <th>city</th>
+        <th>phone</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employer of this.employerinfo">
+        <td>{{employer.email}}</td>
+        <td>{{employer.name}}</td>
+        <td>{{employer.designation}}</td>
+        <td>{{employer.org_name}}</td>
+        <td>{{employer.city}}</td>
+        <td>{{employer.phone}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <h3>skills db</h3>
+  <table datatable class="table hover table-bordered overflow" *ngIf="skills">
+    <thead class="heading">
+      <tr>
+        <th></th>
+        <th>fullTime / partTime / intern </th>
+        <th>looking</th>
+        <th>name / email / phone</th>
+        <th>designation / company / cur_location</th>
+        <th>fut_location</th>
+        <th>experience</th>
+        <th>noticePeriod</th>
+        <th>degree - stream - institution - passout </th>
+        <th>skills</th>
+        <th>specificReq</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let skill of this.skills">
+        <td>
+          <button type="button" class="btn btn-primary" target="_blank" (click)="shareProfile(skill.email)">Share Profile</button>
+        </td>
+        <td> {{skill.fullTime}} / {{skill.partTime}} / {{skill.intern}} </td>
+        <td>{{skill.looking}}</td>
+        <td> {{skill.name}} / {{skill.email}} / {{skill.phone}} </td>
+        <td>{{skill.designation}} / {{skill.company}} / {{skill.cur_location}}</td>
+        <td>{{skill.fut_location}}</td>
+        <td>{{skill.experience}}</td>
+        <td>{{skill.noticePeriod}}</td>
+        <td>{{skill.degree}} - {{skill.stream}} - {{skill.institution}} - {{skill.passout}} </td>
+        <td>{{skill.skills}}</td>
+        <td>{{skill.specificReq}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <h3>openings db</h3>
+  <table datatable class="table hover table-bordered overflow" *ngIf="openings">
+    <thead class="heading">
+      <tr>
+        <th></th>
+        <th>ind</th>
+        <th>timestamp / email / contact</th>
+        <th>fullTime / partTime / intern</th>
+        <th>designation / company / location </th>
+        <th>noticePeriod</th>
+        <th>min_years / max_years</th>
+        <th>skills</th>
+        <th>specificReq</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let open of this.openings">
+          
+        <td>  <button type="button" class="btn btn-primary" target="_blank" (click)="shareJob(open.ind)">Share Job</button>
+        </td>
+        <td>{{open.ind}}</td>
+        <td>{{open.timestamp}} / {{open.email}} / {{open.contact}}</td>
+        <td>{{open.fullTime}} / {{open.partTime}} / {{open.intern}}</td>
+        <td>{{open.designation}} / {{open.company}} / {{open.location}}</td>
+        <td>{{open.noticePeriod }}</td>
+        <td>{{open.min_years}} / {{open.max_years}}</td>
+        <td>{{open.skills}}</td>
+        <td>{{open.specificReq}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <h3>feedback db</h3>
+  <table datatable class="table hover table-bordered overflow" *ngIf="feedback">
+    <thead class="heading">
+      <tr>
+        <th>email</th>
+        <th>profile</th>
+        <th>subject</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let feed of this.feedback">
+        <td>{{feed.email}}</td>
+        <td>{{feed.profile}}</td>
+        <td>{{feed.subject}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

@@ -1,0 +1,22 @@
+<div class="mx-auto" style="height: 100px;"></div>
+<div class="row">
+  <div class="col-lg-7" style="text-align:center">
+    <h1>weRThere4U</h1>
+  </div>
+  <div class="col-lg-5" style="text-align:center">
+    <div class="form-row align-items-center">
+      <div class="col-sm-8">
+        <div class="alert alert-danger" [hidden]="error==''">
+          <strong>{{error}}</strong>
+        </div>
+        <div class="alert alert-info" [hidden]="info==''">
+          <strong>{{info}}</strong>
+          <button type="submit" (click)="login()" class="btn btn-success mb-2 btn-block">
+            LOGIN
+          </button>
+        </div>
+      </div>
+      <div class="col-sm-4"></div>
+    </div>
+  </div>
+</div>

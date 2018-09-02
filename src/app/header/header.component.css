@@ -1,0 +1,39 @@
+.navbar {
+  background-color: #191919;
+}
+.navbar > #dropdown-basic{
+  z-index: 10000;
+}
+.navbar a{
+  cursor:pointer;
+  color:white !important;
+}
+.btn-group li{
+  list-style-type: none;
+  cursor:pointer;
+  color:white;
+}
+
+#navbarSupportedContent .btn-group{
+  margin: 0 10px;
+}
+
+#dropdown-basic a{
+  cursor:pointer;
+  color:black !important;
+}
+
+.userInfo li{
+  color:orange !important;
+}
+
+.userInfo ul li{
+  color: black !important;
+  padding:0 10px;
+}
+
+.btn-group .tooltip .tooltip-inner {
+  width: 10em;
+  white-space: normal;
+}
+

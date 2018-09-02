@@ -1,0 +1,43 @@
+<div class="container-fluid">
+  <table datatable class="table hover table-bordered" *ngIf="openings">
+    <thead class="heading">
+      <tr>
+        <th></th>
+        <th>Looking for</th>
+        <th>Posted On</th>
+        <th>Designation</th>
+        <th>Company</th>
+        <th>Location</th>
+        <th>Experience</th>
+        <th>Notice Period</th>
+        <th>Skills</th>
+        <th>SpecificReq</th>
+        <th>Contact</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let open of this.openings" class="openings">
+        <td>
+          <button type="button" class="btn btn-primary" target="_blank" (click)="shareOpening(open.ind)">Share this opportunity</button>
+        </td>
+        <td>
+          <span [hidden]="open.fullTime != 1">Full Time</span>
+          <span [hidden]="open.partTime == 0 || open.intern == 0"> /</span>
+          <span [hidden]="open.partTime != 1">Part Time</span>
+          <span [hidden]="open.intern != 1"> /</span>
+          <span [hidden]="open.intern != 1">Internship </span>
+        </td>
+        <td>{{open.timestamp | date: 'd MMM y'}}</td>
+        <td>{{open.designation}}</td>
+        <td>{{open.company}}</td>
+        <td>{{open.location}}</td>
+        <td>{{open.min_years}}yrs - {{open.max_years}}yrs </td>
+        <td>{{open.noticePeriod}}</td>
+        <td>{{open.skills}}</td>
+        <td>{{open.specificReq}}</td>
+        <td>{{open.contact}} {{open.email}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

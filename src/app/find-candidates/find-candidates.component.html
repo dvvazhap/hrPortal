@@ -1,0 +1,49 @@
+<div class="container-fluid">
+  <table datatable class="table hover table-bordered overflow" *ngIf="candidates">
+    <thead class="heading">
+      <tr>
+        <th></th>
+        <th>Interested </th>
+        <th>Info</th>
+        <th>Work Profile</th>
+        <th>Relocation options</th>
+        <th>Experience</th>
+        <th>Notice Period</th>
+        <th>Educational Info</th>
+        <th>Skills</th>
+        <th>SpecificReq</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let can of this.candidates" class="candidates">
+        <td>
+          <button type="button" class="btn btn-primary" target="_blank" (click)="shareProfile(can.email)">Share Profile</button>
+        </td>
+        <td>
+          <span [hidden]="can.fullTime != 1">Full Time</span>
+          <span [hidden]="can.partTime == 0 || can.intern == 0"> /</span>
+          <span [hidden]="can.partTime != 1">Part Time</span>
+          <span [hidden]="can.intern != 1"> /</span>
+          <span [hidden]="can.intern != 1">Internship </span>
+        </td>
+        <td>
+          Name: {{can.name}}<br/>
+          Email: {{can.email}}<br/>
+          Ph: {{can.phone}} 
+        </td>
+
+        <td><b>{{can.designation}}</b> in {{can.company}}, {{can.cur_location}}</td>
+
+        <td>{{can.fut_location}}</td>
+        <td>{{can.experience}}</td>
+        <td>{{can.noticePeriod}}</td>
+        <td>{{can.degree}} - {{can.stream}}<br/>
+          Institution: {{can.institution}}<br/>
+          Passout Year: {{can.passout}}
+        </td>
+        <td>{{can.skills}}</td>
+        <td>{{can.specificReq}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
