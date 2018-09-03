@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServerService } from '../services/server.service';
-import { EmployerComponent } from '../employer/employer.component';
 import { Subject } from 'rxjs';
 import { UserInfo, EmployeeInfo, EmployerInfo, OpeningInfo } from '../interface';
 

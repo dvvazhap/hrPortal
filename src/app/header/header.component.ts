@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ServerService } from '../services/server.service';
 import { LoginService } from '../services/login.service';
-import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { UserInfo, EmployeeInfo, EmployerInfo } from '../interface';
 
 @Component({

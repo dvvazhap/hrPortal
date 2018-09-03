@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServerService } from '../services/server.service';
 import { LoginService } from '../services/login.service';
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router } from '@angular/router';
 import { Md5 } from 'ts-md5/dist/md5';
 
 @Component({
