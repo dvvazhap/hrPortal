@@ -22,13 +22,10 @@ export class ResetPasswordComponent implements OnInit {
     this.route.queryParams.subscribe((params: Params) => {
       this.ee = params['e'];
       this.rr = params['r'];
-
-      alert("params :"+params)
     })
   }
 
   public resetPassword = function () {
-    alert("inside resetPAssword..................................")
     if (this.password.length < 8) {
       this.error = 'Password should be of minimum 8 characters';
       this.msg = '';
@@ -42,7 +39,6 @@ export class ResetPasswordComponent implements OnInit {
       let password = Md5.hashStr(this.password).toString();
 
       this.serverdata.resetPassword(this.ee, this.rr, password).subscribe(data => {
-        alert("data :"+data + this);
         if (data == "mismatch") {
           alert("Invalid link. Click on Forgot password to reset again.");
           this.router.navigate(['/']);
