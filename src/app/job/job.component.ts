@@ -23,7 +23,9 @@ export class JobComponent implements OnInit {
     max_years: 0,
     skills: "",
     specificReq: "",
-    noticePeriod: 0
+    noticePeriod: 0,
+    gender: 'Anyone',
+    count: 1
   } as any;
   constructor(private route: ActivatedRoute, private info: LoginService, private serverdata: ServerService) { }
 

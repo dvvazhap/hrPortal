@@ -4,6 +4,7 @@ export interface UserInfo {
     v_profile: number;
     validity: string;
     user_type: number;
+    name: string;
 }
 
 export interface EmployerInfo {
@@ -33,6 +34,8 @@ export interface EmployeeInfo {
     passout: number;
     skills: string;
     specificReq: string;
+    gender:string;
+    viewers: number;
 }
 
 export interface CandidateInfo {
@@ -54,6 +57,8 @@ export interface CandidateInfo {
     passout: number;
     skills: string;
     specificReq: string;
+    gender:string;
+    viewers: number;
 }
 
 export interface OpeningInfo {
@@ -72,4 +77,7 @@ export interface OpeningInfo {
     skills: string;
     specificReq: string;
     noticePeriod: number;
+    gender:string;
+    count:number;
+    viewers: number;
 }

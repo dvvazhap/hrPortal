@@ -29,7 +29,9 @@ export class PostRequirementComponent implements OnInit {
     max_years: 0,
     skills: "",
     specificReq: "",
-    noticePeriod: 0
+    noticePeriod: 0,
+    gender: 'Anyone',
+    count: 1
   } as any;
 
   // obj: any = {};
@@ -112,7 +114,9 @@ export class PostRequirementComponent implements OnInit {
       max_years: 0,
       skills: "",
       specificReq: "",
-      noticePeriod: 0
+      noticePeriod: 0,
+      gender: 'Anyone',
+      count: 1
     }
     this.info.editRequirement(this.requirement);
   }
@@ -138,6 +142,9 @@ export class PostRequirementComponent implements OnInit {
     }
     else if (!v_contact) {
       this.error = "Contact number is not valid(+XXXXXXXXXXXX)"; return false;
+    }
+    else if (!(this.requirement.count > 0)) {
+      this.error = "Enter a valid number of openings"; return false;
     }
     else if (!v_exp) {
       this.error = "Min Exp should be less than Max Exp"; return false;

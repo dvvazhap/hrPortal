@@ -5,6 +5,7 @@
         <th></th>
         <th>Looking for</th>
         <th>Posted On</th>
+        <th>Preferred Candidate</th>
         <th>Designation</th>
         <th>Company</th>
         <th>Location</th>
@@ -29,6 +30,7 @@
           <span [hidden]="open.intern != 1">Internship </span>
         </td>
         <td>{{open.timestamp | date: 'd MMM y'}}</td>
+        <td>{{open.gender}}</td>
         <td>{{open.designation}}</td>
         <td>{{open.company}}</td>
         <td>{{open.location}}</td>

@@ -56,6 +56,16 @@
       </div>
       <div class="mx-auto" style="height: 15px;"></div>
       <div class="form-row">
+        <div class="col-sm-4 label">No. of openings </div>
+        <div class="col-sm-8"> {{requirement.count}} </div>
+      </div>
+      <div [hidden]="requirement.gender == 'Anyone'" class="mx-auto" style="height: 15px;"></div>
+      <div [hidden]="requirement.gender == 'Anyone'" class="form-row">
+        <div class="col-sm-4 label">Preferred Candidate </div>
+        <div class="col-sm-8"> {{requirement.gender}} </div>
+      </div>
+      <div [hidden]="requirement.specificReq == ''" class="mx-auto" style="height: 15px;"></div>
+      <div [hidden]="requirement.specificReq == ''" class="form-row">
         <div class="col-sm-4 label">Any specific requirements</div>
         <div class="col-sm-8"> {{requirement.specificReq}} </div>
       </div>
