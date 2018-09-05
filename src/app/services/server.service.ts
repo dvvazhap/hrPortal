@@ -4,7 +4,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class ServerService {
-  // host: string = "http://ec2-18-219-137-247.us-east-2.compute.amazonaws.com:3003/";
+  // host: string = "http://ec2-35-154-125-171.ap-south-1.compute.amazonaws.com:3003/";
   host: string = "http://localhost:3003/";
 
   constructor(private http: HttpClient) { }
@@ -49,14 +49,15 @@ export class ServerService {
     return this.http.post(this.host + "checkUser", body.toString(), { headers, observe: 'response', responseType: 'text' });
   }
 
-  addUser(token, email, password, user_type) {
+  addUser(token, email, password, user_type,name) {
     user_type == true ? user_type = 1 : user_type = 2;
 
     let body = new HttpParams()
       .set(`token`, token + email)
       .set(`email`, email)
       .set(`password`, password)
-      .set(`user_type`, user_type);
+      .set(`user_type`, user_type)
+      .set(`name`, name);
 
     let headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
     return this.http.post(this.host + "addUser", body.toString(), { headers, observe: 'response', responseType: 'text' });

@@ -45,7 +45,7 @@
             <div class="input-group-prepend">
               <div class="input-group-text">***</div>
             </div>
-            <input type="{{passwordType}}" class="form-control" [(ngModel)]="password" placeholder="Password" />
+            <input type="{{passwordType}}" maxlength="30" class="form-control" [(ngModel)]="password" placeholder="Password" />
             <div class="input-group-prepend">
               <div class="input-group-text" (mouseenter)="showPassword()" (mouseleave)="hidePassword()" style="cursor:pointer">Show</div>
             </div>
@@ -68,9 +68,23 @@
           <div class="col-sm-8">
             <div class="input-group mb-2">
               <div class="input-group-prepend">
+                <div class="input-group-text">Name</div>
+              </div>
+              <input type="text" maxlength="48" class="form-control" [(ngModel)]="name" placeholder="What do people call you ?" />
+            </div>
+          </div>
+          <div class="col-sm-4"></div>
+        </div>
+
+        <div class="mx-auto" style="height: 30px;"></div>
+
+        <div class="form-row align-items-center">
+          <div class="col-sm-8">
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
                 <div class="input-group-text">Password</div>
               </div>
-              <input type="password" class="form-control" [(ngModel)]="password" placeholder="Password" />
+              <input type="password" maxlength="30" class="form-control" [(ngModel)]="password" placeholder="Password" />
             </div>
           </div>
           <div class="col-sm-4"></div>
@@ -82,7 +96,7 @@
               <div class="input-group-prepend">
                 <div class="input-group-text">Confirm Password</div>
               </div>
-              <input type="password" class="form-control" [(ngModel)]="confirm_password" placeholder="Confirm Password" />
+              <input type="password" maxlength="30" class="form-control" [(ngModel)]="confirm_password" placeholder="Confirm Password" />
             </div>
           </div>
           <div class="col-sm-4"></div>

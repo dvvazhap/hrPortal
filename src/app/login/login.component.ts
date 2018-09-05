@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
   token: string;
   password: string = '';
   confirm_password: string = '';
+  name: string = '';
   user_type: boolean = true;
 
   constructor(private serverdata: ServerService, private info: LoginService, private router: Router) { }
@@ -127,7 +128,15 @@ export class LoginComponent implements OnInit {
       });
   }
   public signUp() {
-    if (this.password.length < 8) {
+    if(this.name.replace(/\s/g,'').length == 0 ){
+      this.error = 'Name cannot be empty';
+      this.msg = '';
+    }
+    else if(this.name.replace(/\s/g,'').length < 3 ){
+      this.error = 'Name cannot be that small';
+      this.msg = '';
+    }
+    else if (this.password.replace(/\s/g,'').length < 8) {
       this.error = 'Password should be of minimum 8 characters';
       this.msg = '';
     }
@@ -140,7 +149,7 @@ export class LoginComponent implements OnInit {
       this.token = Date.now().toString();
       let password = Md5.hashStr(this.password).toString();
       this.getSignInData = false;
-      this.serverdata.addUser(this.token, this.email, password, this.user_type)
+      this.serverdata.addUser(this.token, this.email, password, this.user_type,this.name)
         .subscribe(data => {
 
           this.resendVerifyEmail = true;
@@ -148,7 +157,7 @@ export class LoginComponent implements OnInit {
 
         }, error => {
           this.loading = false;
-          this.error = "Sometging went wrong.";
+          this.error = "Something went wrong.";
         });
     }
 
