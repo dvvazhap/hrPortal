@@ -25,8 +25,8 @@ export class LoginService {
   currentComponent = this.selectComponent.asObservable();
 
   user: UserInfo;
-  employee: EmployeeInfo;
-  employer: EmployerInfo;
+  employee: EmployeeInfo = {} as EmployeeInfo;
+  employer: EmployerInfo = {} as EmployerInfo;
 
   stoData: {
     t: string;
@@ -100,7 +100,7 @@ export class LoginService {
 
   public getEmployeeInfo(email) {
     this.serverdata.getEmployeeInfo(email).subscribe(dat => {
-      this.employee = JSON.parse(dat);
+      if(dat) this.employee = JSON.parse(dat);
       this.employeeInformationSource.next(this.employee);
     },
       error => {
@@ -109,14 +109,14 @@ export class LoginService {
     );
   }
 
-  public jobsPostedByMe() {
-    this.serverdata.jobsPostedByMe(this.user.email).subscribe(data => {
+  public getOpenings(email,ind) {
+    this.serverdata.getOpenings(email,ind).subscribe(data => {
 
       let myJobs = JSON.parse(data);
       this.myJobsSource.next(myJobs);
 
     }, error => {
-      console.log("Error in jobsPostedByMe:", JSON.stringify(error));
+      console.log("Error in getOpenings: email :"+email+" ind :"+ind, JSON.stringify(error));
     });
   }
 

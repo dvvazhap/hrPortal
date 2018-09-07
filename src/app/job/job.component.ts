@@ -11,7 +11,7 @@ import { OpeningInfo } from '../interface';
 export class JobComponent implements OnInit {
   id: string;
   valid: number;
-  requirement: OpeningInfo = {} as any;
+  requirement: OpeningInfo = {} as OpeningInfo;
   constructor(private route: ActivatedRoute, private serverdata: ServerService) {}
 
   ngOnInit() {
@@ -21,6 +21,7 @@ export class JobComponent implements OnInit {
       if(data !='0'){
         this.valid = 1;
         this.requirement = JSON.parse(data)[0];
+        console.log("req :",this.requirement)
       }
     })
   }

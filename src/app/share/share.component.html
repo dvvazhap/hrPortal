@@ -4,7 +4,11 @@
 <div [hidden]="!employee.looking" class="container-fluid myskills employee">
 
   Note: Copy this URL to share your profile to others.
-
+  <div class="row">
+    <div class="col-sm-9"></div>
+    <div class="col-sm-3"><b class="heading">No. of viewers: </b><span class="content">{{employee.viewers}}</span></div>
+  </div>
+  
   <div><b class="name">{{employee.name}}</b><span class="designation"><b>{{employee.designation}}</b></span></div>
   <div class="contact">
     <b class="heading">Email :</b>
