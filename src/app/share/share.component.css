@@ -1,11 +1,35 @@
 .myskills{
     color:#191919;
-    font-style: italic;
-    font-weight: 500;
+    /* font-style: italic; */
+    /* font-weight: 500; */
 }
-.myskills .heading{
-    font-size: 30px;
+.name{
+    color:#1034A6;
+    font-size: 40px;
+    text-transform: uppercase;
 }
-.myskills .label{
+.designation{
+    color:#0080FF;
     font-size: 20px;
+    margin-left: 15px;
+}
+.contact{
+    font-size: 15px;
+}
+.heading{
+    text-transform: uppercase;
+    color:#0080FF;
+}
+.content{
+    color:#191919; 
+}
+
+.profile{
+    margin-top: 30px;
+    font-size: 18px;
+}
+.profile .justify{
+    display: flex;
+    text-align: justify;
+    text-justify: inter-word;
 }

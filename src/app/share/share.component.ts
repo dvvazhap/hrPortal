@@ -14,26 +14,7 @@ export class ShareComponent implements OnInit {
   msg: string = "All the fields with * are mandatory";
 
   id: string;
-  employee: EmployeeInfo = {
-    name: "",
-    phone: "",
-    looking: 0,
-    fullTime: 1,
-    partTime: 0,
-    intern: 0,
-    designation: "",
-    company: "",
-    cur_location: "",
-    fut_location: "",
-    experience: 0,
-    noticePeriod: 0,
-    degree: "",
-    stream: "",
-    institution: "",
-    passout: 2018,
-    skills: "",
-    specificReq: ""
-  } as any;
+  employee: EmployeeInfo = {} as EmployeeInfo;
 
   constructor(private route: ActivatedRoute, private info: LoginService, private serverdata: ServerService) { }
 
