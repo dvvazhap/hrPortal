@@ -47,7 +47,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of this.users">
+      <tr *ngFor="let user of users">
         <td>{{user.token}}</td>
         <td>{{user.password}}</td>
         <td>{{user.email}}</td>
@@ -73,7 +73,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let employer of this.employerinfo">
+      <tr *ngFor="let employer of employerinfo">
         <td>{{employer.email}}</td>
         <td>{{employer.name}}</td>
         <td>{{employer.designation}}</td>
@@ -103,7 +103,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let skill of this.skills">
+      <tr *ngFor="let skill of skills">
         <td>
           <button type="button" class="btn btn-primary" target="_blank" (click)="shareProfile(skill.email)">Share Profile</button>
         </td>
@@ -139,7 +139,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let open of this.openings">
+      <tr *ngFor="let open of openings">
           
         <td>  <button type="button" class="btn btn-primary" target="_blank" (click)="shareJob(open.ind)">Share Job</button>
         </td>
@@ -167,7 +167,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let feed of this.feedback">
+      <tr *ngFor="let feed of feedback">
         <td>{{feed.email}}</td>
         <td>{{feed.profile}}</td>
         <td>{{feed.subject}}</td>
