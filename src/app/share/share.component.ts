@@ -10,9 +10,6 @@ import { EmployeeInfo } from '../interface';
   styleUrls: ['./share.component.css']
 })
 export class ShareComponent implements OnInit {
-  error: string = "";
-  msg: string = "All the fields with * are mandatory";
-
   id: string;
   employee: EmployeeInfo = {} as EmployeeInfo;
 
