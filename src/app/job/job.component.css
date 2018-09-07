@@ -1,11 +1,25 @@
 .requirement{
     color:#191919;
-    font-style: italic;
-    font-weight: 500;
 }
-.requirement .heading{
-    font-size: 30px;
+.name{
+    color:#1034A6;
+    font-size: 40px;
+    text-transform: uppercase;
 }
-.requirement .label{
-    font-size: 20px;
+.heading{
+    text-transform: uppercase;
+    color:#0080FF;
+}
+.content{
+    color:#191919; 
+}
+
+.job{
+    margin-top: 30px;
+    font-size: 18px;
+}
+.job .justify{
+    display: flex;
+    text-align: justify;
+    text-justify: inter-word;
 }
