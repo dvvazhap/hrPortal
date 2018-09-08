@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../services/login.service';
 import { ServerService } from '../services/server.service';
-import { UserInfo } from '../interface';
+import { UserInfo,OpeningInfo } from '../interface';
 
 @Component({
   selector: 'app-edit-requirement',
@@ -9,15 +9,15 @@ import { UserInfo } from '../interface';
   styleUrls: ['./edit-requirement.component.css']
 })
 export class EditRequirementComponent implements OnInit {
-  userInfo: UserInfo = {} as any;
-  myJobs: any = [];
+  userInfo: UserInfo = {};
+  myJobs: OpeningInfo[] = [];
   
   constructor(private info: LoginService, private serverdata: ServerService) { }
 
   ngOnInit() {
     this.info.currentUserInformation.subscribe(data => {
       this.userInfo = JSON.parse(JSON.stringify(data));
-      this.info.jobsPostedByMe();
+      this.info.getOpenings(this.userInfo.email,"");
     });
     this.info.currentMyJobs.subscribe(data => {
       this.myJobs = JSON.parse(JSON.stringify(data));

@@ -27,9 +27,13 @@
           <span [hidden]="can.intern != 1">Internship </span>
         </td>
         <td>
-          Name: {{can.name}}<br/>
-          Email: {{can.email}}<br/>
-          Ph: {{can.phone}} 
+          <b>{{can.name}}</b> (
+          <span [hidden]="can.gender != 'Male'">M</span>
+          <span [hidden]="can.gender != 'Female'">F</span>
+          <span [hidden]="can.gender != 'Transgender'">T</span>
+          )<br/>
+          {{can.email}}<br/>
+          {{can.phone}} 
         </td>
 
         <td><b>{{can.designation}}</b> in {{can.company}}, {{can.cur_location}}</td>

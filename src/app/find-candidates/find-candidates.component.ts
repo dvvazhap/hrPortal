@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../services/login.service';
 import { ServerService } from '../services/server.service';
-import { UserInfo, EmployerInfo, CandidateInfo } from '../interface';
+import { UserInfo, EmployerInfo, EmployeeInfo } from '../interface';
 
 @Component({
   selector: 'app-find-candidates',
@@ -10,7 +10,7 @@ import { UserInfo, EmployerInfo, CandidateInfo } from '../interface';
 })
 export class FindCandidatesComponent implements OnInit {
   userInfo: UserInfo;
-  candidates: CandidateInfo[];
+  candidates: EmployeeInfo[];
   employer: EmployerInfo;
 
   constructor(private info: LoginService, private serverdata: ServerService) { }
