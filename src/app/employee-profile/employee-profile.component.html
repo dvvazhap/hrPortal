@@ -36,6 +36,17 @@
         <input type="text" maxlength="30" class="form-control" [(ngModel)]="employee.name" placeholder="Name" />
       </div>
     </div>
+    <div class="mx-auto" style="height: 15px;"></div>
+    <div class="form-row">
+      <div class="col-sm-4 label">Gender *</div>
+      <div class="col-sm-8">
+        <select class="form-control" [(ngModel)]="employee.gender" container="body">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Transgender">Transgender</option>
+        </select>
+      </div>
+    </div>
 
     <div class="mx-auto" style="height: 15px;"></div>
     <div class="form-row">

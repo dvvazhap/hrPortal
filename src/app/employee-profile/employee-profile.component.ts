@@ -11,7 +11,7 @@ import { UserInfo, EmployeeInfo } from '../interface';
 export class EmployeeProfileComponent implements OnInit {
   error: string = "";
   msg: string = "All the fields with * are mandatory";
-  userInfo: UserInfo = {} as any;
+  userInfo: UserInfo = {} as UserInfo;
   employee: EmployeeInfo = {
     name: "",
     phone: "",
@@ -31,7 +31,7 @@ export class EmployeeProfileComponent implements OnInit {
     passout: 2018,
     skills: "",
     specificReq: ""
-  } as any;
+  } as EmployeeInfo;
 
   dropdownList = [];
   selectedItems = [];
