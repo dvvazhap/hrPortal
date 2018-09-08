@@ -12,9 +12,9 @@ import { UserInfo, EmployeeInfo, EmployerInfo } from '../interface';
 export class ProfileComponent implements OnInit {
   // error: string = "";
   // msg: string = "";
-  userInfo: UserInfo = {} as any;
-  employee: EmployeeInfo = {} as any;
-  employer: EmployerInfo = {} as any;
+  userInfo: UserInfo = {} as UserInfo;
+  employee: EmployeeInfo = {} as EmployeeInfo;
+  employer: EmployerInfo = {} as EmployerInfo;
 
   password_error: string = "";
   password_msg: string = "";
