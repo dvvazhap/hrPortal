@@ -35,6 +35,10 @@
       <li (click)="callComponent('job_openings')"> Job Openings </li>
     </div>
 
+    <div class="btn-group" *ngIf="user.user_type==2">
+      <li (click)="callComponent('settings')"> Settings </li>
+    </div>
+
     <div class="btn-group">
       <li (click)="callComponent('feedback')" placement="bottom" tooltip="Let us know, so that we can work upon." container="body">
         Feedback </li>

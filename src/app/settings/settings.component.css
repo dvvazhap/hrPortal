@@ -1,0 +1,11 @@
+.settings{
+    color:#191919;
+    font-style: italic;
+    font-weight: 500;
+}
+.settings .heading{
+    font-size: 30px;
+}
+.settings .label{
+    font-size: 15px;
+}

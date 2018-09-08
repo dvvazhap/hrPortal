@@ -33,6 +33,7 @@ import { EditRequirementComponent } from './edit-requirement/edit-requirement.co
 import { ShareComponent } from './share/share.component';
 import { JobComponent } from './job/job.component';
 import { SuperComponent } from './super/super.component';
+import { SettingsComponent } from './settings/settings.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
@@ -119,7 +120,8 @@ const appRoutes: Routes = [
     EditRequirementComponent,
     ShareComponent,
     JobComponent,
-    SuperComponent
+    SuperComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

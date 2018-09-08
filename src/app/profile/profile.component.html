@@ -1,55 +1,8 @@
 <div class="container-fluid">
   <div class="form-row">
-    <!-- left side -->
-    <div class="col-sm-6">
+    <div class="col-sm-12">
       <app-employer-profile [hidden]="userInfo.user_type != 1"></app-employer-profile>
       <app-employee-profile [hidden]="userInfo.user_type != 2"></app-employee-profile>
-    </div>
-    <div class="col-sm-1"></div>
-    <!-- right side -->
-    <div class="col-sm-5 profile">
-      <div class="form-row">
-        <div class="col-sm-12 heading">Reset Password</div>
-      </div>
-      <div class="mx-auto" style="height: 15px;"></div>
-      <div class="form-row">
-        <div class="col-sm-12 label">
-          <div class="alert alert-danger" [hidden]="password_error==''">
-            <strong>{{password_error}}</strong>
-          </div>
-          <div class="alert alert-info" [hidden]="password_msg==''">
-            <strong>{{password_msg}}</strong>
-          </div>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="col-sm-4 label">Old Password</div>
-        <div class="col-sm-8">
-          <input type="password" class="form-control" [(ngModel)]="old_password" placeholder="Old Password" />
-        </div>
-      </div>
-      <div class="mx-auto" style="height: 15px;"></div>
-      <div class="form-row">
-        <div class="col-sm-4 label">New Password</div>
-        <div class="col-sm-8">
-          <input type="password" class="form-control" [(ngModel)]="new_password" placeholder="New Password" />
-        </div>
-      </div>
-      <div class="mx-auto" style="height: 15px;"></div>
-      <div class="form-row">
-        <div class="col-sm-4 label">Confirm Password</div>
-        <div class="col-sm-8">
-          <input type="password" class="form-control" [(ngModel)]="confirm_password" placeholder="Confirm Password" />
-        </div>
-      </div>
-      <div class="mx-auto" style="height: 15px;"></div>
-      <div class="form-row">
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4">
-          <button type="button" class="btn btn-primary btn-lg btn-block" (click)="changePassord()">Change Password</button>
-        </div>
-        <div class="col-sm-4"></div>
-      </div>
     </div>
   </div>
 </div>
