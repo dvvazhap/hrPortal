@@ -1,4 +1,7 @@
 <div class="container-fluid">
+  <div class="" *ngIf="!openings">
+    <h3>Sorry!!! <br/>There are no openings available at the moment.</h3>
+  </div>
   <table datatable class="table hover table-bordered" *ngIf="openings">
     <thead class="heading">
       <tr>

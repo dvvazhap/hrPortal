@@ -23,7 +23,7 @@ export class JobOpeningsComponent implements OnInit {
   }
 
   public getOpenings(){
-    this.serverdata.getOpenings().subscribe(data => {
+    this.serverdata.getOpenings("","").subscribe(data => {
       this.openings = JSON.parse(data);
     })
   }
