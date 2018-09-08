@@ -8,9 +8,9 @@ import { UserInfo, EmployeeInfo, EmployerInfo } from '../interface';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  user: UserInfo = {} as any;
-  employee: EmployeeInfo = {} as any;
-  employer: EmployerInfo = {} as any;
+  user: UserInfo = {} as UserInfo;
+  employee: EmployeeInfo = {} as EmployeeInfo;
+  employer: EmployerInfo = {} as EmployerInfo;
 
   constructor(private info: LoginService) { }
 
