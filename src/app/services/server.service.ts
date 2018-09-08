@@ -137,31 +137,18 @@ export class ServerService {
       .map(res => { return res.body; });
   }
 
-  getOpenings() {
-    // let dat = JSON.stringify(obj);
+  getOpenings(email,ind) {
+    const body = new HttpParams().set(`email`, email).set(`ind`, ind);
     const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
-    return this.http.post(this.host + "getOpenings", "", { headers, observe: 'response', responseType: 'text' })
+    return this.http.post(this.host + "getOpenings", body, { headers, observe: 'response', responseType: 'text' })
       .map(res => { return res.body; });
   }
-  getOpeningsById(job_id) {
-    const body = new HttpParams().set(`ind`, job_id);
-    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
-    return this.http.post(this.host + "getOpeningsById", body, { headers, observe: 'response', responseType: 'text' })
-      .map(res => { return res.body; });
-  }
-  
+
   submitFeedback(email,subject,profile) {
     // let dat = JSON.stringify(obj);
     const body = new HttpParams().set(`email`, email).set(`subject`, subject).set(`profile`, profile);
     const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
     return this.http.post(this.host + "submitFeedback", body, { headers, observe: 'response', responseType: 'text' })
-      .map(res => { return res.body; });
-  }
-
-  jobsPostedByMe(email){
-    const body = new HttpParams().set(`email`, email);
-    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
-    return this.http.post(this.host + "jobsPostedByMe", body, { headers, observe: 'response', responseType: 'text' })
       .map(res => { return res.body; });
   }
 
