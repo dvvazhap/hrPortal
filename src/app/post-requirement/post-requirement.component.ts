@@ -124,7 +124,6 @@ export class PostRequirementComponent implements OnInit {
   public validate() {
     this.error = "";
     this.msg = "";
-    let v_contact = new RegExp(/^[+]?[\d]+$/).test(this.requirement.contact);
 
     let v_exp = parseFloat(this.requirement.min_years.toString()) <= parseFloat(this.requirement.max_years.toString());
 
@@ -139,9 +138,6 @@ export class PostRequirementComponent implements OnInit {
     }
     else if (this.requirement.location == "") {
       this.error = "Enter the location(s) of the job"; return false;
-    }
-    else if (!v_contact) {
-      this.error = "Contact number is not valid(+XXXXXXXXXXXX)"; return false;
     }
     else if (!(this.requirement.count > 0)) {
       this.error = "Enter a valid number of openings"; return false;

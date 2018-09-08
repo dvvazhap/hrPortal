@@ -95,16 +95,12 @@ export class EmployeeProfileComponent implements OnInit {
   public validate() {
     this.error = "";
     this.msg = "";
-    let v_contact = new RegExp(/^[+]?[\d]+$/).test(this.employee.phone);
     if (this.looking == false) {
       return true;
     }
 
     else if (this.employee.name == "" || this.employee.name == null) {
       this.error = "Enter your name"; return false;
-    }
-    else if (!v_contact) {
-      this.error = "Contact number is not valid(+XXXXXXXXXXXX)"; return false;
     }
     else if (!(this.employee.fullTime || this.employee.partTime || this.employee.intern)) {
       this.error = "Select the type(s) of Job"; return false;
