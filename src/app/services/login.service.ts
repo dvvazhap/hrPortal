@@ -24,6 +24,9 @@ export class LoginService {
   private selectComponent = new Subject<string>();
   currentComponent = this.selectComponent.asObservable();
 
+  deletedJobID  = new Subject<string>();
+  deletedJID = this.deletedJobID.asObservable();
+
   user: UserInfo;
   employee: EmployeeInfo = {} as EmployeeInfo;
   employer: EmployerInfo = {} as EmployerInfo;

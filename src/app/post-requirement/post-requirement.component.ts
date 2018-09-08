@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../services/login.service';
 import { ServerService } from '../services/server.service';
-import { UserInfo } from '../interface';
+import { UserInfo,OpeningInfo } from '../interface';
 
 @Component({
   selector: 'app-post-requirement',
@@ -9,7 +9,7 @@ import { UserInfo } from '../interface';
   styleUrls: ['./post-requirement.component.css']
 })
 export class PostRequirementComponent implements OnInit {
-  userInfo: UserInfo = {} as any;
+  userInfo: UserInfo = {} as UserInfo;
   error: string = "";
   msg: string = "All the fields with * are mandatory";
   dropdownList = [];
@@ -32,9 +32,7 @@ export class PostRequirementComponent implements OnInit {
     noticePeriod: 0,
     gender: 'Anyone',
     count: 1
-  } as any;
-
-  // obj: any = {};
+  } as OpeningInfo;
 
   constructor(private info: LoginService, private serverdata: ServerService) { }
 
@@ -58,6 +56,8 @@ export class PostRequirementComponent implements OnInit {
     this.info.currentUserInformation.subscribe(data => {
       this.userInfo = JSON.parse(JSON.stringify(data));
     });
+
+    this.info.deletedJID.subscribe(data => { if(data == this.requirement.ind.toString()) this.addRequirement(); });
 
     this.info.currentEditingJob.subscribe(data => {
 
@@ -117,7 +117,7 @@ export class PostRequirementComponent implements OnInit {
       noticePeriod: 0,
       gender: 'Anyone',
       count: 1
-    }
+    } as OpeningInfo
     this.info.editRequirement(this.requirement);
   }
 
@@ -160,7 +160,7 @@ export class PostRequirementComponent implements OnInit {
 
   public postRequirement() {
     if (this.validate()) {
-
+      this.requirement.timestamp = new Date().toDateString();
       this.requirement.email = this.userInfo.email;
       this.requirement.min_years = Math.abs(Math.round(this.requirement.min_years * 10) / 10);
       this.requirement.max_years = Math.abs(Math.round(this.requirement.max_years * 10) / 10);
@@ -171,13 +171,13 @@ export class PostRequirementComponent implements OnInit {
           this.msg = "Requirement posted";
 
           this.addRequirement();
-          this.info.jobsPostedByMe();
+          this.info.getOpenings(this.userInfo.email,"");
         }
         else if (data == "0") {
           this.error = "Something went wrong";
           this.msg = "";
 
-          this.info.jobsPostedByMe();
+          this.info.getOpenings(this.userInfo.email,"");
           this.addRequirement();
         }
       }, error => {
@@ -199,7 +199,7 @@ export class PostRequirementComponent implements OnInit {
         if (data == "1") {
           this.error = "";
           this.msg = "Requirement saved";
-          this.info.jobsPostedByMe();
+          this.info.getOpenings(this.userInfo.email,"");
         }
         else if (data == "0") {
           this.error = "Something went wrong";

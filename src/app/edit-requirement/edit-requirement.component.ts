@@ -16,11 +16,12 @@ export class EditRequirementComponent implements OnInit {
 
   ngOnInit() {
     this.info.currentUserInformation.subscribe(data => {
+
       this.userInfo = JSON.parse(JSON.stringify(data));
       this.info.getOpenings(this.userInfo.email,"");
     });
     this.info.currentMyJobs.subscribe(data => {
-      this.myJobs = JSON.parse(JSON.stringify(data));
+      if(data) this.myJobs = JSON.parse(JSON.stringify(data));
     });
   }
 
@@ -30,6 +31,7 @@ export class EditRequirementComponent implements OnInit {
         for(let i=0;i<this.myJobs.length;i++){
           if(this.myJobs[i].ind.toString() == index.toString()){
             this.myJobs.splice(i, 1);
+            this.info.deletedJobID.next(index.toString());
             return;
           }
         }
