@@ -11,8 +11,8 @@ import { UserInfo, EmployerInfo } from '../interface';
 export class EmployerProfileComponent implements OnInit {
   error: string = "";
   msg: string = "";
-  userInfo: UserInfo = {} as any;
-  employer: EmployerInfo = {} as any;
+  userInfo: UserInfo = {} as UserInfo;
+  employer: EmployerInfo = {} as EmployerInfo;
 
   constructor(private info: LoginService, private serverdata: ServerService) { }
 
