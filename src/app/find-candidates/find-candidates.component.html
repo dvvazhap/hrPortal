@@ -17,7 +17,7 @@
     <tbody>
       <tr *ngFor="let can of this.candidates" class="candidates">
         <td>
-          <button type="button" class="btn btn-primary" target="_blank" (click)="shareProfile(can.email)">Share Profile</button>
+          <button type="button" class="btn btn-primary" target="_blank" (click)="shareProfile(can.email)">Complete Profile</button>
         </td>
         <td>
           <span [hidden]="can.fullTime != 1">Full Time</span>

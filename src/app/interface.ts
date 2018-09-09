@@ -22,6 +22,37 @@ export interface Feedback {
     profile: number;
 }
 
+export interface Education {
+    email: string;
+    ind: number;
+    college: string; 
+    degree: string; 
+    stream: string;
+    start: string;
+    end: string;
+    cgpa: number; 
+    percentage: number;
+}
+
+export interface Projects {
+    email: string;
+    ind: number;
+    name: string; 
+    description: string; 
+    skills: string;
+    start: string;
+    end: string;
+}
+
+export interface WorkExperience {
+    email: string;
+    ind: number;
+    company: string; 
+    description: string; 
+    start: string;
+    end: string;
+}
+
 export interface EmployeeInfo {
     email: string;
     name: string;
@@ -44,6 +75,14 @@ export interface EmployeeInfo {
     specificReq: string;
     gender:string;
     viewers: number;
+    objective:string;
+    languages:string;
+    academic_ach:string;
+    extra_curricular:string;
+    certifications:string;
+    hobbies:string;
+    address:string;
+    linkedin:string;
 }
 
 export interface OpeningInfo {

@@ -1,14 +1,63 @@
-.myskills{
-    color:#191919;
-    font-style: italic;
-    font-weight: 500;
+hr{
+  border:1px solid black;
 }
-.myskills .heading{
-    font-size: 30px;
+
+*{box-sizing:border-box;}
+
+/*Just to center the Form*/
+.resume {
+  margin: auto; 
+  /* position: absolute;  */
+  top: 0; 
+  left: 0; 
+  bottom: 0; 
+  right: 0; }
+
+/* A container to position LABELS */
+.container {
+position: relative;
+top: auto;
+left: auto;
+width: auto;
 }
-.myskills .label{
-    font-size: 15px;
+
+input[type="text"],input[type="number"],textarea {
+  padding:1em 0 0 1em;
+  border: 1px solid #ccc;
+-webkit-box-shadow: inset 0 1px 0 #eee,#fff 0 1px 0;
+box-shadow: inset 0 1px 0 #eee,#fff 0 1px 0;
+  border-radius:5px;
+  width:100%;
 }
+
+label {
+position: absolute;
+top: 0;
+right: 1px;
+bottom: 1px;
+left: 20px;
+z-index: 1;
+height: 1em;
+font-size: 15px;
+line-height: 3.5em;
+color: #999;
+white-space: nowrap;
+cursor: text;
+transition:all .1s ease;
+text-transform: uppercase;
+}
+
+input[type="text"] ~ label,input[type="number"] ~ label, textarea ~ label{
+  font-size:15px;
+  top:-15px;
+  font-weight:bold;
+  color:green;
+}
+
+input,textarea{
+  left:20px;
+}
+
 .tgl {
     position: relative;
     display: inline-block;

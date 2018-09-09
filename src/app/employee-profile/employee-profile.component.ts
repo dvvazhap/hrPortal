@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../services/login.service';
 import { ServerService } from '../services/server.service';
+import { ActivatedRoute } from '@angular/router';
 import { UserInfo, EmployeeInfo } from '../interface';
 
 @Component({
@@ -9,6 +10,7 @@ import { UserInfo, EmployeeInfo } from '../interface';
   styleUrls: ['./employee-profile.component.css']
 })
 export class EmployeeProfileComponent implements OnInit {
+  id: string;
   error: string = "";
   msg: string = "All the fields with * are mandatory";
   userInfo: UserInfo = {} as UserInfo;
@@ -30,7 +32,17 @@ export class EmployeeProfileComponent implements OnInit {
     institution: "",
     passout: 2018,
     skills: "",
-    specificReq: ""
+    specificReq: "",
+    gender:'Male',
+    viewers:1,
+    objective:"",
+    languages:"",
+    academic_ach:"",
+    extra_curricular:"",
+    certifications:"",
+    hobbies:"",
+    address:"",
+    linkedin:""
   } as EmployeeInfo;
 
   dropdownList = [];
@@ -38,9 +50,14 @@ export class EmployeeProfileComponent implements OnInit {
   dropdownSettings = {};
   looking: boolean = false;
 
-  constructor(private info: LoginService, private serverdata: ServerService) { }
+  constructor(private info: LoginService, private serverdata: ServerService,private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.id = params['id'];
+    });
+
+
     this.info.currentUserInformation.subscribe(data => {
       this.userInfo = JSON.parse(JSON.stringify(data));
     });
@@ -62,7 +79,7 @@ export class EmployeeProfileComponent implements OnInit {
     this.selectedItems = [];
     this.dropdownSettings = {
       singleSelection: false,
-      text: "Select the Type of Job",
+      text: "SELCT THE TYPE OF OPPORTUNITY YOU ARE INTERESTED IN",
       enableSearchFilter: false,
       enableCheckAll: false,
       classes: "myclass custom-class"
