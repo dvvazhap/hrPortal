@@ -121,6 +121,82 @@ export class ServerService {
       .map(res => { return res.body; });
   }
 
+  addEducation(email){
+    const body = new HttpParams().set(`email`, email);
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    return this.http.post(this.host + "addEducation", body.toString(), { headers, observe: 'response', responseType: 'text' })
+      .map(res => { return res.body; });
+  }
+  getEducation(email){
+    const body = new HttpParams().set(`email`, email);
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    return this.http.post(this.host + "getEducation", body.toString(), { headers, observe: 'response', responseType: 'text' })
+      .map(res => { return res.body; });
+  }
+  updateEducation(education){
+    const body = new HttpParams().set(`email`, education.email).set(`ind`, education.ind).set(`college`, education.college).set(`degree`, education.degree)
+    .set(`stream`, education.stream).set(`start`, education.start).set(`end`, education.end).set(`cgpa`, education.cgpa).set(`percentage`, education.percentage);
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    return this.http.post(this.host + "updateEducation", body.toString(), { headers, observe: 'response', responseType: 'text' })
+      .map(res => { return res.body; });
+  }
+  deleteEducation(email,ind){
+    const body = new HttpParams().set(`email`, email).set(`ind`, ind);
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    return this.http.post(this.host + "deleteEducation", body.toString(), { headers, observe: 'response', responseType: 'text' })
+      .map(res => { return res.body; });
+  }
+
+  addWork(email){
+    const body = new HttpParams().set(`email`, email);
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    return this.http.post(this.host + "addWork", body.toString(), { headers, observe: 'response', responseType: 'text' })
+      .map(res => { return res.body; });
+  }
+  getWork(email){
+    const body = new HttpParams().set(`email`, email);
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    return this.http.post(this.host + "getWork", body.toString(), { headers, observe: 'response', responseType: 'text' })
+      .map(res => { return res.body; });
+  }
+  updateWork(work){
+    const body = new HttpParams().set(`email`, work.email).set(`ind`, work.ind).set(`company`, work.company).set(`description`, work.description).set(`start`, work.start).set(`end`, work.end);
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    return this.http.post(this.host + "updateWork", body.toString(), { headers, observe: 'response', responseType: 'text' })
+      .map(res => { return res.body; });
+  }
+  deleteWork(email,ind){
+    const body = new HttpParams().set(`email`, email).set(`ind`, ind);
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    return this.http.post(this.host + "deleteWork", body.toString(), { headers, observe: 'response', responseType: 'text' })
+      .map(res => { return res.body; });
+  }
+
+  addProject(email){
+    const body = new HttpParams().set(`email`, email);
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    return this.http.post(this.host + "addProject", body.toString(), { headers, observe: 'response', responseType: 'text' })
+      .map(res => { return res.body; });
+  }
+  getProject(email){
+    const body = new HttpParams().set(`email`, email);
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    return this.http.post(this.host + "getProject", body.toString(), { headers, observe: 'response', responseType: 'text' })
+      .map(res => { return res.body; });
+  }
+  updateProject(proj){
+    const body = new HttpParams().set(`email`, proj.email).set(`ind`, proj.ind).set(`name`, proj.name).set(`description`, proj.description).set(`skills`, proj.skills).set(`start`, proj.start).set(`end`, proj.end);
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    return this.http.post(this.host + "updateProject", body.toString(), { headers, observe: 'response', responseType: 'text' })
+      .map(res => { return res.body; });
+  }
+  deleteProject(email,ind){
+    const body = new HttpParams().set(`email`, email).set(`ind`, ind);
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    return this.http.post(this.host + "deleteProject", body.toString(), { headers, observe: 'response', responseType: 'text' })
+      .map(res => { return res.body; });
+  }
+
   getEmployerInfo(email) {
     // let dat = JSON.stringify(obj);
     const body = new HttpParams().set(`email`, email);

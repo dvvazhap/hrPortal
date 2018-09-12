@@ -1,77 +1,128 @@
-<div [hidden]="employee.looking" class="container-fluid myskills employee">
+<div [hidden]="employee.looking" class="container">
   <b>This profile is not looking for a change.</b>
 </div>
-<div [hidden]="!employee.looking" class="container-fluid myskills employee">
+<div [hidden]="!employee.looking" class="container">
 
   Note: Copy this URL to share your profile to others.
-  <div class="row">
+  <br/>
+  <!-- <button type="button" class="btn btn-primary btn-lg" (click)="downloadPdf()"> Download PDF </button> -->
+  <!--<div class="row">
     <div class="col-sm-9"></div>
-    <div class="col-sm-3"><b class="heading">No. of viewers: </b><span class="content">{{employee.viewers}}</span></div>
-  </div>
-  
-  <div><b class="name">{{employee.name}}</b><span class="designation"><b>{{employee.designation}}</b></span></div>
-  <div class="contact">
-    <b class="heading">Email :</b>
-    <span class="content">{{id}}</span>&nbsp;&nbsp;&nbsp;
-    <b class="heading">SEX :</b>
-    <span class="content">{{employee.gender}}</span>&nbsp;&nbsp;&nbsp;
-    <b [hidden]="!employee.phone" class="heading">Phone :</b>
-    <span [hidden]="!employee.phone" class="content">{{employee.phone}}</span><br/>
-    <b [hidden]="!employee.linkedin" class="heading">linkedin :</b>
-    <span [hidden]="!employee.linkedin" class="content">{{employee.linkedin}}</span><br/>
-    <b [hidden]="!employee.address" class="heading">Address :</b>
-    <span [hidden]="!employee.address" class="content">{{employee.address}}</span><br/>
-  </div>
+    <div class="col-sm-3"><b style="color:#0080FF;">No. of viewers: </b><span style="color:#191919;">{{employee.viewers}}</span></div>
+  </div> -->
 
-  <div class="profile">
-    <b class="heading">Interested in </b>
-    <span class="content">
-      <span [hidden]="employee.fullTime != 1">Full Time</span>
-      <span [hidden]="employee.partTime != 1"> /</span>
-      <span [hidden]="employee.partTime != 1">Part Time</span>
-      <span [hidden]="employee.intern != 1"> /</span>
-      <span [hidden]="employee.intern != 1">Internship </span>
-    </span><br/>
-    <b class="heading">Looking for jobs in </b><span class="content">{{employee.fut_location}} </span>
+  <div id="content" #content style="font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';
+    font-size: 1rem;font-weight: 400;color: #212529;text-align: left;line-height:2em;">
+    <div><b style="color: #1034A6;font-size: 30px;">{{employee.name | uppercase}}</b>
+      <span style="color:#0080FF; font-size: 20px; margin-left: 15px;"><b>{{employee.designation | titlecase}}</b></span></div>
+    <div style="font-size: 15px;">
+      <b style="color:#0080FF;">EMAIL :</b>
+      <span style="color:#191919;">{{id}}&nbsp;&nbsp;&nbsp;</span>
+      <b style="color:#0080FF;">SEX :</b>
+      <span style="color:#191919;">{{employee.gender}}&nbsp;&nbsp;&nbsp;</span>
+      <b *ngIf="employee.phone" style="color:#0080FF;">PH :</b>
+      <span *ngIf="employee.phone" style="color:#191919;">{{employee.phone}}&nbsp;&nbsp;&nbsp;</span>
+      <b *ngIf="employee.linkedin" style="color:#0080FF;">LINKEDIN :</b>
+      <span *ngIf="employee.linkedin" style="color:#191919;">{{employee.linkedin}}</span><br/>
+      <b *ngIf="employee.address" style="color:#0080FF;">ADDRESS :</b><span *ngIf="employee.address" style="color:#191919;">{{employee.address}}</span><br/>
+      <b style="color:#0080FF;">TOTAL EXPERIENCE :</b> <span style="color:#191919;">{{employee.experience}} yrs &nbsp;&nbsp;&nbsp;
+      </span>
+      <b style="color:#0080FF;">NOTICE PERIOD :</b> <span style="color:#191919;">{{employee.noticePeriod}} days </span>
 
-    <br/><br/>
-    <b class="heading">CAREER OBJECTIVE </b><br/>
-    <span class="content justify">{{employee.objective}}</span>
-    <br/>
-    <b class="heading">Education </b><br/>
-    <span class="content"><b>{{employee.degree}}</b> in <b>{{employee.stream}}</b>- CGPA sample</span><br/>
-    <span class="content">{{employee.institution}} ({{employee.passout}}) </span>    
-    <br/><br/>
-    <b class="heading">Work Experience </b><br/>
-    <span class="content">{{employee.company}}, {{employee.cur_location}} </span>
-    <br/><br/>
-    <b class="heading">Total Experience </b> <span class="content">{{employee.experience}} yrs </span>
-    <br/><br/>
-    <b class="heading">Notice period </b> <span class="content">{{employee.noticePeriod}} days </span>
-    <br/><br/>
-    <b class="heading">Area of Expertise </b><br/>
-    <span class="content">{{employee.skills}} </span>
-    <br/><br/>
-    <b class="heading">Languages Known</b><br/>
-    <span class="content"> {{employee.languages}}</span>
-    <br/><br/>
-    <b class="heading"> Academic Achievements</b><br/>
-    <span class="content justify">{{employee.acedemic_ach}}</span>
-    <br/>
-    <b class="heading"> Extra-curricular Activities</b><br/>
-    <span class="content justify">{{employee.extra_curricular}}</span>
-    <br/>
-    <b class="heading ">Projects </b><br/>
-    <span class="content justify"> It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.
-      Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</span>
-    <br/>
-    <b class="heading">Certificaions</b><br/>
-    <span class="content justify">{{employee.certifications}}</span>
-    <br/>
-    <b class="heading">Hobbies</b><br/>
-    <span class="content justify">{{employee.	hobbies}}</span>
-    <br/>
-    <b [hidden]="!employee.specificReq" class="heading">Note : </b><span [hidden]="!employee.specificReq" class="content justify">{{employee.specificReq}} </span>
-    <br/><br/>
+    </div>
+    <div style="margin-top: 30px;font-size: 18px;">
+      <b style="color:#0080FF;"> LOOKING FOR </b>
+      <span style="color:#191919;">
+        <span *ngIf="employee.fullTime == 1">Full Time</span>
+        <span *ngIf="employee.partTime == 1"> /</span>
+        <span *ngIf="employee.partTime == 1">Part Time</span>
+        <span *ngIf="employee.intern == 1"> /</span>
+        <span *ngIf="employee.intern == 1">Internship </span>
+      </span>
+      <b style="color:#0080FF;"> in </b><span style="color:#191919;">{{employee.fut_location | titlecase}} </span>
+
+      <br/>
+      <div *ngIf="employee.objective != ''">
+          <b style="color:#0080FF;">CAREER OBJECTIVE </b>
+          <span style="color:#191919; display: flex; text-align: justify; text-justify: inter-word;">{{employee.objective}}</span>
+          <br/>
+      </div>
+      
+      <div *ngIf="employee.education.length > 0">
+          <b style="color:#0080FF;">EDUCATION </b><br/>
+          <div *ngFor="let edu of employee.education">
+            <b>{{edu.college}}</b>
+            <span style="float:right">
+              <b>{{edu.start | date: "MMM y"}}</b> to <b>{{edu.end | date: "MMM y"}}</b>
+            </span><br/>
+            <span>{{edu.degree}} in {{edu.stream}}</span>
+            <span style="float:right">
+              <span *ngIf="edu.cgpa !=0">CGPA: {{edu.cgpa}}</span>
+              <span *ngIf="edu.percentage !=0">&nbsp;&nbsp; Percentage: {{edu.percentage}}</span>
+            </span>
+          </div><br/>
+      </div>
+      
+      <div *ngIf="employee.work_experience.length > 0">
+        <b style="color:#0080FF;">WORK EXPERIENCE </b><br/>
+        <div *ngFor="let work of employee.work_experience">
+          <b>{{work.company}}</b><span style="float:right"><b>{{work.start | date: "MMM y"}}</b> to <b>{{work.end | date:
+              "MMM y"}}
+            </b></span><br/>
+          <span style="color:#191919; display: flex; text-align: justify; text-justify: inter-word;">{{work.description}}</span>
+        </div><br/>
+      </div>
+
+      <div *ngIf="employee.languages != ''">
+          <b style="color:#0080FF;">LANGUAGES KNOWN </b><span style="color:#191919;"> {{employee.languages}}</span>
+          <br/>
+      </div>
+      
+      <b style="color:#0080FF;">AREA OF EXPERTISE </b><br/><span style="color:#191919;">{{employee.skills}} </span>
+      <br/>
+
+
+      <div *ngIf="employee.projects.length > 0">
+        <b style="color:#0080FF;">PROJECTS </b><br/>
+        <ol>
+          <li *ngFor="let proj of employee.projects">
+            <b>{{proj.name | titlecase}}</b><span style="float:right"><b>{{proj.start | date: "MMM y"}}</b> to <b>{{proj.end
+                | date: "MMM y"}}</b></span><br/>
+            <span style="color:#191919; display: flex; text-align: justify; text-justify: inter-word;">{{proj.description}}</span>
+            <span><b>Skills :</b> {{proj.skills}}</span><br/>
+          </li>
+        </ol>
+        <br/>
+      </div>
+      <div *ngIf="employee.academic_ach != ''">
+        <b style="color:#0080FF;"> ACEDEMIC ACHIEVEMENTS</b><br/>
+        <span style="color:#191919; display: flex; text-align: justify; text-justify: inter-word;">{{employee.academic_ach}}</span>
+        <br />
+      </div>
+      <div *ngIf="employee.extra_curricular != ''">
+        <b style="color:#0080FF;"> EXTRA-CURRICULAR ACTIVITIES</b><br/>
+        <span style="color:#191919; display: flex; text-align: justify; text-justify: inter-word;">{{employee.extra_curricular}}</span>
+        <br/>
+      </div>
+      <div *ngIf="employee.certifications != ''">
+        <b style="color:#0080FF;">CERTIFICATIONS</b><br/>
+        <span style="color:#191919; display: flex; text-align: justify; text-justify: inter-word;">{{employee.certifications}}</span>
+        <br/>
+      </div>
+
+      <div *ngIf="employee.hobbies != ''">
+        <b style="color:#0080FF;">HOBBIES</b><br/>
+        <span style="color:#191919; display: flex; text-align: justify; text-justify: inter-word;">{{employee.hobbies}}</span>
+        <br/>
+      </div>
+
+      <div *ngIf="employee.specificReq != ''">
+        <b *ngIf="employee.specificReq" style="color:#0080FF;">Note : </b>
+        <span style="color:#191919; display: flex; text-align: justify; text-justify: inter-word;">{{employee.specificReq}}
+        </span>
+        <br/>
+      </div>
+
+    </div>
   </div>
 </div>

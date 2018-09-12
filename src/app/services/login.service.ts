@@ -28,7 +28,11 @@ export class LoginService {
   deletedJID = this.deletedJobID.asObservable();
 
   user: UserInfo;
-  employee: EmployeeInfo = {} as EmployeeInfo;
+  employee: EmployeeInfo = {
+    education: [],
+    work_experience: [],
+    projects: []
+  } as EmployeeInfo;
   employer: EmployerInfo = {} as EmployerInfo;
 
   stoData: {
@@ -104,7 +108,9 @@ export class LoginService {
   public getEmployeeInfo(email) {
     this.serverdata.getEmployeeInfo(email).subscribe(dat => {
       if(dat) this.employee = JSON.parse(dat);
-      this.employeeInformationSource.next(this.employee);
+      this.getEducation(email);
+      this.getWork(email);
+      this.getProject(email);
     },
       error => {
         console.log("error getEmployeeInfo:", error)
@@ -121,6 +127,33 @@ export class LoginService {
     }, error => {
       console.log("Error in getOpenings: email :"+email+" ind :"+ind, JSON.stringify(error));
     });
+  }
+
+  public getEducation(email) {
+    return this.serverdata.getEducation(email)
+      .subscribe(data => {
+        this.employee.education = JSON.parse(data);
+        this.employeeInformationSource.next(this.employee);
+      }, error => { }
+      )
+  }
+
+  public getWork(email) {
+    return this.serverdata.getWork(email)
+      .subscribe(data => {
+        this.employee.work_experience = JSON.parse(data);
+        this.employeeInformationSource.next(this.employee);
+      }, error => { }
+      )
+  }
+
+  public getProject(email) {
+    return this.serverdata.getProject(email)
+      .subscribe(data => {
+        this.employee.projects = JSON.parse(data);
+        this.employeeInformationSource.next(this.employee);
+      }, error => { }
+      )
   }
 
   public editRequirement(job) {

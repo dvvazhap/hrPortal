@@ -30,8 +30,8 @@ export interface Education {
     stream: string;
     start: string;
     end: string;
-    cgpa: number; 
-    percentage: number;
+    cgpa: string; 
+    percentage: string;
 }
 
 export interface Projects {
@@ -62,15 +62,12 @@ export interface EmployeeInfo {
     partTime: number;
     intern: number;
     designation: string;
-    company: string;
-    cur_location: string;
     fut_location: string;
-    experience: number;
-    noticePeriod: number;
-    degree: string;
-    stream: string;
-    institution: string;
-    passout: number;
+    experience: string;
+    noticePeriod: string;
+    education: Education[];
+    work_experience: WorkExperience[];
+    projects: Projects[];
     skills: string;
     specificReq: string;
     gender:string;

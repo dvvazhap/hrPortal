@@ -9,7 +9,11 @@ import { UserInfo, EmployeeInfo, EmployerInfo } from '../interface';
 })
 export class HeaderComponent implements OnInit {
   user: UserInfo = {} as UserInfo;
-  employee: EmployeeInfo = {} as EmployeeInfo;
+  employee: EmployeeInfo = {
+    education: [],
+    work_experience: [],
+    projects: []
+  } as EmployeeInfo;
   employer: EmployerInfo = {} as EmployerInfo;
 
   constructor(private info: LoginService) { }

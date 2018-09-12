@@ -12,7 +12,11 @@ import { UserInfo, EmployeeInfo, EmployerInfo } from '../interface';
 export class SettingsComponent implements OnInit {
 
   userInfo: UserInfo = {} as UserInfo;
-  employee: EmployeeInfo = {} as EmployeeInfo;
+  employee: EmployeeInfo = {
+    education: [],
+    work_experience: [],
+    projects: []
+  } as EmployeeInfo;
   employer: EmployerInfo = {} as EmployerInfo;
 
   password_error: string = "";

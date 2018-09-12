@@ -1,6 +1,13 @@
 hr{
   border:1px solid black;
 }
+.box{
+  border:1px solid black;
+  background-color: #cecece;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius:5px;
+}
 
 *{box-sizing:border-box;}
 

@@ -38,7 +38,7 @@
     <thead class="heading">
       <tr>
         <th>token </th>
-        <th>password</th>
+        <th>name</th>
         <th>email</th>
         <th>v_profile</th>
         <th>validity</th>
@@ -49,7 +49,7 @@
     <tbody>
       <tr *ngFor="let user of users">
         <td>{{user.token}}</td>
-        <td>{{user.password}}</td>
+        <td>{{user.name}}</td>
         <td>{{user.email}}</td>
         <td>{{user.v_profile}}</td>
         <td>{{user.validity}}</td>
@@ -93,11 +93,10 @@
         <th>fullTime / partTime / intern </th>
         <th>looking</th>
         <th>name / email / phone</th>
-        <th>designation / company / cur_location</th>
+        <th>designation</th>
         <th>fut_location</th>
         <th>experience</th>
         <th>noticePeriod</th>
-        <th>degree - stream - institution - passout </th>
         <th>skills</th>
         <th>specificReq</th>
       </tr>
@@ -110,11 +109,10 @@
         <td> {{skill.fullTime}} / {{skill.partTime}} / {{skill.intern}} </td>
         <td>{{skill.looking}}</td>
         <td> {{skill.name}} / {{skill.email}} / {{skill.phone}} </td>
-        <td>{{skill.designation}} / {{skill.company}} / {{skill.cur_location}}</td>
+        <td>{{skill.designation}} </td>
         <td>{{skill.fut_location}}</td>
         <td>{{skill.experience}}</td>
         <td>{{skill.noticePeriod}}</td>
-        <td>{{skill.degree}} - {{skill.stream}} - {{skill.institution}} - {{skill.passout}} </td>
         <td>{{skill.skills}}</td>
         <td>{{skill.specificReq}}</td>
       </tr>

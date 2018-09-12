@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { LoginService } from '../services/login.service';
 import { ServerService } from '../services/server.service';
 import { ActivatedRoute } from '@angular/router';
 import { EmployeeInfo } from '../interface';
+import * as jsPDF from 'jspdf'
 
 @Component({
   selector: 'app-share',
@@ -11,7 +12,11 @@ import { EmployeeInfo } from '../interface';
 })
 export class ShareComponent implements OnInit {
   id: string;
-  employee: EmployeeInfo = {} as EmployeeInfo;
+  employee: EmployeeInfo = {
+    education: [],
+    work_experience: [],
+    projects: []
+  } as EmployeeInfo;
 
   constructor(private route: ActivatedRoute, private info: LoginService, private serverdata: ServerService) { }
 
@@ -21,8 +26,24 @@ export class ShareComponent implements OnInit {
       this.info.getEmployeeInfo(this.id);
     });
 
-    this.info.currentEmployeeInformation.subscribe(dat => { this.employee = dat; })
+    this.info.currentEmployeeInformation.subscribe(dat => {this.employee = dat;})
 
+  }
+  @ViewChild('content') content: ElementRef;
+
+  public downloadPdf() {
+    let doc = new jsPDF();
+    let specialElementhandlers = {
+      '#editor': function (element, renderer) {
+        return true;
+      }
+    };
+    let content = this.content.nativeElement;
+    doc.fromHTML(content.innerHTML, 15, 15, {
+      'width': 190,
+      'elementHandlers': specialElementhandlers
+    });
+    doc.save('test.pdf');
   }
 
 }
