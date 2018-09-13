@@ -62,6 +62,7 @@ export class EmployeeProfileComponent implements OnInit {
 
     this.info.currentEmployeeInformation.subscribe(dat => {
       this.employee = JSON.parse(JSON.stringify(dat));
+      this.selectedItems = [];
       this.employee.looking == 1 ? this.looking = true : this.looking = false;
       if (this.employee.fullTime == 1) this.selectedItems.push({ "id": 1, "itemName": "Full Time" });
       if (this.employee.partTime == 1) this.selectedItems.push({ "id": 2, "itemName": "Part Time" });
@@ -74,7 +75,7 @@ export class EmployeeProfileComponent implements OnInit {
       { "id": 2, "itemName": "Part Time" },
       { "id": 3, "itemName": "Internship" },
     ];
-    this.selectedItems = [];
+
     this.dropdownSettings = {
       singleSelection: false,
       text: "SELECT THE TYPE OF OPPORTUNITY YOU ARE INTERESTED IN",
@@ -103,15 +104,26 @@ export class EmployeeProfileComponent implements OnInit {
   public onItemSelect(item: any) { this.jobTypeSelection(this.selectedItems); }
   public OnItemDeSelect(item: any) { this.jobTypeSelection(this.selectedItems); }
 
-  public shareMyInfo(email){
-    var win = window.open("#/profile/"+email, '_blank');
+  public shareMyInfo(email) {
+    var win = window.open("#/profile/" + email, '_blank');
     win.focus();
   }
 
+  public workPresent(work) {
+    let tod = new Date();
+    let a = tod.getFullYear() + '-';
+    if (tod.getMonth() < 9) {
+      a += '0' + (tod.getMonth() + 1);
+    } else {
+      a += tod.getMonth() + 1;
+    }
+    work.end = a;
+  }
+
   public addEducation() {
-    
+
     this.serverdata.addEducation(this.userInfo.email).subscribe(data => {
-      
+
       let obj = {
         email: this.userInfo.email,
         ind: parseInt(data),
@@ -130,7 +142,7 @@ export class EmployeeProfileComponent implements OnInit {
   public updateEducation(education) {
     return this.serverdata.updateEducation(education)
       .subscribe(data => {
-       }, error => {
+      }, error => {
         this.error += "Error :" + JSON.stringify(error);
       }
       )
@@ -157,7 +169,8 @@ export class EmployeeProfileComponent implements OnInit {
         company: "",
         description: "",
         start: "",
-        end: ""
+        end: "",
+        present: false
       } as WorkExperience
       this.employee.work_experience.push(obj);
     });
@@ -166,7 +179,7 @@ export class EmployeeProfileComponent implements OnInit {
   public updateWork(work) {
     return this.serverdata.updateWork(work)
       .subscribe(data => {
-       }, error => {
+      }, error => {
         this.error += "Error :" + JSON.stringify(error);
       }
       )
@@ -203,7 +216,7 @@ export class EmployeeProfileComponent implements OnInit {
   public updateProject(proj) {
     return this.serverdata.updateProject(proj)
       .subscribe(data => {
-       }, error => {
+      }, error => {
         this.error += "Error :" + JSON.stringify(error);
       }
       )
@@ -228,7 +241,7 @@ export class EmployeeProfileComponent implements OnInit {
     if(this.employee.experience == "" || isNaN(parseFloat(this.employee.experience))) this.employee.experience = "0";
     let experience = parseFloat(this.employee.experience);
     this.employee.experience = (isNaN(parseFloat(this.employee.experience)) ? "0" : (parseFloat(this.employee.experience)).toString())
-    
+
     if(this.employee.noticePeriod == "" || isNaN(parseFloat(this.employee.noticePeriod))) this.employee.noticePeriod = "0";
     let noticePeriod = parseFloat(this.employee.noticePeriod);
     this.employee.noticePeriod = (isNaN(parseFloat(this.employee.noticePeriod)) ? "0" : (parseFloat(this.employee.noticePeriod)).toString())
@@ -249,7 +262,7 @@ export class EmployeeProfileComponent implements OnInit {
     else if (this.employee.fut_location == "" || this.employee.fut_location == null) {
       this.error = "Enter the interested location(s) for the new job"; return false;
     }
-    
+
     if (this.employee.education.length > 0) {
       for (let i = 0; i < this.employee.education.length; i++) {
         let startYear = parseInt(this.employee.education[i].start.substring(0, 4));
@@ -283,7 +296,7 @@ export class EmployeeProfileComponent implements OnInit {
         else if (endYear < 1930 || endYear > 2030 || endMonth < 1 || endMonth > 12 || this.employee.education[i].end.substring(5).length != 2 || this.employee.education[i].end.substring(4, 5) != "-") {
           this.error = "Education: TO field is not valid"; return false;
         }
-        else if ((startYear*100 + startMonth) >= (endYear*100 + endMonth)) {
+        else if ((startYear * 100 + startMonth) >= (endYear * 100 + endMonth)) {
           this.error = "Education: FROM date should be less than TO date"; return false;
         }
         else if (cgpa < 0 || cgpa > 10 || isNaN(cgpa)) {
@@ -296,13 +309,13 @@ export class EmployeeProfileComponent implements OnInit {
       }
     }
     if (this.employee.work_experience.length > 0) {
-      
+
       for (let i = 0; i < this.employee.work_experience.length; i++) {
         let startYear = parseInt(this.employee.work_experience[i].start.substring(0, 4));
         let startMonth = parseInt(this.employee.work_experience[i].start.substring(5));
         let endYear = parseInt(this.employee.work_experience[i].end.substring(0, 4));
         let endMonth = parseInt(this.employee.work_experience[i].end.substring(5));
-        
+
         if (this.employee.work_experience[i].company == "" || this.employee.work_experience[i].company == null) {
           this.error = "WORK EXPERIENCE: COMPANY field cannot be empty"; return false;
         }
@@ -315,19 +328,19 @@ export class EmployeeProfileComponent implements OnInit {
         else if (endYear < 1930 || endYear > 2030 || endMonth < 1 || endMonth > 12 || this.employee.work_experience[i].end.substring(5).length != 2 || this.employee.work_experience[i].end.substring(4, 5) != "-") {
           this.error = "WORK EXPERIENCE: TO field is not valid"; return false;
         }
-        else if ((startYear*100 + startMonth) >= (endYear*100 + endMonth)) {
+        else if ((startYear * 100 + startMonth) >= (endYear * 100 + endMonth)) {
           this.error = "WORK EXPERIENCE: FROM date should be less than TO date"; return false;
         }
       }
     }
     if (this.employee.projects.length > 0) {
-      
+
       for (let i = 0; i < this.employee.projects.length; i++) {
         let startYear = parseInt(this.employee.projects[i].start.substring(0, 4));
         let startMonth = parseInt(this.employee.projects[i].start.substring(5));
         let endYear = parseInt(this.employee.projects[i].end.substring(0, 4));
         let endMonth = parseInt(this.employee.projects[i].end.substring(5));
-        
+
         if (this.employee.projects[i].name == "" || this.employee.projects[i].name == null) {
           this.error = "PROJECTS: NAME field cannot be empty"; return false;
         }
@@ -340,25 +353,25 @@ export class EmployeeProfileComponent implements OnInit {
         else if (endYear < 1930 || endYear > 2030 || endMonth < 1 || endMonth > 12 || this.employee.projects[i].end.substring(5).length != 2 || this.employee.projects[i].end.substring(4, 5) != "-") {
           this.error = "PROJECTS: TO field is not valid"; return false;
         }
-        else if ((startYear*100 + startMonth) >= (endYear*100 + endMonth)) {
+        else if ((startYear * 100 + startMonth) >= (endYear * 100 + endMonth)) {
           this.error = "PROJECTS: FROM date should be less than TO date"; return false;
         }
       }
     }
 
-    if ( experience < 0 || experience > 70 || isNaN(experience)) {
-      this.error = "EXPERIENCE should be a valid number between 0 and 70"; 
+    if (experience < 0 || experience > 70 || isNaN(experience)) {
+      this.error = "EXPERIENCE should be a valid number between 0 and 70";
       return false;
     }
     else if (noticePeriod < 0 || noticePeriod > 365 || isNaN(noticePeriod)) {
-      this.error = "NOTICE PERIOD should be a valid number between 0 and 365"; 
+      this.error = "NOTICE PERIOD should be a valid number between 0 and 365";
       return false;
     }
     else if (this.employee.skills == "" || this.employee.skills == null) {
-      this.error = "AREA OF EXPERTISE should not be empty"; 
+      this.error = "AREA OF EXPERTISE should not be empty";
       return false;
     }
-    
+
     return true;
   }
 
@@ -380,9 +393,7 @@ export class EmployeeProfileComponent implements OnInit {
         this.msg = "Updated your Resume Successfully";
       }, error => {
         this.error = "Error :" + JSON.stringify(error);
-      }
-      );
+      });
     }
   }
-
 }

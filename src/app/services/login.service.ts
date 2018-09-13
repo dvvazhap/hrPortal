@@ -64,8 +64,7 @@ export class LoginService {
   public trustedUser(id, type) {
     if (!localStorage.getItem('dijiluser')) { this.router.navigate(['/']); return false; }
     this.stoData = JSON.parse(localStorage.getItem('dijiluser'));
-
-    if (this.stoData.t.toLowerCase().indexOf(id.toLowerCase()) != -1) {
+    if (id && this.stoData.t.toLowerCase().indexOf(id.toLowerCase()) != -1) {
       this.serverdata.getUserInfo(id, this.stoData.t, type).subscribe(dat => {
         if (dat == '') { this.router.navigate(['/']); return false; }
         this.user = JSON.parse(dat);

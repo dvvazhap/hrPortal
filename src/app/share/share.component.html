@@ -66,9 +66,10 @@
       <div *ngIf="employee.work_experience.length > 0">
         <b style="color:#0080FF;">WORK EXPERIENCE </b><br/>
         <div *ngFor="let work of employee.work_experience">
-          <b>{{work.company}}</b><span style="float:right"><b>{{work.start | date: "MMM y"}}</b> to <b>{{work.end | date:
-              "MMM y"}}
-            </b></span><br/>
+          <b>{{work.company}}</b><span style="float:right"><b>{{work.start | date: "MMM y"}}</b> to 
+            <b *ngIf="!work.present">{{work.end | date: "MMM y"}}</b>
+            <b *ngIf="work.present">Present</b>
+          </span><br/>
           <span style="color:#191919; display: flex; text-align: justify; text-justify: inter-word;">{{work.description}}</span>
         </div><br/>
       </div>

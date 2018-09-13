@@ -23,6 +23,7 @@ export class EmployerComponent implements OnInit {
       this.id = params['id'];
       this.info.trustedUser(this.id, 1);
       this.info.getEmployerInfo(this.id);
+      this.callComponent = 'profile';
     })
 
     this.info.currentUserInformation.subscribe(data => { this.user = data; })

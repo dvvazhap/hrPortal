@@ -28,6 +28,10 @@ left: auto;
 width: auto;
 }
 
+input[type="checkbox"]{
+  width: 42px;
+  height: 42px;
+}
 input[type="text"],input[type="number"],textarea {
   padding:1em 0 0 1em;
   border: 1px solid #ccc;

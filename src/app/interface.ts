@@ -51,6 +51,7 @@ export interface WorkExperience {
     description: string; 
     start: string;
     end: string;
+    present: boolean;
 }
 
 export interface EmployeeInfo {

@@ -160,7 +160,7 @@ export class ServerService {
       .map(res => { return res.body; });
   }
   updateWork(work){
-    const body = new HttpParams().set(`email`, work.email).set(`ind`, work.ind).set(`company`, work.company).set(`description`, work.description).set(`start`, work.start).set(`end`, work.end);
+    const body = new HttpParams().set(`email`, work.email).set(`ind`, work.ind).set(`company`, work.company).set(`description`, work.description).set(`start`, work.start).set(`end`, work.end).set(`present`, work.present);
     const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
     return this.http.post(this.host + "updateWork", body.toString(), { headers, observe: 'response', responseType: 'text' })
       .map(res => { return res.body; });

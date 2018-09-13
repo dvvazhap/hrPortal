@@ -143,7 +143,7 @@
       <div class="mx-auto" style="height: 20px;"></div>
       <div *ngFor="let work of employee.work_experience" class="box">
         <div class="form-row">
-          <div class="col-sm-5 container">
+          <div class="col-sm-4 container">
             <input type="text" maxlength="50" class="form-control" [(ngModel)]="work.company" placement="top" tooltip="Enter the Company name. Eg: TCS / Infosys / Reliance"
               container="body" />
             <label>* company</label>
@@ -154,9 +154,12 @@
             <label>* From</label>
           </div>
           <div class="col-sm-2 container">
-            <input type="text" maxlength="7" class="form-control" [(ngModel)]="work.end" placement="top" tooltip="Enter the end date in YYYY-MM format. Eg: 2007-05"
+            <input type="text" maxlength="7" class="form-control" [disabled]=work.present [(ngModel)]="work.end" placement="top" tooltip="Enter the end date in YYYY-MM format. Eg: 2007-05"
               container="body" />
             <label>* To</label>
+          </div>
+          <div class="col-sm-1 container">
+            <input type="checkbox" class="form-control" (click)="workPresent(work)" [(ngModel)]="work.present" placement="top" tooltip="Check if you are working here" container="body" />
           </div>
           <div class="col-sm-3 container">
             <button type="button" class="btn btn-danger btn-lg btn-block" (click)="deleteWork(work.ind)"> DELETE</button>
@@ -322,6 +325,5 @@
         </div>
       </div>
     </div>
-
   </div>
 </div>

@@ -23,6 +23,7 @@ export class EmployeeComponent implements OnInit {
       this.id = params['id'];
       this.info.trustedUser(this.id, 2);
       this.info.getEmployeeInfo(this.id);
+      this.callComponent = 'profile';
     })
 
     this.info.currentUserInformation.subscribe(data => { this.user = data; })

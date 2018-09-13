@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { LoginService } from '../services/login.service';
 import { ServerService } from '../services/server.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { EmployeeInfo } from '../interface';
 import * as jsPDF from 'jspdf'
 
@@ -18,12 +18,13 @@ export class ShareComponent implements OnInit {
     projects: []
   } as EmployeeInfo;
 
-  constructor(private route: ActivatedRoute, private info: LoginService, private serverdata: ServerService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private info: LoginService, private serverdata: ServerService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.id = params['id'];
-      this.info.getEmployeeInfo(this.id);
+      if(this.id) this.info.getEmployeeInfo(this.id);
+      else this.router.navigate(['/']);
     });
 
     this.info.currentEmployeeInformation.subscribe(dat => {this.employee = dat;})
