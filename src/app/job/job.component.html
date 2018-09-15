@@ -35,9 +35,8 @@
       </div>
       <div class="mx-auto" style="height: 15px;"></div>
       <div class="form-row">
-        <div class="col-sm-4 heading" [hidden]=""><b>Job Description </b></div>
-        <div class="col-sm-8 content justify" [hidden]=""> There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. 
-          All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.  </div>
+        <div class="col-sm-4 heading" ><b>Job Description </b></div>
+        <div class="col-sm-8 content justify" > {{requirement.description}}  </div>
       </div>
       <div class="mx-auto" style="height: 15px;"></div>
       <div class="form-row">
@@ -54,11 +53,6 @@
       <div class="form-row">
         <div class="col-sm-4 heading"><b>Experience Required </b></div>
         <div class="col-sm-8 content"> {{requirement.min_years}} - {{requirement.max_years}}yrs </div>
-      </div>
-      <div class="mx-auto" style="height: 15px;"></div>
-      <div class="form-row">
-        <div class="col-sm-4 heading"><b>Notice period </b></div>
-        <div class="col-sm-8 content"> {{requirement.noticePeriod}} days </div>
       </div>
       <div class="mx-auto" style="height: 15px;"></div>
       <div class="form-row">

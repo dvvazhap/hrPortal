@@ -77,10 +77,6 @@
           tooltip="Minimum 1 opening"/>
         </div>
       </div>
-    </div>
-    <div class="col-sm-1"></div>
-    <!-- right side -->
-    <div class="col-sm-6">
       <div class="mx-auto" style="height: 30px;"></div>
       <div class="form-row">
         <div class="col-sm-4 label">Experience Required *</div>
@@ -109,31 +105,29 @@
           </div>
         </div>
       </div>
-      <div class="mx-auto" style="height: 15px;"></div>
-      <div class="form-row">
-        <div class="col-sm-4 label">Max Notice period accepted*</div>
-        <div class="col-sm-8">
-          <div class="input-group mb-2">
-            <input type="number" class="form-control" min="0" max="365" [(ngModel)]="requirement.noticePeriod" placeholder="60" container="body"
-            />
-            <div class="input-group-prepend">
-              <div class="input-group-text" style="cursor:pointer">days</div>
-            </div>
+    </div>
+    <div class="col-sm-1"></div>
+    <!-- right side -->
+    <div class="col-sm-6">
+        <div class="mx-auto" style="height: 15px;"></div>
+        <div class="form-row">
+          <div class="col-sm-4 label">Job Description *</div>
+          <div class="col-sm-8">
+            <textarea rows="4" maxlength="2000" class="form-control" [(ngModel)]="requirement.description" placeholder="Enter JD"></textarea>
           </div>
         </div>
-      </div>
       <div class="mx-auto" style="height: 15px;"></div>
       <div class="form-row">
         <div class="col-sm-4 label">Skills Required *</div>
         <div class="col-sm-8">
-          <textarea rows="2" maxlength="300" class="form-control" [(ngModel)]="requirement.skills" placeholder="Enter the skills you are looking for"></textarea>
+          <textarea rows="4" maxlength="1000" class="form-control" [(ngModel)]="requirement.skills" placeholder="Enter the skills you are looking for"></textarea>
         </div>
       </div>
       <div class="mx-auto" style="height: 15px;"></div>
       <div class="form-row">
         <div class="col-sm-4 label">Any specific requirements</div>
         <div class="col-sm-8">
-          <textarea rows="2" maxlength="300" class="form-control" [(ngModel)]="requirement.specificReq" placeholder="CTC info, type of Candidate, Link to apply, etc,.."></textarea>
+          <textarea rows="4" maxlength="1000" class="form-control" [(ngModel)]="requirement.specificReq" placeholder="CTC info, type of Candidate, Link to apply, etc,.."></textarea>
         </div>
       </div>
 

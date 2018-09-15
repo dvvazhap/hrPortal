@@ -29,7 +29,7 @@ export class PostRequirementComponent implements OnInit {
     max_years: 0,
     skills: "",
     specificReq: "",
-    noticePeriod: 0,
+    description: "",
     gender: 'Anyone',
     count: 1
   } as OpeningInfo;
@@ -114,7 +114,7 @@ export class PostRequirementComponent implements OnInit {
       max_years: 0,
       skills: "",
       specificReq: "",
-      noticePeriod: 0,
+      description: "",
       gender: 'Anyone',
       count: 1
     } as OpeningInfo
@@ -145,8 +145,8 @@ export class PostRequirementComponent implements OnInit {
     else if (!v_exp) {
       this.error = "Min Exp should be less than Max Exp"; return false;
     }
-    else if (!(this.requirement.noticePeriod >= 0 && this.requirement.noticePeriod <= 365)) {
-      this.error = "Notice period should be a valid number between 0 and 365"; return false;
+    else if (this.requirement.description == "") {
+      this.error = "Enter the Job Description"; return false;
     }
     else if (this.requirement.skills == "") {
       this.error = "Enter the skills to do the job"; return false;
@@ -160,7 +160,6 @@ export class PostRequirementComponent implements OnInit {
       this.requirement.email = this.userInfo.email;
       this.requirement.min_years = Math.abs(Math.round(this.requirement.min_years * 10) / 10);
       this.requirement.max_years = Math.abs(Math.round(this.requirement.max_years * 10) / 10);
-      this.requirement.noticePeriod = Math.abs(this.requirement.noticePeriod);
       this.serverdata.postRequirements(JSON.parse(JSON.stringify(this.requirement))).subscribe(data => {
         if (data == "1") {
           this.error = "";
@@ -190,7 +189,6 @@ export class PostRequirementComponent implements OnInit {
       this.requirement.email = this.userInfo.email;
       this.requirement.min_years = Math.abs(Math.round(this.requirement.min_years * 10) / 10);
       this.requirement.max_years = Math.abs(Math.round(this.requirement.max_years * 10) / 10);
-      this.requirement.noticePeriod = Math.abs(this.requirement.noticePeriod);
       this.serverdata.updateRequirement(JSON.parse(JSON.stringify(this.requirement))).subscribe(data => {
         if (data == "1") {
           this.error = "";

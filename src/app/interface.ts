@@ -98,7 +98,7 @@ export interface OpeningInfo {
     max_years: number;
     skills: string;
     specificReq: string;
-    noticePeriod: number;
+    description: string;
     gender:string;
     count:number;
     viewers: number;
