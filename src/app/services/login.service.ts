@@ -66,16 +66,19 @@ export class LoginService {
     this.stoData = JSON.parse(localStorage.getItem('dijiluser'));
     if (id && this.stoData.t.toLowerCase().indexOf(id.toLowerCase()) != -1) {
       this.serverdata.getUserInfo(id, this.stoData.t, type).subscribe(dat => {
-        if (dat == '') { this.router.navigate(['/']); return false; }
+        if (dat == '') { this.logOut(); this.router.navigate(['/']); return false; }
         this.user = JSON.parse(dat);
         this.user.user_type = type;
         this.userInformationSource.next(this.user);
       },
         error => {
+          this.logOut();
           this.router.navigate(['/']);
         }
       );
-    } else { this.router.navigate(['/']); }
+    } else { 
+      this.logOut();
+      this.router.navigate(['/']); }
   }
 
   public selectedComponent(option: string) { this.selectComponent.next(option); }
