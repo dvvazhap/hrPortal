@@ -243,7 +243,19 @@ export class ServerService {
     return this.http.post(this.host + "updateRequirement", body, { headers, observe: 'response', responseType: 'text' })
       .map(res => { return res.body; });
   }
-  
+
+  incrementProfileView(email){
+    const body = new HttpParams().set(`email`, email);
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    return this.http.post(this.host + "incrementProfileView", body, { headers, observe: 'response', responseType: 'text' })
+      .map(res => { return res.body; });
+  }
+  incrementJobView(ind){
+    const body = new HttpParams().set(`ind`, ind);
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    return this.http.post(this.host + "incrementJobView", body, { headers, observe: 'response', responseType: 'text' })
+      .map(res => { return res.body; });
+  }
   
   getSuperTables(table,email){
     const body = new HttpParams().set(`tableName`, table).set(`email`, email);
@@ -258,5 +270,7 @@ export class ServerService {
     return this.http.post(this.host + "getSuperSql", body, { headers, observe: 'response', responseType: 'text' })
       .map(res => { return res.body; });
   }
+
+
 
 }

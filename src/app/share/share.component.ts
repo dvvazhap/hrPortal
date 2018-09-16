@@ -23,8 +23,11 @@ export class ShareComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.id = params['id'];
-      if(this.id) this.info.getEmployeeInfo(this.id);
-      else this.router.navigate(['/']);
+      if(this.id){
+        this.info.getEmployeeInfo(this.id);
+        this.serverdata.incrementProfileView(this.id).subscribe(dat => {});
+      } 
+      else this.router.navigate(['/']);   
     });
 
     this.info.currentEmployeeInformation.subscribe(dat => {this.employee = dat;})

@@ -1,12 +1,15 @@
 <div class="container-fluid employee">
   <div class="form-row">
     <div class="col-sm-1">
-      <i (click)="shareMyInfo(userInfo.email)" style="cursor:pointer" class="fa fa-share-alt fa-2x" aria-hidden="true" placement="bottom"
-        tooltip="Share your profile with the Recruiters"></i>
+      <i (click)="shareMyInfo(userInfo.email)" style="cursor:pointer" class="fa fa-share-alt fa-2x" aria-hidden="true"
+        placement="bottom" tooltip="Share your profile with the Recruiters"></i>
+    </div>
+    <div class="col-sm-3">
+      <b>Looking for some new opportunity ?</b> 
     </div>
     <div class="col-sm-5">
       <label class="tgl" aria-hidden="true" placement="right" tooltip="Make Yes if you are looking for a change.">
-        <input type="checkbox" [(ngModel)]="looking" checked/>
+        <input type="checkbox" [(ngModel)]="looking" checked />
         <span class="tgl_body">
           <span class="tgl_switch"></span>
           <span class="tgl_track">
@@ -16,7 +19,9 @@
         </span>
       </label>
     </div>
-    <div class="col-sm-6"> </div>
+    <div class="col-sm-3"> 
+      Viewers : {{employee.viewers}}
+    </div>
   </div>
 
   <div class="form-row" [hidden]="!looking">
@@ -24,8 +29,8 @@
       <div class="mx-auto" style="height: 20px;"></div>
       <div class="form-row">
         <div class="col-sm-12 container">
-          <angular2-multiselect [data]="dropdownList" [(ngModel)]="selectedItems" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)"
-            (onDeSelect)="OnItemDeSelect($event)"></angular2-multiselect>
+          <angular2-multiselect [data]="dropdownList" [(ngModel)]="selectedItems" [settings]="dropdownSettings"
+            (onSelect)="onItemSelect($event)" (onDeSelect)="OnItemDeSelect($event)"></angular2-multiselect>
         </div>
 
       </div>
@@ -37,12 +42,13 @@
 
         </div>
         <div class="col-sm-4 container">
-          <input type="text" maxlength="30" class="form-control" [(ngModel)]="employee.designation" placement="top" tooltip="Enter 0 if you are a fresher"
-            container="body" />
+          <input type="text" maxlength="30" class="form-control" [(ngModel)]="employee.designation" placement="top"
+            tooltip="Enter 0 if you are a fresher" container="body" />
           <label>* Designation</label>
         </div>
         <div class="col-sm-4 container">
-          <input type="text" maxlength="100" class="form-control" [(ngModel)]="employee.fut_location" placement="top" tooltip="Separate with / if looking in multiple locations. Enter 'ANY' if open for all locations. Eg. Chennai / Bangalore / Pune"
+          <input type="text" maxlength="100" class="form-control" [(ngModel)]="employee.fut_location" placement="top"
+            tooltip="Separate with / if looking in multiple locations. Enter 'ANY' if open for all locations. Eg. Chennai / Bangalore / Pune"
             container="body" />
           <label>* Looking for jobs in</label>
         </div>
@@ -50,8 +56,8 @@
       <div class="mx-auto" style="height: 20px;"></div>
       <div class="form-row">
         <div class="col-sm-12 container">
-          <input type="text" maxlength="1000" class="form-control" [(ngModel)]="employee.address" placement="top" container="body"
-          />
+          <input type="text" maxlength="1000" class="form-control" [(ngModel)]="employee.address" placement="top"
+            container="body" />
           <label>Address</label>
         </div>
       </div>
@@ -69,13 +75,13 @@
           <label>Phone</label>
         </div>
         <div class="col-sm-4 container">
-          <input type="text" maxlength="50" class="form-control" [(ngModel)]="employee.linkedin" placement="top" tooltip="LinkedIn profile URL"
-            container="body" />
+          <input type="text" maxlength="50" class="form-control" [(ngModel)]="employee.linkedin" placement="top"
+            tooltip="LinkedIn profile URL" container="body" />
           <label>LinkedIn</label>
         </div>
       </div>
 
-      <hr/>
+      <hr />
       <div class="mx-auto" style="height: 20px;"></div>
       <div class="form-row">
         <div class="col-sm-12 container">
@@ -83,7 +89,7 @@
           <label>CAREER OBJECTIVE</label>
         </div>
       </div>
-      <hr/>
+      <hr />
       <b>EDUCATION</b>
       <div class="mx-auto" style="height: 20px;"></div>
       <div *ngFor="let edu of employee.education" class="box">
@@ -134,11 +140,12 @@
       <div class="mx-auto" style="height: 15px;"></div>
       <div class="form-row">
         <div class="col-sm-12">
-          <button type="button" class="btn btn-primary btn-lg btn-block" (click)="addEducation()"> + ADD ANOTHER EDUCATIONAL
+          <button type="button" class="btn btn-primary btn-lg btn-block" (click)="addEducation()"> + ADD ANOTHER
+            EDUCATIONAL
             QUALIFICATION</button>
         </div>
       </div>
-      <hr/>
+      <hr />
       <b>WORK EXPERIENCE</b>
       <div class="mx-auto" style="height: 20px;"></div>
       <div *ngFor="let work of employee.work_experience" class="box">
@@ -154,12 +161,13 @@
             <label>* From</label>
           </div>
           <div class="col-sm-2 container">
-            <input type="text" maxlength="7" class="form-control" [disabled]=work.present [(ngModel)]="work.end" placement="top" tooltip="Enter the end date in YYYY-MM format. Eg: 2007-05"
-              container="body" />
+            <input type="text" maxlength="7" class="form-control" [disabled]=work.present [(ngModel)]="work.end"
+              placement="top" tooltip="Enter the end date in YYYY-MM format. Eg: 2007-05" container="body" />
             <label>* To</label>
           </div>
           <div class="col-sm-1 container">
-            <input type="checkbox" class="form-control" (click)="workPresent(work)" [(ngModel)]="work.present" placement="top" tooltip="Check if you are working here" container="body" />
+            <input type="checkbox" class="form-control" (click)="workPresent(work)" [(ngModel)]="work.present"
+              placement="top" tooltip="Check if you are working here" container="body" />
           </div>
           <div class="col-sm-3 container">
             <button type="button" class="btn btn-danger btn-lg btn-block" (click)="deleteWork(work.ind)"> DELETE</button>
@@ -168,8 +176,8 @@
         <div class="mx-auto" style="height: 20px;"></div>
         <div class="form-row">
           <div class="col-sm-12 container">
-            <textarea rows="3" maxlength="1000" class="form-control" [(ngModel)]="work.description" placement="top" tooltip="Enter the key role played for the company"
-              container="body"></textarea>
+            <textarea rows="3" maxlength="1000" class="form-control" [(ngModel)]="work.description" placement="top"
+              tooltip="Enter the key role played for the company" container="body"></textarea>
             <label>Description</label>
           </div>
         </div>
@@ -178,22 +186,23 @@
       <div class="mx-auto" style="height: 15px;"></div>
       <div class="form-row">
         <div class="col-sm-12">
-          <button type="button" class="btn btn-primary btn-lg btn-block" (click)="addWork()"> + ADD ANOTHER WORK EXPERIENCE</button>
+          <button type="button" class="btn btn-primary btn-lg btn-block" (click)="addWork()"> + ADD ANOTHER WORK
+            EXPERIENCE</button>
         </div>
       </div>
 
-      <hr/>
+      <hr />
 
       <div class="form-row">
         <div class="col-sm-6 container">
-          <input type="text" maxlength="5" class="form-control" [(ngModel)]="employee.experience" placement="top" tooltip="Enter 0 if you are a fresher"
-            container="body" />
+          <input type="text" maxlength="5" class="form-control" [(ngModel)]="employee.experience" placement="top"
+            tooltip="Enter 0 if you are a fresher" container="body" />
           <label>* Total Experience</label>
 
         </div>
         <div class="col-sm-6 container">
-          <input type="text" maxlength="5" class="form-control" [(ngModel)]="employee.noticePeriod" placement="top" tooltip="Enter 0 if you can join immediately"
-            container="body" />
+          <input type="text" maxlength="5" class="form-control" [(ngModel)]="employee.noticePeriod" placement="top"
+            tooltip="Enter 0 if you can join immediately" container="body" />
           <label>* Notice period</label>
         </div>
       </div>
@@ -201,8 +210,8 @@
       <div class="mx-auto" style="height: 20px;"></div>
       <div class="form-row">
         <div class="col-sm-12 container">
-          <input type="text" maxlength="1000" class="form-control" [(ngModel)]="employee.skills" placement="top" tooltip="Eg: Web Development, Design, Testing, Automation, etc,."
-            container="body" />
+          <input type="text" maxlength="1000" class="form-control" [(ngModel)]="employee.skills" placement="top"
+            tooltip="Eg: Web Development, Design, Testing, Automation, etc,." container="body" />
           <label>* Area of Expertise</label>
         </div>
       </div>
@@ -210,15 +219,15 @@
       <div class="mx-auto" style="height: 20px;"></div>
       <div class="form-row">
         <div class="col-sm-12 container">
-          <input type="text" maxlength="200" class="form-control" [(ngModel)]="employee.languages" placement="top" tooltip="Eg: English, Hindi, Tamil, German"
-            container="body" />
+          <input type="text" maxlength="200" class="form-control" [(ngModel)]="employee.languages" placement="top"
+            tooltip="Eg: English, Hindi, Tamil, German" container="body" />
           <label>Languages Known</label>
         </div>
       </div>
 
 
 
-      <hr/>
+      <hr />
       <b>PROJECTS</b>
       <div class="mx-auto" style="height: 20px;"></div>
       <div *ngFor="let proj of employee.projects" class="box">
@@ -245,8 +254,8 @@
         <div class="mx-auto" style="height: 20px;"></div>
         <div class="form-row">
           <div class="col-sm-12 container">
-            <textarea rows="3" maxlength="1000" class="form-control" [(ngModel)]="proj.description" placement="top" tooltip="Enter the Project description"
-              container="body"></textarea>
+            <textarea rows="3" maxlength="1000" class="form-control" [(ngModel)]="proj.description" placement="top"
+              tooltip="Enter the Project description" container="body"></textarea>
             <label>Description</label>
           </div>
         </div>
@@ -266,49 +275,53 @@
           <button type="button" class="btn btn-primary btn-lg btn-block" (click)="addProject()"> + ADD ANOTHER PROJECT</button>
         </div>
       </div>
-      <hr/>
+      <hr />
       <div class="mx-auto" style="height: 20px;"></div>
       <div class="form-row">
         <div class="col-sm-12 container">
-          <textarea rows="3" maxlength="1000" class="form-control" [(ngModel)]="employee.academic_ach" placement="top" tooltip="The awards that you won with respect to your Area of Expertise"
-            container="body"></textarea>
+          <textarea rows="3" maxlength="1000" class="form-control" [(ngModel)]="employee.academic_ach" placement="top"
+            tooltip="The awards that you won with respect to your Area of Expertise" container="body"></textarea>
           <label>Academic Achievements</label>
         </div>
       </div>
       <div class="mx-auto" style="height: 20px;"></div>
       <div class="form-row">
         <div class="col-sm-12 container">
-          <textarea rows="3" maxlength="1000" class="form-control" [(ngModel)]="employee.extra_curricular" placement="top" tooltip="The awards that you won in sports, quiz, etc,."
-            container="body"></textarea>
+          <textarea rows="3" maxlength="1000" class="form-control" [(ngModel)]="employee.extra_curricular" placement="top"
+            tooltip="The awards that you won in sports, quiz, etc,." container="body"></textarea>
           <label>Extra-curricular Activities</label>
         </div>
       </div>
       <div class="mx-auto" style="height: 20px;"></div>
       <div class="form-row">
         <div class="col-sm-12 container">
-          <textarea rows="3" maxlength="1000" class="form-control" [(ngModel)]="employee.certifications" placement="top" tooltip="The certifications that you gained over these years"
-            container="body"></textarea>
+          <textarea rows="3" maxlength="1000" class="form-control" [(ngModel)]="employee.certifications" placement="top"
+            tooltip="The certifications that you gained over these years" container="body"></textarea>
           <label>Certificaions</label>
         </div>
       </div>
       <div class="mx-auto" style="height: 20px;"></div>
       <div class="form-row">
         <div class="col-sm-12 container">
-          <textarea rows="3" maxlength="1000" class="form-control" [(ngModel)]="employee.hobbies" placement="top" tooltip="What do you do in your free time ?"
-            container="body"></textarea>
+          <textarea rows="3" maxlength="1000" class="form-control" [(ngModel)]="employee.hobbies" placement="top"
+            tooltip="What do you do in your free time ?" container="body"></textarea>
           <label>Hobbies</label>
         </div>
       </div>
       <div class="mx-auto" style="height: 20px;"></div>
       <div class="form-row">
         <div class="col-sm-12 container">
-          <textarea rows="2" maxlength="1000" class="form-control" [(ngModel)]="employee.specificReq" placement="top" tooltip="CTC info, Type of Candidate, Educational Qualification required, etc,."
-            container="body"></textarea>
+          <textarea rows="2" maxlength="1000" class="form-control" [(ngModel)]="employee.specificReq" placement="top"
+            tooltip="CTC info, Type of Candidate, Educational Qualification required, etc,." container="body"></textarea>
           <label>Note : </label>
         </div>
       </div>
 
     </div>
+
+  </div>
+
+  <div class="form-row">
     <div class="col-sm-12 resume">
       <div class="mx-auto" style="height: 25px;border:sold red;"></div>
       <div class="form-row">
@@ -326,4 +339,5 @@
       </div>
     </div>
   </div>
+
 </div>

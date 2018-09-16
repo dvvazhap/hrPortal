@@ -21,6 +21,7 @@ export class JobComponent implements OnInit {
       if(data !='0'){
         this.valid = 1;
         this.requirement = JSON.parse(data)[0];
+        this.serverdata.incrementJobView(this.id).subscribe(dat => {});
       }
     })
   }
