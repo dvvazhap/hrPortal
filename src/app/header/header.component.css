@@ -18,6 +18,10 @@
   margin: 0 10px;
 }
 
+#dropdown-basic{
+  min-width: 5rem;
+}
+
 #dropdown-basic a{
   cursor:pointer;
   color:black !important;
