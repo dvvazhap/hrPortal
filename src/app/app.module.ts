@@ -33,6 +33,7 @@ import { ShareComponent } from './share/share.component';
 import { JobComponent } from './job/job.component';
 import { SuperComponent } from './super/super.component';
 import { SettingsComponent } from './settings/settings.component';
+import { AppPropertiesPipe } from './app-properties.pipe';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
@@ -121,7 +122,8 @@ const appRoutes: Routes = [
     ShareComponent,
     JobComponent,
     SuperComponent,
-    SettingsComponent
+    SettingsComponent,
+    AppPropertiesPipe
   ],
   imports: [
     BrowserModule,

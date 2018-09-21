@@ -6,10 +6,16 @@ import { map } from "rxjs/operators";
   providedIn: 'root'
 })
 export class ServerService {
-  // host: string = "http://ec2-35-154-125-171.ap-south-1.compute.amazonaws.com:3003/";
-  host: string = "http://localhost:3003/";
+  constructor(private http: HttpClient) {
+    // this.http.get('/assets/config.json').toPromise().then(
+    //   response => {
+    //     console.log("this.host subs:", response.valueOf()['host']);
+    //     this.host = response.valueOf()['host'];
+    //   })
+  }
 
-  constructor(private http: HttpClient) { }
+  host:string = "http://ec2-35-154-125-171.ap-south-1.compute.amazonaws.com:3003/";
+  // host:string = "http://localhost:3003";
 
   validateEmail(email) {
     return this.http.get(this.host + "validateUser?email=" + email, { responseType: 'text' });
@@ -61,6 +67,7 @@ export class ServerService {
   }
 
   getUserInfo(email, token, user_type) {
+    console.log("host :",this.host);
     const body = new HttpParams()
       .set(`email`, email)
       .set(`token`, token)

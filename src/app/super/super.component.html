@@ -27,34 +27,19 @@
     </div>
 
   </div>
-  <br/>
-
-
-
+  <br />
 
 
   <h3>users db</h3>
   <table datatable class="table hover table-bordered overflow" *ngIf="users">
     <thead class="heading">
       <tr>
-        <th>token </th>
-        <th>name</th>
-        <th>email</th>
-        <th>v_profile</th>
-        <th>validity</th>
-        <th>user_type</th>
-        <th>reset_code</th>
+        <th *ngFor="let heading of users[0] | appProperties:'key'">{{heading}}</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of users">
-        <td>{{user.token}}</td>
-        <td>{{user.name}}</td>
-        <td>{{user.email}}</td>
-        <td>{{user.v_profile}}</td>
-        <td>{{user.validity}}</td>
-        <td>{{user.user_type}}</td>
-        <td>{{user.reset_code}}</td>
+      <tr *ngFor="let row of users">
+        <td *ngFor="let value of row | appProperties:'value'"> {{value}} </td>
       </tr>
     </tbody>
   </table>
@@ -64,25 +49,16 @@
   <table datatable class="table hover table-bordered overflow" *ngIf="employerinfo">
     <thead class="heading">
       <tr>
-        <th>email</th>
-        <th>name </th>
-        <th>designation</th>
-        <th>org_name</th>
-        <th>city</th>
-        <th>phone</th>
+        <th *ngFor="let heading of employerinfo[0] | appProperties:'key'">{{heading}}</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let employer of employerinfo">
-        <td>{{employer.email}}</td>
-        <td>{{employer.name}}</td>
-        <td>{{employer.designation}}</td>
-        <td>{{employer.org_name}}</td>
-        <td>{{employer.city}}</td>
-        <td>{{employer.phone}}</td>
+      <tr *ngFor="let row of employerinfo">
+        <td *ngFor="let value of row | appProperties:'value'"> {{value}} </td>
       </tr>
     </tbody>
   </table>
+
 
 
   <h3>skills db</h3>
@@ -104,7 +80,8 @@
     <tbody>
       <tr *ngFor="let skill of skills">
         <td>
-          <button type="button" class="btn btn-primary" target="_blank" (click)="shareProfile(skill.email)">View Complete Profile</button>
+          <button type="button" class="btn btn-primary" target="_blank" (click)="shareProfile(skill.email)">View
+            Complete Profile</button>
         </td>
         <td> {{skill.fullTime}} / {{skill.partTime}} / {{skill.intern}} </td>
         <td>{{skill.looking}}</td>
@@ -138,8 +115,8 @@
     </thead>
     <tbody>
       <tr *ngFor="let open of openings">
-          
-        <td>  <button type="button" class="btn btn-primary" target="_blank" (click)="shareJob(open.ind)">Share Job</button>
+
+        <td> <button type="button" class="btn btn-primary" target="_blank" (click)="shareJob(open.ind)">Share Job</button>
         </td>
         <td>{{open.ind}}</td>
         <td>{{open.timestamp}} / {{open.email}} / {{open.contact}}</td>
@@ -157,20 +134,16 @@
 
   <h3>feedback db</h3>
   <table datatable class="table hover table-bordered overflow" *ngIf="feedback">
-    <thead class="heading">
-      <tr>
-        <th>email</th>
-        <th>profile</th>
-        <th>subject</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let feed of feedback">
-        <td>{{feed.email}}</td>
-        <td>{{feed.profile}}</td>
-        <td>{{feed.subject}}</td>
-      </tr>
-    </tbody>
-  </table>
+      <thead class="heading">
+        <tr>
+          <th *ngFor="let heading of feedback[0] | appProperties:'key'">{{heading}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of feedback">
+          <td *ngFor="let value of row | appProperties:'value'"> {{value}} </td>
+        </tr>
+      </tbody>
+    </table>
 
 </div>

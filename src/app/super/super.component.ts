@@ -3,7 +3,7 @@ import { LoginService } from '../services/login.service';
 import { ActivatedRoute } from '@angular/router';
 import { ServerService } from '../services/server.service';
 
-import { UserInfo, EmployerInfo, EmployeeInfo,OpeningInfo, Feedback } from '../interface';
+import { UserInfo, EmployerInfo, EmployeeInfo, OpeningInfo, Feedback, Education, WorkExperience, Projects } from '../interface';
 
 @Component({
   selector: 'app-super',
@@ -17,6 +17,9 @@ export class SuperComponent implements OnInit {
   employerinfo: EmployerInfo[];
   openings: OpeningInfo[];
   skills: EmployeeInfo[];
+  education: Education[];
+  work_experience: WorkExperience[];
+  projects: Projects[];
   email: string = "";
   id: string;
   sql = "";
@@ -48,6 +51,16 @@ export class SuperComponent implements OnInit {
           break;
         case "skills":
           this.skills = JSON.parse(data) as EmployeeInfo[];
+          break;
+        case "education":
+          this.education = JSON.parse(data) as Education[];
+          break;
+        case "work_experience":
+          this.work_experience = JSON.parse(data) as WorkExperience[];
+          break;
+        case "projects":
+          this.projects = JSON.parse(data) as Projects[];
+
       }
 
     }, error => {
@@ -71,10 +84,18 @@ export class SuperComponent implements OnInit {
 
   public getInfo() {
     this.getSuperTables("users", this.email);
-    this.getSuperTables("feedback", this.email);
+
     this.getSuperTables("employerinfo", this.email);
     this.getSuperTables("openings", this.email);
+
+
     this.getSuperTables("skills", this.email);
+    this.getSuperTables("education", this.email);
+    this.getSuperTables("work_experience", this.email);
+    this.getSuperTables("projects", this.email);
+
+
+    this.getSuperTables("feedback", this.email);
   }
 
   public clearInfo() {
@@ -83,7 +104,9 @@ export class SuperComponent implements OnInit {
     this.openings = [] as OpeningInfo[];
     this.employerinfo = [] as EmployerInfo[];
     this.skills = [] as EmployeeInfo[];
-    
+    this.education = [] as Education[];
+    this.work_experience = [] as WorkExperience[];
+    this.projects = [] as Projects[];
   }
 
   public shareProfile(profile) {
@@ -95,8 +118,8 @@ export class SuperComponent implements OnInit {
     var win = window.open("#/job/" + job, '_blank');
     win.focus();
   }
-  
-  public logout(){
+
+  public logout() {
     this.info.logOut();
   }
 }
