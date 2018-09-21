@@ -8,7 +8,7 @@ import { UserInfo, EmployerInfo, EmployeeInfo,OpeningInfo, Feedback } from '../i
 @Component({
   selector: 'app-super',
   templateUrl: './super.component.html',
-  styleUrls: ['./super.component.css']
+  styleUrls: ['./super.component.scss']
 })
 export class SuperComponent implements OnInit {
 

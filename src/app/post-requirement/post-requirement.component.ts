@@ -6,7 +6,7 @@ import { UserInfo,OpeningInfo } from '../interface';
 @Component({
   selector: 'app-post-requirement',
   templateUrl: './post-requirement.component.html',
-  styleUrls: ['./post-requirement.component.css']
+  styleUrls: ['./post-requirement.component.scss']
 })
 export class PostRequirementComponent implements OnInit {
   userInfo: UserInfo = {} as UserInfo;

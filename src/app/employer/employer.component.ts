@@ -7,7 +7,7 @@ import { EmployerInfo, UserInfo } from '../interface';
 @Component({
   selector: 'app-employer',
   templateUrl: './employer.component.html',
-  styleUrls: ['./employer.component.css']
+  styleUrls: ['./employer.component.scss']
 })
 export class EmployerComponent implements OnInit {
   id: string;

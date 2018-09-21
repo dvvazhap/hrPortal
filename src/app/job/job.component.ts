@@ -6,7 +6,7 @@ import { OpeningInfo } from '../interface';
 @Component({
   selector: 'app-job',
   templateUrl: './job.component.html',
-  styleUrls: ['./job.component.css']
+  styleUrls: ['./job.component.scss']
 })
 export class JobComponent implements OnInit {
   id: string;

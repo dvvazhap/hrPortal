@@ -7,7 +7,7 @@ import { UserInfo, EmployeeInfo, Projects, WorkExperience, Education } from '../
 @Component({
   selector: 'app-employee-profile',
   templateUrl: './employee-profile.component.html',
-  styleUrls: ['./employee-profile.component.css']
+  styleUrls: ['./employee-profile.component.scss']
 })
 export class EmployeeProfileComponent implements OnInit {
   id: string;

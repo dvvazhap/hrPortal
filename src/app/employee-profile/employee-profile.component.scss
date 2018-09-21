@@ -1,0 +1,129 @@
+hr{
+    border:1px solid black;
+  }
+  .box{
+    border:1px solid black;
+    background-color: #cecece;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius:5px;
+  }
+  
+  *{box-sizing:border-box;}
+  
+  /*Just to center the Form*/
+  .resume {
+    margin: auto; 
+    /* position: absolute;  */
+    top: 0; 
+    left: 0; 
+    bottom: 0; 
+    right: 0; }
+  
+  /* A container to position LABELS */
+  .container {
+  position: relative;
+  top: auto;
+  left: auto;
+  }
+  
+  input[type="checkbox"].present{
+    width: 42px;
+    height: 42px;
+    background-color: cornflowerblue;
+  }
+  
+  input[type="text"],input[type="number"],textarea {
+    padding:1em 0 0 5px;
+    border: 1px solid #ccc;
+  -webkit-box-shadow: inset 0 1px 0 #eee,#fff 0 1px 0;
+  box-shadow: inset 0 1px 0 #eee,#fff 0 1px 0;
+    border-radius:5px;
+    width:100%;
+  }
+  
+  label {
+  position: absolute;
+  top: 0;
+  right: 1px;
+  bottom: 1px;
+  left: 10px;
+  z-index: 1;
+  height: 1em;
+  font-size: 15px;
+  line-height: 3.5em;
+  color: #999;
+  white-space: nowrap;
+  cursor: text;
+  transition:all .1s ease;
+  text-transform: uppercase;
+  }
+  
+  input[type="text"] ~ label,input[type="number"] ~ label, textarea ~ label{
+    font-size:15px;
+    top:-15px;
+    font-weight:bold;
+    color:green;
+  }
+  
+  input,textarea{
+    left:20px;
+  }
+  
+  @media screen and (max-width : 575px)
+  {
+    .container{
+      padding:5px;
+    }
+    /* .form-row{
+      border: solid red;
+    } */
+    .interested input[type="checkbox"]{
+      width: 21px;
+      height: 21px;
+    }
+    .interested{
+      font-size: 24px;
+    }
+    input[type="radio"]{
+      width: 20px;
+      height: 20px;
+    }
+  }
+  @media screen and (min-width : 576px) and (max-width : 1200px)
+  { 
+    
+    .form-row{
+      border: solid blue;
+    }
+    .interested input[type="checkbox"]{
+      width: 18px;
+      height: 18px;
+    }
+
+    .interested{
+      font-size: 22px;
+    }
+    input[type="radio"]{
+      width: 17px;
+      height: 17px;
+    }
+  }
+
+  @media screen and (min-width : 1200px)
+  {
+    .form-row{
+      border: solid green;
+    }
+    .interested input[type="checkbox"]{
+      width: 21px;
+      height: 21px;
+    }
+    .interested{
+      font-size: 24px;
+    }
+    input[type="radio"]{
+      width: 20px;
+      height: 20px;
+    }
+  }

@@ -6,7 +6,7 @@ import { UserInfo, EmployerInfo, EmployeeInfo } from '../interface';
 @Component({
   selector: 'app-find-candidates',
   templateUrl: './find-candidates.component.html',
-  styleUrls: ['./find-candidates.component.css']
+  styleUrls: ['./find-candidates.component.scss']
 })
 export class FindCandidatesComponent implements OnInit {
   userInfo: UserInfo;

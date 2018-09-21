@@ -6,7 +6,7 @@ import { UserInfo,OpeningInfo } from '../interface';
 @Component({
   selector: 'app-edit-requirement',
   templateUrl: './edit-requirement.component.html',
-  styleUrls: ['./edit-requirement.component.css']
+  styleUrls: ['./edit-requirement.component.scss']
 })
 export class EditRequirementComponent implements OnInit {
   userInfo: UserInfo = {};

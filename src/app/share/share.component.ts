@@ -8,7 +8,7 @@ import * as jsPDF from 'jspdf'
 @Component({
   selector: 'app-share',
   templateUrl: './share.component.html',
-  styleUrls: ['./share.component.css']
+  styleUrls: ['./share.component.scss']
 })
 export class ShareComponent implements OnInit {
   id: string;
