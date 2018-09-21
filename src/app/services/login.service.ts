@@ -4,7 +4,9 @@ import { ServerService } from '../services/server.service';
 import { Subject } from 'rxjs';
 import { UserInfo, EmployeeInfo, EmployerInfo, OpeningInfo } from '../interface';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class LoginService {
   private userInformationSource = new Subject<UserInfo>();
   currentUserInformation = this.userInformationSource.asObservable();

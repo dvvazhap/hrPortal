@@ -5,10 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  constructor() { }
-  // ngOnInit() { 
-    
-  //   alert("inside app component");
-  // }
-}
+export class AppComponent {}

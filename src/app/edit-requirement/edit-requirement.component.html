@@ -1,29 +1,29 @@
 <div class="container-fluid">
-    <div class="form-row requirement">
-        <div class="col-md-4 col-sm-6 job_wrapper" *ngFor="let job of myJobs">
+  <div class="form-row requirement">
+      <div class="col-md-4 col-sm-6 job_wrapper" *ngFor="let job of myJobs">
 
-            <div class="form-row job">
-                <div class="col-10 job_desc">
+          <div class="form-row job">
+              <div class="col-10 job_desc">
 
-                    Posted On: {{job.timestamp | date: 'd MMM y'}}
-                    <br/> Designation: {{job.designation}}
-                    <br/> Company: {{job.company}}
-                    <br/> Location: {{job.location}}
-                    <br/> Experience: {{job.min_years}}yrs - {{job.max_years}}yrs
-                    <br/> Skills: {{job.skills}}
-                    <br/> Viewers: {{job.viewers}}
-                </div>
-                <div class="col-1 job_button">
-                    <div class="row">
-                        <i (click)="deleteRequirement(job.ind)" class="col-4 fa fa-times fa-2x" aria-hidden="true" placement="left" tooltip="Delete"></i>
-                        <i (click)="editRequirement(job)" class="col-4 fa fa-pencil fa-2x" aria-hidden="true" placement="left" tooltip="Edit"></i>
-                        <i (click)="shareJobInfo(job.ind)" class="col-4 fa fa-share-alt fa-2x" aria-hidden="true" placement="left" tooltip="Share"></i>
-                    </div>
-                </div>
-                <div class="colo-1"></div>
-            </div>
+                  Posted On: {{job.timestamp | date: 'd MMM y'}}
+                  <br/> Designation: {{job.designation}}
+                  <br/> Company: {{job.company}}
+                  <br/> Location: {{job.location}}
+                  <br/> Experience: {{job.min_years}}yrs - {{job.max_years}}yrs
+                  <br/> Skills: {{job.skills}}
+                  <br/> Viewers: {{job.viewers}}
+              </div>
+              <div class="col-1 job_button">
+                  <div class="row">
+                      <i (click)="deleteRequirement(job.ind)" class="col-4 fa fa-times fa-2x" aria-hidden="true" placement="left" tooltip="Delete"></i>
+                      <i (click)="editRequirement(job)" class="col-4 fa fa-pencil fa-2x" aria-hidden="true" placement="left" tooltip="Edit"></i>
+                      <i (click)="shareJobInfo(job.ind)" class="col-4 fa fa-share-alt fa-2x" aria-hidden="true" placement="left" tooltip="Share"></i>
+                  </div>
+              </div>
+              <div class="colo-1"></div>
+          </div>
 
 
-        </div>
-    </div>
+      </div>
+  </div>
 </div>

@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { Routes, RouterModule } from "@angular/router";
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
@@ -9,14 +12,10 @@ import { DataTablesModule } from 'angular-datatables';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown/angular2-multiselect-dropdown';
 import { NgTableComponent, NgTableFilteringDirective, NgTablePagingDirective, NgTableSortingDirective } from 'ng2-table/ng2-table';
 
-
 import { AppComponent } from './app.component';
 import { ServerService } from './services/server.service';
 import { LoginService } from './services/login.service';
-import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { Routes, RouterModule } from "@angular/router";
 import { EmployerComponent } from './employer/employer.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { VerifyComponent } from './verify/verify.component';
@@ -101,6 +100,7 @@ const appRoutes: Routes = [
   { path: '**', redirectTo: '/' }
 ];
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -135,11 +135,10 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes, {useHash: true}),
     DataTablesModule
   ],
-  // exports: [BsDropdownModule, TooltipModule, ModalModule],
   providers: [ServerService, LoginService,{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
-export class AppModule {
+export class AppModule { 
   directives: [
     NgTableComponent,
     NgTableFilteringDirective,
