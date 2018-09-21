@@ -43,10 +43,13 @@ export class EmployeeProfileComponent implements OnInit {
     projects: []
   } as EmployeeInfo;
 
-  dropdownList = [];
-  selectedItems = [];
-  dropdownSettings = {};
+  // dropdownList = [];
+  // selectedItems = [];
+  // dropdownSettings = {};
   looking: boolean = false;
+  fullTime: boolean = true;
+  partTime: boolean = false;
+  intern: boolean = false;
 
   constructor(private info: LoginService, private serverdata: ServerService,private route: ActivatedRoute) { }
 
@@ -62,47 +65,47 @@ export class EmployeeProfileComponent implements OnInit {
 
     this.info.currentEmployeeInformation.subscribe(dat => {
       this.employee = JSON.parse(JSON.stringify(dat));
-      this.selectedItems = [];
+      // this.selectedItems = [];
       this.employee.looking == 1 ? this.looking = true : this.looking = false;
-      if (this.employee.fullTime == 1) this.selectedItems.push({ "id": 1, "itemName": "Full Time" });
-      if (this.employee.partTime == 1) this.selectedItems.push({ "id": 2, "itemName": "Part Time" });
-      if (this.employee.intern == 1) this.selectedItems.push({ "id": 3, "itemName": "Internship" });
+      if (this.employee.fullTime == 1) this.fullTime = true;
+      if (this.employee.partTime == 1) this.partTime = true;
+      if (this.employee.intern == 1) this.intern = true;
     });
 
 
-    this.dropdownList = [
-      { "id": 1, "itemName": "Full Time" },
-      { "id": 2, "itemName": "Part Time" },
-      { "id": 3, "itemName": "Internship" },
-    ];
+    // this.dropdownList = [
+    //   { "id": 1, "itemName": "Full Time" },
+    //   { "id": 2, "itemName": "Part Time" },
+    //   { "id": 3, "itemName": "Internship" },
+    // ];
 
-    this.dropdownSettings = {
-      singleSelection: false,
-      text: "SELECT THE TYPE OF OPPORTUNITY YOU ARE INTERESTED IN",
-      enableSearchFilter: false,
-      enableCheckAll: false,
-      classes: "myclass custom-class"
-    };
+    // this.dropdownSettings = {
+    //   singleSelection: false,
+    //   text: "SELECT THE TYPE OF OPPORTUNITY YOU ARE INTERESTED IN",
+    //   enableSearchFilter: false,
+    //   enableCheckAll: false,
+    //   classes: "myclass custom-class"
+    // };
 
   }
 
-  public setJobType(obj) {
-    if (obj == undefined) { return; }
-    if (obj.id == 1) this.employee.fullTime = 1;
-    else if (obj.id == 2) this.employee.partTime = 1;
-    else if (obj.id == 3) this.employee.intern = 1;
-  }
-  public jobTypeSelection(obj) {
-    this.employee.fullTime = 0;
-    this.employee.partTime = 0;
-    this.employee.intern = 0;
-    this.setJobType(obj[0]);
-    this.setJobType(obj[1]);
-    this.setJobType(obj[2]);
-  }
+  // public setJobType(obj) {
+  //   if (obj == undefined) { return; }
+  //   if (obj.id == 1) this.employee.fullTime = 1;
+  //   else if (obj.id == 2) this.employee.partTime = 1;
+  //   else if (obj.id == 3) this.employee.intern = 1;
+  // }
+  // public jobTypeSelection(obj) {
+  //   this.employee.fullTime = 0;
+  //   this.employee.partTime = 0;
+  //   this.employee.intern = 0;
+  //   this.setJobType(obj[0]);
+  //   this.setJobType(obj[1]);
+  //   this.setJobType(obj[2]);
+  // }
 
-  public onItemSelect(item: any) { this.jobTypeSelection(this.selectedItems); }
-  public OnItemDeSelect(item: any) { this.jobTypeSelection(this.selectedItems); }
+  // public onItemSelect(item: any) { this.jobTypeSelection(this.selectedItems); }
+  // public OnItemDeSelect(item: any) { this.jobTypeSelection(this.selectedItems); }
 
   public shareMyInfo(email) {
     var win = window.open("#/profile/" + email, '_blank');
@@ -237,7 +240,7 @@ export class EmployeeProfileComponent implements OnInit {
   public validate() {
     this.error = "";
     this.msg = "";
-
+    console.log("this.employee :",this.employee);
     if(this.employee.experience == "" || isNaN(parseFloat(this.employee.experience))) this.employee.experience = "0";
     let experience = parseFloat(this.employee.experience);
     this.employee.experience = (isNaN(parseFloat(this.employee.experience)) ? "0" : (parseFloat(this.employee.experience)).toString())
@@ -250,7 +253,7 @@ export class EmployeeProfileComponent implements OnInit {
     if (this.looking == false) {
       return true;
     }
-    else if (!(this.employee.fullTime || this.employee.partTime || this.employee.intern)) {
+    else if (!(this.fullTime || this.partTime || this.intern)) {
       this.error = "Select the type of opportunity you are interested in"; return false;
     }
     else if (this.employee.name == "" || this.employee.name == null) {
@@ -380,6 +383,10 @@ export class EmployeeProfileComponent implements OnInit {
       this.msg = "";
       this.error = "";
       this.looking == true ? this.employee.looking = 1 : this.employee.looking = 0;
+      this.fullTime == true ? this.employee.fullTime = 1 : this.employee.fullTime = 0;
+      this.partTime == true ? this.employee.partTime = 1 : this.employee.partTime = 0;
+      this.intern == true ? this.employee.intern = 1 : this.employee.intern = 0;  
+
       this.serverdata.setEmployeeInfo(JSON.parse(JSON.stringify(this.employee)), this.userInfo.email).subscribe(data => {
         for (let i = 0; i < this.employee.education.length; i++) {
           this.updateEducation(this.employee.education[i]);
