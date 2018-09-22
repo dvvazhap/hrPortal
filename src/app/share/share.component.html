@@ -1,132 +1,171 @@
-<div [hidden]="employee.looking" class="container">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+<style>
+  html,
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Roboto", sans-serif
+  }
+
+  .wordbreak {
+    word-break: break-all;
+  }
+</style>
+<div [hidden]="employee.looking">
   <b>This profile is not looking for a change.</b>
 </div>
-<div [hidden]="!employee.looking" class="container">
-
-  Note: Copy this URL to share your profile to others.
-  <br/>
+<div [hidden]="!employee.looking" class="w3-light-grey">
   <!-- <button type="button" class="btn btn-primary btn-lg" (click)="downloadPdf()"> Download PDF </button> -->
-  <div class="row">
-    <div class="col-sm-9"></div>
-    <div class="col-sm-3"><b style="color:#0080FF;">No. of viewers: </b><span style="color:#191919;">{{employee.viewers}}</span></div>
-  </div>
+  <!-- Page Container -->
+  <div class="w3-content" style="max-width:1400px;padding-top: 16px;">
 
-  <div id="content" #content style="font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';
-    font-size: 1rem;font-weight: 400;color: #212529;text-align: left;line-height:2em;">
-    <div><b style="color: #1034A6;font-size: 30px;">{{employee.name | uppercase}}</b>
-      <span style="color:#0080FF; font-size: 20px; margin-left: 15px;"><b>{{employee.designation | titlecase}}</b></span></div>
-    <div style="font-size: 15px;">
-      <b style="color:#0080FF;">EMAIL :</b>
-      <span style="color:#191919;">{{id}}&nbsp;&nbsp;&nbsp;</span>
-      <b style="color:#0080FF;">GENDER :</b>
-      <span style="color:#191919;">{{employee.gender}}&nbsp;&nbsp;&nbsp;</span>
-      <b *ngIf="employee.phone" style="color:#0080FF;">PH :</b>
-      <span *ngIf="employee.phone" style="color:#191919;">{{employee.phone}}&nbsp;&nbsp;&nbsp;</span>
-      <b *ngIf="employee.linkedin" style="color:#0080FF;">LINKEDIN :</b>
-      <span *ngIf="employee.linkedin" style="color:#191919;">{{employee.linkedin}}</span>
-      <b style="color:#0080FF;">WERTHERE4U :</b>
-      <span style="color:#191919;">werthere4u.in/#/profile/{{id}}&nbsp;&nbsp;&nbsp;</span>
-      <br/>
-      <b *ngIf="employee.address" style="color:#0080FF;">ADDRESS :</b><span *ngIf="employee.address" style="color:#191919;">{{employee.address}}</span><br/>
-      <b style="color:#0080FF;">TOTAL EXPERIENCE :</b> <span style="color:#191919;">{{employee.experience}} yrs &nbsp;&nbsp;&nbsp;
-      </span>
-      <b style="color:#0080FF;">NOTICE PERIOD :</b> <span style="color:#191919;">{{employee.noticePeriod}} days </span>
+    <!-- The Grid -->
+    <div class="w3-row-padding">
 
-    </div>
-    <div style="margin-top: 30px;font-size: 18px;">
-      <b style="color:#0080FF;"> LOOKING FOR </b>
-      <span style="color:#191919;">
-        <span *ngIf="employee.fullTime == 1">Full Time</span>
-        <span *ngIf="employee.partTime == 1"> /</span>
-        <span *ngIf="employee.partTime == 1">Part Time</span>
-        <span *ngIf="employee.intern == 1"> /</span>
-        <span *ngIf="employee.intern == 1">Internship </span>
-      </span>
-      <b style="color:#0080FF;"> in </b><span style="color:#191919;">{{employee.fut_location | titlecase}} </span>
+      <!-- Left Column -->
+      <div class="w3-third">
 
-      <br/>
-      <div *ngIf="employee.objective != ''">
+        <div class="w3-white w3-text-grey w3-card">
+          <div class="w3-display-container">
+            <div class="w3-container w3-text-black">
+              <h2>{{employee.name | titlecase}}
+                <i *ngIf="employee.gender == 'Male'" class="fa fa-mars fa-fw w3-margin-right w3-large w3-text-teal"></i>
+                <i *ngIf="employee.gender == 'Female'" class="fa fa-venus fa-fw w3-margin-right w3-large w3-text-teal"></i>
+                <i *ngIf="employee.gender == 'Transgender'" class="fa fa-transgender fa-fw w3-margin-right w3-large w3-text-teal"></i>
+              </h2>
+            </div>
+          </div>
+          <div class="w3-container">
+            <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>{{employee.designation |
+              titlecase}}</p>
+            <p *ngIf="employee.address"><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>{{employee.address}}</p>
+            <p class="wordbreak"><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>{{id}}</p>
+            <p *ngIf="employee.phone"><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>{{employee.phone}}</p>
+            <p class="wordbreak"><i class="fa fa-share-alt fa-fw w3-margin-right w3-large w3-text-teal"></i>werthere4u.in/#/profile/{{id}}</p>
+            <p class="wordbreak"><i *ngIf="employee.linkedin" class="fa fa-linkedin fa-fw w3-margin-right w3-large w3-text-teal"></i>{{employee.linkedin}}</p>
+            <p><i class="fa fa-rocket fa-fw w3-margin-right w3-large w3-text-teal"></i>{{employee.experience}} yrs
+              experience</p>
+            <p><i class="fa fa-sticky-note fa-fw w3-margin-right w3-large w3-text-teal"></i>{{employee.noticePeriod}}
+              days notice period</p>
+            <p>
+              <i class="fa fa-eye fa-fw w3-margin-right w3-large w3-text-teal"></i>
+              <span *ngIf="employee.fullTime == 1">Full Time</span>
+              <span *ngIf="employee.partTime == 1"> /</span>
+              <span *ngIf="employee.partTime == 1">Part Time</span>
+              <span *ngIf="employee.intern == 1"> /</span>
+              <span *ngIf="employee.intern == 1">Internship </span> - {{employee.fut_location | titlecase}}
+            </p>
+            <hr>
+            <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Skills</b></p>
+            <p>{{employee.skills}}</p>
+            <br>
+            <p *ngIf="employee.languages != ''" class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>Languages</b></p>
+            <p *ngIf="employee.languages != ''"> {{employee.languages}}</p>
+            <br>
+          </div>
+        </div><br>
+
+        <div *ngIf="employee.education.length > 0" class="w3-container w3-card w3-white">
+          <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-graduation-cap fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Education</h2>
+          <div *ngFor="let edu of employee.education" class="w3-container">
+            <h5 class="w3-opacity"><b>{{edu.college}}</b></h5>
+            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>{{edu.start | date: "MMM y"}}
+              - {{edu.end | date: "MMM y"}}</h6>
+            <p>{{edu.degree}} in {{edu.stream}}</p>
+            <p>
+              <span *ngIf="edu.cgpa !=0">CGPA: {{edu.cgpa}}</span>
+              <span *ngIf="edu.percentage !=0">Percentage: {{edu.percentage}}</span>
+            </p>
+            <hr>
+          </div>
+        </div><br>
+        <!-- End Left Column -->
+      </div>
+
+      <!-- Right Column -->
+      <div class="w3-twothird">
+
+        <div *ngIf="employee.work_experience.length > 0" class="w3-container w3-card w3-white w3-margin-bottom">
+          <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Work
+            Experience</h2>
+          <div *ngFor="let work of employee.work_experience" class="w3-container">
+            <h5 class="w3-opacity"><b>{{work.company}}</b></h5>
+            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>
+              <span>{{work.start | date: "MMM y"}} </span>-
+              <span *ngIf="!work.present">{{work.end | date: "MMM y"}}</span>
+              <span *ngIf="work.present" class="w3-tag w3-teal w3-round">Current</span></h6>
+            <p>{{work.description}}</p>
+            <hr>
+          </div>
+        </div>
+
+        <div *ngIf="employee.projects.length > 0" class="w3-container w3-card w3-white w3-margin-bottom">
+          <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-tasks fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Projects</h2>
+          <div *ngFor="let proj of employee.projects" class="w3-container">
+            <details *ngIf="employee.projects.length > 3">
+              <summary>
+                <span class="w3-opacity"><b>{{proj.name | titlecase}}</b></span>
+              </summary>
+              <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>{{proj.start | date: "MMM
+                y"}} - {{proj.end | date: "MMM y"}}</h6>
+              <p>{{proj.description}}</p>
+              <p><i>Skills :</i>{{proj.skills}}</p>
+            </details>
+            <div *ngIf="employee.projects.length <= 3">
+              <h5 class="w3-opacity"><b>{{proj.name | titlecase}}</b></h5>
+              <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>{{proj.start | date: "MMM
+                y"}} - {{proj.end | date: "MMM y"}}</h6>
+              <p>{{proj.description}}</p>
+              <p><i>Skills :</i>{{proj.skills}}</p>
+              </div>
+            <hr>
+          </div>
+        </div>
+
+        <div *ngIf="employee.academic_ach != ''" class="w3-container w3-card w3-white">
+          <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-trophy fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Academic
+            achievements</h2>
+          <p>{{employee.academic_ach}}</p>
+        </div>
+        <div *ngIf="employee.extra_curricular != ''" class="w3-container w3-card w3-white">
+          <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-star fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Extra
+            curricular</h2>
+          <p>{{employee.extra_curricular}}</p>
+        </div>
+        <div *ngIf="employee.certifications != ''" class="w3-container w3-card w3-white">
+          <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Certifications</h2>
+          <p>{{employee.certifications}}</p>
+        </div>
+        <div *ngIf="employee.hobbies != ''" class="w3-container w3-card w3-white">
+          <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-futbol-o fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Hobbies</h2>
+          <p>{{employee.hobbies}}</p>
+        </div>
+        <div *ngIf="employee.specificReq != ''" class="w3-container w3-card w3-white">
+          <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-thumb-tack fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Note
+          </h2>
+          <p>{{employee.specificReq}}</p>
+        </div>
+
+        <!-- <div *ngIf="employee.objective != ''">
           <b style="color:#0080FF;">CAREER OBJECTIVE </b>
           <span style="color:#191919; display: flex; text-align: justify; text-justify: inter-word;">{{employee.objective}}</span>
-          <br/>
-      </div>
-      
-      <div *ngIf="employee.education.length > 0">
-          <b style="color:#0080FF;">EDUCATION </b><br/>
-          <div *ngFor="let edu of employee.education">
-            <b>{{edu.college}}</b>
-            <span style="float:right">
-              <b>{{edu.start | date: "MMM y"}}</b> to <b>{{edu.end | date: "MMM y"}}</b>
-            </span><br/>
-            <span>{{edu.degree}} in {{edu.stream}}</span>
-            <span style="float:right">
-              <span *ngIf="edu.cgpa !=0">CGPA: {{edu.cgpa}}</span>
-              <span *ngIf="edu.percentage !=0">&nbsp;&nbsp; Percentage: {{edu.percentage}}</span>
-            </span>
-          </div><br/>
-      </div>
-      
-      <div *ngIf="employee.work_experience.length > 0">
-        <b style="color:#0080FF;">WORK EXPERIENCE </b><br/>
-        <div *ngFor="let work of employee.work_experience">
-          <b>{{work.company}}</b><span style="float:right"><b>{{work.start | date: "MMM y"}}</b> to 
-            <b *ngIf="!work.present">{{work.end | date: "MMM y"}}</b>
-            <b *ngIf="work.present">Present</b>
-          </span><br/>
-          <span style="color:#191919; display: flex; text-align: justify; text-justify: inter-word;">{{work.description}}</span>
-        </div><br/>
+          <br />
+        </div> -->
+
+        <!-- End Right Column -->
       </div>
 
-      <div *ngIf="employee.languages != ''">
-          <b style="color:#0080FF;">LANGUAGES KNOWN </b><span style="color:#191919;"> {{employee.languages}}</span>
-          <br/>
-      </div>
-      
-      <b style="color:#0080FF;">AREA OF EXPERTISE </b><br/><span style="color:#191919;">{{employee.skills}} </span>
-      <br/>
-
-
-      <div *ngIf="employee.projects.length > 0">
-        <b style="color:#0080FF;">PROJECTS </b><br/>
-        <ol>
-          <li *ngFor="let proj of employee.projects">
-            <b>{{proj.name | titlecase}}</b><span style="float:right"><b>{{proj.start | date: "MMM y"}}</b> to <b>{{proj.end
-                | date: "MMM y"}}</b></span><br/>
-            <span style="color:#191919; display: flex; text-align: justify; text-justify: inter-word;">{{proj.description}}</span>
-            <span><b>Skills :</b> {{proj.skills}}</span><br/>
-          </li>
-        </ol>
-        <br/>
-      </div>
-      <div *ngIf="employee.academic_ach != ''">
-        <b style="color:#0080FF;"> ACEDEMIC ACHIEVEMENTS</b><br/>
-        <span style="color:#191919; display: flex; text-align: justify; text-justify: inter-word;">{{employee.academic_ach}}</span>
-        <br />
-      </div>
-      <div *ngIf="employee.extra_curricular != ''">
-        <b style="color:#0080FF;"> EXTRA-CURRICULAR ACTIVITIES</b><br/>
-        <span style="color:#191919; display: flex; text-align: justify; text-justify: inter-word;">{{employee.extra_curricular}}</span>
-        <br/>
-      </div>
-      <div *ngIf="employee.certifications != ''">
-        <b style="color:#0080FF;">CERTIFICATIONS</b><br/>
-        <span style="color:#191919; display: flex; text-align: justify; text-justify: inter-word;">{{employee.certifications}}</span>
-        <br/>
-      </div>
-
-      <div *ngIf="employee.hobbies != ''">
-        <b style="color:#0080FF;">HOBBIES</b><br/>
-        <span style="color:#191919; display: flex; text-align: justify; text-justify: inter-word;">{{employee.hobbies}}</span>
-        <br/>
-      </div>
-
-      <div *ngIf="employee.specificReq != ''">
-        <b *ngIf="employee.specificReq" style="color:#0080FF;">Note : </b>
-        <span style="color:#191919; display: flex; text-align: justify; text-justify: inter-word;">{{employee.specificReq}}
-        </span>
-        <br/>
-      </div>
-
+      <!-- End Grid -->
     </div>
+
+    <!-- End Page Container -->
   </div>
+  <footer class="w3-container w3-teal w3-center w3-margin-top">
+    <p>Designed by <a href="#">Dijil Vargheese</a></p>
+  </footer>
 </div>

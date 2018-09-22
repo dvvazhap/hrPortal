@@ -15,7 +15,7 @@ export class ServerService {
   }
 
   host:string = "http://ec2-35-154-125-171.ap-south-1.compute.amazonaws.com:3003/";
-  // host:string = "http://localhost:3003";
+  // host:string = "http://localhost:3003/";
 
   validateEmail(email) {
     return this.http.get(this.host + "validateUser?email=" + email, { responseType: 'text' });
