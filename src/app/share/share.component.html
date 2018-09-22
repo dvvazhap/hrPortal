@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
 <style>
   html,
   body,
@@ -14,6 +12,9 @@
 
   .wordbreak {
     word-break: break-all;
+  }
+  summary{
+    outline: none;
   }
 </style>
 <div [hidden]="employee.looking">
@@ -46,7 +47,7 @@
             <p *ngIf="employee.address"><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>{{employee.address}}</p>
             <p class="wordbreak"><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>{{id}}</p>
             <p *ngIf="employee.phone"><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>{{employee.phone}}</p>
-            <p class="wordbreak"><i class="fa fa-share-alt fa-fw w3-margin-right w3-large w3-text-teal"></i>werthere4u.in/#/profile/{{id}}</p>
+            <p class="wordbreak"><i class="fa fa-share-alt fa-fw w3-margin-right w3-large w3-text-teal"></i>werthere4u.in/profile/{{id}}</p>
             <p class="wordbreak"><i *ngIf="employee.linkedin" class="fa fa-linkedin fa-fw w3-margin-right w3-large w3-text-teal"></i>{{employee.linkedin}}</p>
             <p><i class="fa fa-rocket fa-fw w3-margin-right w3-large w3-text-teal"></i>{{employee.experience}} yrs
               experience</p>
