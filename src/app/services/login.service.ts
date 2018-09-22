@@ -112,14 +112,14 @@ export class LoginService {
   public getEmployeeInfo(email) {
     this.serverdata.getEmployeeInfo(email).subscribe(dat => {
       if(dat) this.employee = JSON.parse(dat);
-      this.getEducation(email);
-      this.getWork(email);
-      this.getProject(email);
     },
       error => {
         console.log("error getEmployeeInfo:", error)
       }
     );
+    this.getEducation(email);
+    this.getWork(email);
+    this.getProject(email);
   }
 
   public getOpenings(email,ind) {

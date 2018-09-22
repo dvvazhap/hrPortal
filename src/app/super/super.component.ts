@@ -110,12 +110,12 @@ export class SuperComponent implements OnInit {
   }
 
   public shareProfile(profile) {
-    var win = window.open("#/profile/" + profile, '_blank');
+    var win = window.open("profile/" + profile, '_blank');
     win.focus();
   }
 
   public shareJob(job) {
-    var win = window.open("#/job/" + job, '_blank');
+    var win = window.open("job/" + job, '_blank');
     win.focus();
   }
 

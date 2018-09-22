@@ -43,7 +43,7 @@ export class EditRequirementComponent implements OnInit {
   }
 
   public shareJobInfo(ind){
-      var win = window.open("#/job/"+ind, '_blank');
+      var win = window.open("job/"+ind, '_blank');
       win.focus();
   }
 

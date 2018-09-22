@@ -134,10 +134,10 @@ const appRoutes: Routes = [
     ModalModule.forRoot(),
     HttpClientModule,
     AngularFontAwesomeModule,
-    RouterModule.forRoot(appRoutes, {useHash: true}),
+    RouterModule.forRoot(appRoutes),
     DataTablesModule
   ],
-  providers: [ServerService, LoginService,{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [ServerService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { 
