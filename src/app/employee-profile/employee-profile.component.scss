@@ -1,129 +1,132 @@
-hr{
-    border:1px solid black;
+$hr_color: black;
+
+@mixin generate_media_queries($device, $font_size,$height) {
+  $size: "";
+  $space: 0px;
+  @if $device == desktop {
+    $size: "(min-width : 800px)";
+    $space: 30px; 
   }
-  .box{
-    border:1px solid black;
-    background-color: #cecece;
-    margin: 10px 0;
-    padding: 10px;
-    border-radius:5px;
+  @else if $device == tablet {
+    $size: "(min-width : 576px) and (max-width : 800px)"; 
+    $space: 20px;
   }
-  
-  *{box-sizing:border-box;}
-  
-  /*Just to center the Form*/
-  .resume {
-    margin: auto; 
-    /* position: absolute;  */
-    top: 0; 
-    left: 0; 
-    bottom: 0; 
-    right: 0; }
-  
-  /* A container to position LABELS */
-  .container {
-  position: relative;
-  top: auto;
-  left: auto;
+  @else if $device == phone {
+    $size: "(max-width : 575px)"; 
+    $space: 5px;
   }
-  
-  input[type="checkbox"].present{
-    width: 42px;
-    height: 42px;
-    background-color: cornflowerblue;
-  }
-  
-  input[type="text"],input[type="number"],textarea {
-    padding:1em 0 0 5px;
-    border: 1px solid #ccc;
-  -webkit-box-shadow: inset 0 1px 0 #eee,#fff 0 1px 0;
-  box-shadow: inset 0 1px 0 #eee,#fff 0 1px 0;
-    border-radius:5px;
-    width:100%;
-  }
-  
-  label {
-  position: absolute;
-  top: 0;
-  right: 1px;
-  bottom: 1px;
-  left: 10px;
-  z-index: 1;
-  height: 1em;
-  font-size: 15px;
-  line-height: 3.5em;
-  color: #999;
-  white-space: nowrap;
-  cursor: text;
-  transition:all .1s ease;
-  text-transform: uppercase;
-  }
-  
-  input[type="text"] ~ label,input[type="number"] ~ label, textarea ~ label{
-    font-size:15px;
-    top:-15px;
-    font-weight:bold;
-    color:green;
-  }
-  
-  input,textarea{
-    left:20px;
-  }
-  
-  @media screen and (max-width : 575px)
+
+  @media screen and #{$size} 
   {
-    .container{
-      padding:5px;
+    @if $device == desktop {
+      input[type="text"] ~ label,input[type="number"] ~ label, textarea ~ label{top:-15px;}
     }
-    /* .form-row{
-      border: solid red;
-    } */
-    .interested input[type="checkbox"]{
-      width: 21px;
-      height: 21px;
-    }
-    .interested{
-      font-size: 24px;
-    }
-    input[type="radio"]{
-      width: 20px;
-      height: 20px;
-    }
-  }
-  @media screen and (min-width : 576px) and (max-width : 1200px)
-  { 
     
-    .form-row{
-      border: solid blue;
+    @else if $device == tablet {
+      input[type="text"] ~ label,input[type="number"] ~ label, textarea ~ label{top:-15px;}
+      .viewers{
+        display: none;
+      }
     }
-    .interested input[type="checkbox"]{
-      width: 18px;
-      height: 18px;
+    @else if $device == phone {
+      input[type="text"] ~ label,input[type="number"] ~ label, textarea ~ label{top:-10px;}
+      .container{
+        padding:5px;
+      }
+      .viewers{
+        display: none;
+      }
+    }
+    hr{
+      border:1px solid $hr_color;
+    }
+    .box{
+      border:1px solid black;
+      background-color: #cecece;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius:5px;
+    }
+    
+    *{box-sizing:border-box;}
+    
+    /*Just to center the Form*/
+    .resume {
+      margin: auto; 
+      /* position: absolute;  */
+      top: 0; 
+      left: 0; 
+      bottom: 0; 
+      right: 0; }
+    
+    /* A container to position LABELS */
+    .container {
+    position: relative;
+    top: auto;
+    left: auto;
+    }
+    
+    input[type="checkbox"].present{
+      width: 42px;
+      height: 42px;
+      background-color: cornflowerblue;
+    }
+    
+    input[type="text"],input[type="number"],textarea {
+      padding:1em 0 0 5px;
+      border: 1px solid #ccc;
+    -webkit-box-shadow: inset 0 1px 0 #eee,#fff 0 1px 0;
+    box-shadow: inset 0 1px 0 #eee,#fff 0 1px 0;
+      border-radius:5px;
+      width:100%;
+    }
+    
+    label {
+    position: absolute;
+    top: 0;
+    right: 1px;
+    bottom: 1px;
+    left: 10px;
+    z-index: 1;
+    height: 1em;
+    font-size: 15px;
+    line-height: 3.5em;
+    color: #999;
+    white-space: nowrap;
+    cursor: text;
+    transition:all .1s ease;
+    text-transform: uppercase;
+    }
+    
+    input[type="text"] ~ label,input[type="number"] ~ label, textarea ~ label{
+      font-size:15px;
+      font-weight:bold;
+      color:green;
+    }
+    
+    input,textarea{
+      left:20px;
     }
 
-    .interested{
-      font-size: 22px;
-    }
-    input[type="radio"]{
-      width: 17px;
-      height: 17px;
-    }
-  }
-
-  @media screen and (min-width : 1200px)
-  {
-    .form-row{
-      border: solid green;
-    }
     .interested input[type="checkbox"]{
-      width: 21px;
-      height: 21px;
+      width: $height;
+      height: $height;
     }
     .interested{
-      font-size: 24px;
+      font-size: $font_size;
+      
+      .spacing{
+        margin: $space;
+      }
+      
     }
     input[type="radio"]{
-      width: 20px;
-      height: 20px;
+      width: $height - 1;
+      height: $height - 1;
     }
   }
+}
+
+@include generate_media_queries(desktop, 24px, 21px);
+@include generate_media_queries(tablet, 20px, 21px);
+@include generate_media_queries(phone, 15px, 18px);

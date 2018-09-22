@@ -1,37 +1,28 @@
 <div class="container-fluid employee">
   <div class="form-row">
-    <div class="col-sm-1">
+    <div class="col-sm-12 interested">
       <i (click)="shareMyInfo(userInfo.email)" style="cursor:pointer" class="fa fa-share-alt fa-2x" aria-hidden="true"
-        placement="bottom" tooltip="Share your profile with the Recruiters"></i>
-    </div>
-    <div class="col-sm-8">
-      <b>Looking for some new opportunity ?</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <input type="radio" [value]=true [(ngModel)]="looking" /> <b style="font-size: 25px">YES</b> &nbsp;&nbsp;&nbsp;
-      <input type="radio" [value]=false [(ngModel)]="looking" /> <b style="font-size: 25px">NO</b>
-    </div>
-    <div class="col-sm-3">
-      Viewers : {{employee.viewers}}
+        placement="right" tooltip="Share your profile with the Recruiters"></i><span class="spacing"></span>
+      <input type="radio" [value]=true [(ngModel)]="looking" /> <i>Looking for a change</i><span class="spacing"></span>
+      <input type="radio" [value]=false [(ngModel)]="looking" /> <i>Not Looking</i><span class="spacing"></span>
+      <span class="viewers" style="float:right">Viewers : {{employee.viewers}}</span>
+      
     </div>
   </div>
 
   <div class="form-row" [hidden]="!looking">
+    <br/>
     <div class="col-sm-12 resume">
       <div class="mx-auto" style="height: 20px;"></div>
       <div class="form-row">
-        <div class="col-sm-2 container interested">
+        <div class="col-sm-12 container interested">
           <input type="checkbox" [(ngModel)]="fullTime" placement="right" tooltip="Check if you are looking for Full time Opportunity"
-            container="body" /> Full Time
-        </div>
-        <div class="col-sm-2 container interested">
+            container="body" /> Full Time <span class="spacing"></span>
           <input type="checkbox" [(ngModel)]="partTime" placement="right" tooltip="Check if you are looking for Part time Opportunity"
-            container="body" /> Part Time
-        </div>
-        <div class="col-sm-2 container interested">
+            container="body" /> Part Time <span class="spacing"></span>
           <input type="checkbox" [(ngModel)]="intern" placement="right" tooltip="Check if you are looking for Internship Opportunity"
             container="body" /> Internship
         </div>
-        <div class="col-sm-6"></div>
-
 
       </div>
       <div class="mx-auto" style="height: 20px;"></div>
@@ -82,14 +73,14 @@
       </div>
 
       <hr />
-      <div class="mx-auto" style="height: 20px;"></div>
+      <!-- <div class="mx-auto" style="height: 20px;"></div>
       <div class="form-row">
         <div class="col-sm-12 container">
           <textarea rows="3" maxlength="1000" class="form-control" [(ngModel)]="employee.	objective"></textarea>
           <label>CAREER OBJECTIVE</label>
         </div>
       </div>
-      <hr />
+      <hr /> -->
       <b>EDUCATION</b>
       <div class="mx-auto" style="height: 20px;"></div>
       <div *ngFor="let edu of employee.education" class="box">
