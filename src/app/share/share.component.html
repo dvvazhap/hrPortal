@@ -47,7 +47,7 @@
             <p *ngIf="employee.address"><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>{{employee.address}}</p>
             <p class="wordbreak"><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>{{id}}</p>
             <p *ngIf="employee.phone"><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>{{employee.phone}}</p>
-            <p class="wordbreak"><i class="fa fa-share-alt fa-fw w3-margin-right w3-large w3-text-teal"></i>werthere4u.in/profile/{{id}}</p>
+            <p class="wordbreak"><i class="fa fa-share-alt fa-fw w3-margin-right w3-large w3-text-teal"></i>werthere4u.in/#/profile/{{id}}</p>
             <p class="wordbreak"><i *ngIf="employee.linkedin" class="fa fa-linkedin fa-fw w3-margin-right w3-large w3-text-teal"></i>{{employee.linkedin}}</p>
             <p><i class="fa fa-rocket fa-fw w3-margin-right w3-large w3-text-teal"></i>{{employee.experience}} yrs
               experience</p>
@@ -130,12 +130,12 @@
 
         <div *ngIf="employee.academic_ach != ''" class="w3-container w3-card w3-white">
           <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-trophy fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Academic
-            achievements</h2>
+            Awards</h2>
           <p>{{employee.academic_ach}}</p>
         </div>
         <div *ngIf="employee.extra_curricular != ''" class="w3-container w3-card w3-white">
           <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-star fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Extra
-            curricular</h2>
+            Curricular</h2>
           <p>{{employee.extra_curricular}}</p>
         </div>
         <div *ngIf="employee.certifications != ''" class="w3-container w3-card w3-white">

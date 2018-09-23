@@ -108,7 +108,7 @@ export class EmployeeProfileComponent implements OnInit {
   // public OnItemDeSelect(item: any) { this.jobTypeSelection(this.selectedItems); }
 
   public shareMyInfo(email) {
-    var win = window.open("profile/" + email, '_blank');
+    var win = window.open("#/profile/" + email, '_blank');
     win.focus();
   }
 

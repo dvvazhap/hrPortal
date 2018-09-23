@@ -29,7 +29,7 @@ export class JobOpeningsComponent implements OnInit {
   }
 
   public shareOpening(jobInfo){
-    var win = window.open("job/"+jobInfo, '_blank');
+    var win = window.open("#/job/"+jobInfo, '_blank');
     win.focus();
   }
 

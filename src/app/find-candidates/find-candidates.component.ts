@@ -37,7 +37,7 @@ export class FindCandidatesComponent implements OnInit {
   }
 
   public shareProfile(profile){
-    var win = window.open("profile/"+profile, '_blank');
+    var win = window.open("#/profile/"+profile, '_blank');
     win.focus();
   }
 }
