@@ -15,7 +15,7 @@ import { NgTableComponent, NgTableFilteringDirective, NgTablePagingDirective, Ng
 import { AppComponent } from './app.component';
 import { ServerService } from './services/server.service';
 import { LoginService } from './services/login.service';
-import { LoginComponent } from './login/login.component';
+
 import { EmployerComponent } from './employer/employer.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { HeaderComponent } from './header/header.component';
@@ -32,7 +32,7 @@ import { ReusableModule } from './reusable/reusable.module';
 import { SettingsComponent } from './settings/settings.component';
 
 const appRoutes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: '', loadChildren: './login/login.module#LoginModule' },
   { path: 'verifyUser', loadChildren: './verify/verify.module#VerifyModule'},
   { path: 'resetPassword', loadChildren: './reset-password/reset-password.module#ResetPasswordModule' },
   {
@@ -77,7 +77,6 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     EmployerComponent,
     EmployeeComponent,
     HeaderComponent,
