@@ -18,18 +18,18 @@ import { LoginService } from './services/login.service';
 
 import { EmployerComponent } from './employer/employer.component';
 import { EmployeeComponent } from './employee/employee.component';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from './reusable/header/header.component';
 import { JobOpeningsComponent } from './employee/job-openings/job-openings.component';
 import { PostRequirementComponent } from './/employer/post-requirement/post-requirement.component';
 import { FindCandidatesComponent } from './employer/find-candidates/find-candidates.component';
-import { FeedbackComponent } from './feedback/feedback.component';
+import { FeedbackComponent } from './reusable/feedback/feedback.component';
 import { EmployeeProfileComponent } from './employee/employee-profile/employee-profile.component';
 import { EmployerProfileComponent } from './employer/employer-profile/employer-profile.component';
 import { EditRequirementComponent } from './employer/edit-requirement/edit-requirement.component';
 
 import { ReusableModule } from './reusable/reusable.module';
 
-import { SettingsComponent } from './settings/settings.component';
+import { SettingsComponent } from './reusable/settings/settings.component';
 
 const appRoutes: Routes = [
   { path: '', loadChildren: './login/login.module#LoginModule' },

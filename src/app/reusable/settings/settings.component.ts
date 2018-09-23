@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../services/login.service';
-import { ServerService } from '../services/server.service';
+import { LoginService } from '../../services/login.service';
+import { ServerService } from '../../services/server.service';
 import { Md5 } from 'ts-md5/dist/md5';
-import { UserInfo, EmployeeInfo, EmployerInfo } from '../interface';
+import { UserInfo, EmployeeInfo, EmployerInfo } from '../../interface';
 
 @Component({
   selector: 'app-settings',

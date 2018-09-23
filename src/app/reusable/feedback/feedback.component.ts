@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../services/login.service';
-import { ServerService } from '../services/server.service';
-import { UserInfo } from '../interface';
+import { LoginService } from '../../services/login.service';
+import { ServerService } from '../../services/server.service';
+import { UserInfo } from '../../interface';
 
 @Component({
   selector: 'app-feedback',

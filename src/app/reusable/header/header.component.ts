@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../services/login.service';
-import { UserInfo, EmployeeInfo, EmployerInfo } from '../interface';
+import { LoginService } from '../../services/login.service';
+import { UserInfo, EmployeeInfo, EmployerInfo } from '../../interface';
 
 @Component({
   selector: 'app-header',
