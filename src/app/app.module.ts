@@ -4,7 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { Routes, RouterModule } from "@angular/router";
-// import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
@@ -74,19 +73,18 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    EmployerComponent,
     EmployeeComponent,
+    EmployeeProfileComponent,
     JobOpeningsComponent,
+    EmployerComponent,
     PostRequirementComponent,
     FindCandidatesComponent,
-    EmployeeProfileComponent,
     EmployerProfileComponent,
     EditRequirementComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    // BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
     AngularMultiSelectModule,
     ModalModule.forRoot(),
