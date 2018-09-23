@@ -18,7 +18,6 @@ import { LoginService } from './services/login.service';
 import { LoginComponent } from './login/login.component';
 import { EmployerComponent } from './employer/employer.component';
 import { EmployeeComponent } from './employee/employee.component';
-import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { HeaderComponent } from './header/header.component';
 import { JobOpeningsComponent } from './employee/job-openings/job-openings.component';
 import { PostRequirementComponent } from './/employer/post-requirement/post-requirement.component';
@@ -36,7 +35,7 @@ import { SettingsComponent } from './settings/settings.component';
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'verifyUser', loadChildren: './verify/verify.module#VerifyModule'},
-  { path: 'resetPassword', component: ResetPasswordComponent },
+  { path: 'resetPassword', loadChildren: './reset-password/reset-password.module#ResetPasswordModule' },
   {
     path: 'employer',
     children: [
@@ -90,7 +89,6 @@ const appRoutes: Routes = [
     LoginComponent,
     EmployerComponent,
     EmployeeComponent,
-    ResetPasswordComponent,
     HeaderComponent,
     JobOpeningsComponent,
     PostRequirementComponent,

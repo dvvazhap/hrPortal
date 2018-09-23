@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from "@angular/router";
 import { ReusableModule } from './../reusable/reusable.module';
 
-import { SuperComponent } from './../super/super.component';
+import { SuperComponent } from './super.component';
 
 const superRoutes: Routes = [
   {
