@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { Routes, RouterModule } from "@angular/router";
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+// import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
@@ -16,20 +16,17 @@ import { AppComponent } from './app.component';
 import { ServerService } from './services/server.service';
 import { LoginService } from './services/login.service';
 
-import { EmployerComponent } from './employer/employer.component';
 import { EmployeeComponent } from './employee/employee.component';
-import { HeaderComponent } from './reusable/header/header.component';
 import { JobOpeningsComponent } from './employee/job-openings/job-openings.component';
+import { EmployeeProfileComponent } from './employee/employee-profile/employee-profile.component';
+
+import { EmployerComponent } from './employer/employer.component';
 import { PostRequirementComponent } from './/employer/post-requirement/post-requirement.component';
 import { FindCandidatesComponent } from './employer/find-candidates/find-candidates.component';
-import { FeedbackComponent } from './reusable/feedback/feedback.component';
-import { EmployeeProfileComponent } from './employee/employee-profile/employee-profile.component';
 import { EmployerProfileComponent } from './employer/employer-profile/employer-profile.component';
 import { EditRequirementComponent } from './employer/edit-requirement/edit-requirement.component';
 
 import { ReusableModule } from './reusable/reusable.module';
-
-import { SettingsComponent } from './reusable/settings/settings.component';
 
 const appRoutes: Routes = [
   { path: '', loadChildren: './login/login.module#LoginModule' },
@@ -79,20 +76,17 @@ const appRoutes: Routes = [
     AppComponent,
     EmployerComponent,
     EmployeeComponent,
-    HeaderComponent,
     JobOpeningsComponent,
     PostRequirementComponent,
     FindCandidatesComponent,
-    FeedbackComponent,
     EmployeeProfileComponent,
     EmployerProfileComponent,
     EditRequirementComponent,
-    SettingsComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    BsDropdownModule.forRoot(),
+    // BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
     AngularMultiSelectModule,
     ModalModule.forRoot(),
