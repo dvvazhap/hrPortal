@@ -28,7 +28,6 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { EmployeeProfileComponent } from './employee/employee-profile/employee-profile.component';
 import { EmployerProfileComponent } from './employer/employer-profile/employer-profile.component';
 import { EditRequirementComponent } from './employer/edit-requirement/edit-requirement.component';
-import { ShareComponent } from './share/share.component';
 import { JobComponent } from './job/job.component';
 import { SuperComponent } from './super/super.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -63,15 +62,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'profile',
-    children: [
-      {
-        path: '',
-        component: ShareComponent
-      }, {
-        path: ':id',
-        component: ShareComponent
-      }
-    ]
+    loadChildren: './share/share.module#ShareModule'
   },
   {
     path: 'job',
@@ -117,7 +108,6 @@ const appRoutes: Routes = [
     EmployeeProfileComponent,
     EmployerProfileComponent,
     EditRequirementComponent,
-    ShareComponent,
     JobComponent,
     SuperComponent,
     SettingsComponent,
