@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../services/login.service';
-import { ServerService } from '../services/server.service';
+import { LoginService } from '../../services/login.service';
+import { ServerService } from '../../services/server.service';
 import { ActivatedRoute } from '@angular/router';
-import { UserInfo, EmployeeInfo, Projects, WorkExperience, Education } from '../interface';
+import { UserInfo, EmployeeInfo, Projects, WorkExperience, Education } from '../../interface';
 
 @Component({
   selector: 'app-employee-profile',
