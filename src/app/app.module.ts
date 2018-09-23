@@ -21,7 +21,6 @@ import { EmployeeComponent } from './employee/employee.component';
 import { VerifyComponent } from './verify/verify.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { HeaderComponent } from './header/header.component';
-import { ProfileComponent } from './profile/profile.component';
 import { JobOpeningsComponent } from './job-openings/job-openings.component';
 import { PostRequirementComponent } from './post-requirement/post-requirement.component';
 import { FindCandidatesComponent } from './find-candidates/find-candidates.component';
@@ -111,7 +110,6 @@ const appRoutes: Routes = [
     VerifyComponent,
     ResetPasswordComponent,
     HeaderComponent,
-    ProfileComponent,
     JobOpeningsComponent,
     PostRequirementComponent,
     FindCandidatesComponent,
