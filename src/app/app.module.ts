@@ -26,7 +26,6 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { EmployeeProfileComponent } from './employee/employee-profile/employee-profile.component';
 import { EmployerProfileComponent } from './employer/employer-profile/employer-profile.component';
 import { EditRequirementComponent } from './employer/edit-requirement/edit-requirement.component';
-import { JobComponent } from './job/job.component';
 
 import { ReusableModule } from './reusable/reusable.module';
 
@@ -65,15 +64,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'job',
-    children: [
-      {
-        path: '',
-        component: JobComponent
-      }, {
-        path: ':id',
-        component: JobComponent
-      }
-    ]
+    loadChildren: './job/job.module#JobModule'
   },
   {
     path: 'super',
@@ -97,7 +88,6 @@ const appRoutes: Routes = [
     EmployeeProfileComponent,
     EmployerProfileComponent,
     EditRequirementComponent,
-    JobComponent,
     SettingsComponent,
   ],
   imports: [
