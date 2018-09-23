@@ -29,9 +29,10 @@ import { EmployeeProfileComponent } from './employee/employee-profile/employee-p
 import { EmployerProfileComponent } from './employer/employer-profile/employer-profile.component';
 import { EditRequirementComponent } from './employer/edit-requirement/edit-requirement.component';
 import { JobComponent } from './job/job.component';
-import { SuperComponent } from './super/super.component';
+
+import { ReusableModule } from './reusable/reusable.module';
+
 import { SettingsComponent } from './settings/settings.component';
-import { AppPropertiesPipe } from './app-properties.pipe';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
@@ -78,15 +79,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'super',
-    children: [
-      {
-        path: '',
-        component: SuperComponent
-      }, {
-        path: ':id',
-        component: SuperComponent
-      }
-    ]
+    loadChildren: './super/super.module#SuperModule'
   },
   { path: '**', redirectTo: '/' }
 ];
@@ -109,9 +102,7 @@ const appRoutes: Routes = [
     EmployerProfileComponent,
     EditRequirementComponent,
     JobComponent,
-    SuperComponent,
     SettingsComponent,
-    AppPropertiesPipe
   ],
   imports: [
     BrowserModule,
@@ -123,9 +114,11 @@ const appRoutes: Routes = [
     HttpClientModule,
     AngularFontAwesomeModule,
     RouterModule.forRoot(appRoutes, {useHash: true}),
-    DataTablesModule
+    DataTablesModule,
+    ReusableModule
   ],
   providers: [ServerService, LoginService,{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { 
