@@ -8,22 +8,13 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { DataTablesModule } from 'angular-datatables';
-import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown/angular2-multiselect-dropdown';
 import { NgTableComponent, NgTableFilteringDirective, NgTablePagingDirective, NgTableSortingDirective } from 'ng2-table/ng2-table';
 
 import { AppComponent } from './app.component';
 import { ServerService } from './services/server.service';
 import { LoginService } from './services/login.service';
 
-import { EmployeeComponent } from './employee/employee.component';
-import { JobOpeningsComponent } from './employee/job-openings/job-openings.component';
-import { EmployeeProfileComponent } from './employee/employee-profile/employee-profile.component';
 
-import { EmployerComponent } from './employer/employer.component';
-import { PostRequirementComponent } from './/employer/post-requirement/post-requirement.component';
-import { FindCandidatesComponent } from './employer/find-candidates/find-candidates.component';
-import { EmployerProfileComponent } from './employer/employer-profile/employer-profile.component';
-import { EditRequirementComponent } from './employer/edit-requirement/edit-requirement.component';
 
 import { ReusableModule } from './reusable/reusable.module';
 
@@ -33,26 +24,11 @@ const appRoutes: Routes = [
   { path: 'resetPassword', loadChildren: './reset-password/reset-password.module#ResetPasswordModule' },
   {
     path: 'employer',
-    children: [
-      {
-        path: '',
-        component: EmployerComponent
-      }, {
-        path: ':id',
-        component: EmployerComponent
-      }
-    ]
+    loadChildren: './employer/employer.module#EmployerModule'
   },
   {
-    path: 'employee', children: [
-      {
-        path: '',
-        component: EmployeeComponent
-      }, {
-        path: ':id',
-        component: EmployeeComponent
-      }
-    ]
+    path: 'employee', 
+    loadChildren: './employee/employee.module#EmployeeModule'
   },
   {
     path: 'profile',
@@ -72,21 +48,12 @@ const appRoutes: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent,
-    EmployeeComponent,
-    EmployeeProfileComponent,
-    JobOpeningsComponent,
-    EmployerComponent,
-    PostRequirementComponent,
-    FindCandidatesComponent,
-    EmployerProfileComponent,
-    EditRequirementComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     TooltipModule.forRoot(),
-    AngularMultiSelectModule,
     ModalModule.forRoot(),
     HttpClientModule,
     AngularFontAwesomeModule,
