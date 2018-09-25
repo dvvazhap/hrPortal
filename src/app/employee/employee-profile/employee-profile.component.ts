@@ -71,45 +71,6 @@ export class EmployeeProfileComponent implements OnInit {
       if (this.employee.partTime == 1) this.partTime = true;
       if (this.employee.intern == 1) this.intern = true;
     });
-
-
-    // this.dropdownList = [
-    //   { "id": 1, "itemName": "Full Time" },
-    //   { "id": 2, "itemName": "Part Time" },
-    //   { "id": 3, "itemName": "Internship" },
-    // ];
-
-    // this.dropdownSettings = {
-    //   singleSelection: false,
-    //   text: "SELECT THE TYPE OF OPPORTUNITY YOU ARE INTERESTED IN",
-    //   enableSearchFilter: false,
-    //   enableCheckAll: false,
-    //   classes: "myclass custom-class"
-    // };
-
-  }
-
-  // public setJobType(obj) {
-  //   if (obj == undefined) { return; }
-  //   if (obj.id == 1) this.employee.fullTime = 1;
-  //   else if (obj.id == 2) this.employee.partTime = 1;
-  //   else if (obj.id == 3) this.employee.intern = 1;
-  // }
-  // public jobTypeSelection(obj) {
-  //   this.employee.fullTime = 0;
-  //   this.employee.partTime = 0;
-  //   this.employee.intern = 0;
-  //   this.setJobType(obj[0]);
-  //   this.setJobType(obj[1]);
-  //   this.setJobType(obj[2]);
-  // }
-
-  // public onItemSelect(item: any) { this.jobTypeSelection(this.selectedItems); }
-  // public OnItemDeSelect(item: any) { this.jobTypeSelection(this.selectedItems); }
-
-  public shareMyInfo(email) {
-    var win = window.open("#/profile/" + email, '_blank');
-    win.focus();
   }
 
   public workPresent(work) {

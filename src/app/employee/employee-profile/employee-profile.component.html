@@ -1,8 +1,6 @@
 <div class="container-fluid employee">
   <div class="form-row">
     <div class="col-sm-12 interested">
-      <i (click)="shareMyInfo(userInfo.email)" style="cursor:pointer" class="fa fa-share-alt fa-2x" aria-hidden="true"
-        placement="right" tooltip="Share your profile with the Recruiters"></i><span class="spacing"></span>
       <input type="radio" [value]=true [(ngModel)]="looking" /> <i>Looking for a change</i><span class="spacing"></span>
       <input type="radio" [value]=false [(ngModel)]="looking" /> <i>Not Looking</i><span class="spacing"></span>
       <span class="viewers" style="float:right">Viewers : {{employee.viewers}}</span>
