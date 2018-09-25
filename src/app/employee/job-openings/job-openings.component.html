@@ -1,50 +1,77 @@
 <div class="container-fluid">
-  <div class="" *ngIf="!openings">
-    <h3>Sorry!!! <br/>There are no openings available at the moment.</h3>
-  </div>
-  <table datatable class="table hover table-bordered" *ngIf="openings">
-    <thead class="heading">
-      <tr>
-        <th></th>
-        <th>Looking for</th>
-        <th>Posted On</th>
-        <th>Preferred Candidate</th>
-        <th>Open Posiitons</th>
-        <th>Designation</th>
-        <th>Company</th>
-        <th>Location</th>
-        <th>Experience</th>
-        <th>Notice Period</th>
-        <th>Skills</th>
-        <th>SpecificReq</th>
-        <th>Contact</th>
+    <div class="" *ngIf="!openings">
+        <h3>Sorry!!! <br />There are no openings available at the moment.</h3>
+    </div>
+    <!-- First Photo Grid-->
+    <div class="w3-row">
+        Click on each job to see the details
+        <div class="w3-container w3-margin-bottom job-opening" *ngFor="let open of this.openings">
+            <details class="w3-container">
+                <summary>
 
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let open of this.openings" class="openings">
-        <td>
-          <button type="button" class="btn btn-primary" target="_blank" (click)="shareOpening(open.ind)">Share this opportunity</button>
-        </td>
-        <td>
-          <span [hidden]="open.fullTime != 1">Full Time</span>
-          <span [hidden]="open.partTime == 0 || open.intern == 0"> /</span>
-          <span [hidden]="open.partTime != 1">Part Time</span>
-          <span [hidden]="open.intern != 1"> /</span>
-          <span [hidden]="open.intern != 1">Internship </span>
-        </td>
-        <td>{{open.timestamp | date: 'd MMM y'}}</td>
-        <td>{{open.gender}}</td>
-        <td>{{open.count}}</td>
-        <td>{{open.designation}}</td>
-        <td>{{open.company}}</td>
-        <td>{{open.location}}</td>
-        <td>{{open.min_years}}yrs - {{open.max_years}}yrs </td>
-        <td>{{open.description}}</td>
-        <td>{{open.skills}}</td>
-        <td>{{open.specificReq}}</td>
-        <td>{{open.contact}} {{open.email}}</td>
-      </tr>
-    </tbody>
-  </table>
+                    <div class="w3-row">
+                        <div class="w3-half">
+                            <p><i class="fa fa-calendar fa-fw w3-margin-right"></i>
+                                    {{open.timestamp | date: 'd MMM y'}}</p>
+                        </div>
+                        <div class="w3-half">
+                            <p><b>Type </b> <span [hidden]="open.fullTime != 1">Full Time</span>
+                                <span [hidden]="open.partTime == 0 || open.intern == 0">, </span>
+                                <span [hidden]="open.partTime != 1">Part Time</span>
+                                <span [hidden]="open.intern != 1"> , </span>
+                                <span [hidden]="open.intern != 1">Internship </span></p>
+                        </div>
+                        <div class="w3-half">
+                            <p><b>Company </b>{{open.company}} ({{open.location}})</p>
+                        </div>
+                        <div class="w3-half">
+                            <p><b>Designation </b> {{open.designation}}</p>
+                        </div>
+                        <div class="w3-half">
+                            <p><b>Experience </b> {{open.min_years}}yrs - {{open.max_years}}yrs</p>
+                        </div>
+                        <div class=" w3-half">
+                            <p><b>Skills </b> {{open.skills}}</p>
+                        </div>
+                    </div>
+                </summary>
+
+                <div class="w3-row">
+                    <div class="w3-half">
+                        <p><b>Gender </b> {{open.gender}}</p>
+                    </div>
+                    <div class="w3-half">
+                        <p><b>No of Openings </b> {{open.count}}</p>
+                    </div>
+                    <div class="">
+                        <p><b>Job Description </b>{{open.description}}</p>
+                    </div>
+                    <div *ngIf="open.specificReq != ''">
+                        <p><b>Other Conditions </b>{{open.specificReq}}</p>
+                    </div>
+                    <div class="w3-half">
+                        <p><b>Email </b> {{open.email}}</p>
+                    </div>
+                    <div *ngIf="open.contact != ''" class=" w3-half">
+                        <p><b>Phone </b> {{open.contact}}</p>
+                    </div>
+                </div>
+
+                <i class="fa fa-share fa-fw "></i><a target="_blank" style="text-decoration: black underline" (click)="shareOpening(open.ind)" href="">Share this with your friends</a>
+                <br/><br/>
+            </details>
+        </div>        
+    </div>
+
+    <!-- Pagination -->
+    <!-- <div class="w3-center w3-padding-32">
+        <div class="w3-bar">
+            <a href="#" class="w3-bar-item w3-button w3-hover-black">«</a>
+            <a href="#" class="w3-bar-item w3-black w3-button">1</a>
+            <a href="#" class="w3-bar-item w3-button w3-hover-black">2</a>
+            <a href="#" class="w3-bar-item w3-button w3-hover-black">3</a>
+            <a href="#" class="w3-bar-item w3-button w3-hover-black">4</a>
+            <a href="#" class="w3-bar-item w3-button w3-hover-black">»</a>
+        </div>
+    </div> -->
 </div>

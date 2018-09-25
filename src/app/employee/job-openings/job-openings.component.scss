@@ -6,3 +6,15 @@
     background-color: #000;
     color:#fff;
 }
+
+summary{
+    outline: none;
+  }
+
+summary::-webkit-details-marker { font-size:0px }
+
+.job-opening{
+    border-radius: 5px;
+    border: 1px solid #000;
+    background-color: #EEE2DC;
+}
