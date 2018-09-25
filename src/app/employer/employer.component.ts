@@ -31,4 +31,9 @@ export class EmployerComponent implements OnInit {
     this.info.currentEmployerInformation.subscribe(dat => { this.employer = dat; })
 
   }
+
+  public w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+  }
 }

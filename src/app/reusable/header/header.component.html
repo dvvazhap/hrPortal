@@ -1,62 +1,17 @@
-<nav class="navbar navbar-expand-sm">
-  <a class="navbar-brand">WeRThere4U</a>
-  <div class="navbar-collapse mx-auto" id="navbarSupportedContent">
-    <div class="btn-group">
-      <li (click)="callComponent('profile')"> Profile </li>
-    </div>
-    <div class="btn-group" dropdown *ngIf="user.user_type==1">
-      <li dropdownToggle class="dropdown-toggle" aria-controls="dropdown-basic">
-        Recruiter
-        <span class="caret"></span>
-      </li>
-      <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
-        <li role="menuitem" (click)="callComponent('post_requirement')">
-          <a class="dropdown-item">Add/Modify Requirement</a>
-        </li>
-        <li role="menuitem" (click)="callComponent('find_candidates')">
-          <a class="dropdown-item">Find Candidates</a>
-        </li>
-      </ul>
-    </div>
-
-    <!-- <div class="btn-group" dropdown *ngIf="user.user_type=='2'">
-      <li dropdownToggle class="dropdown-toggle" aria-controls="dropdown-basic">
-        Jobs
-        <span class="caret"></span>
-      </li>
-      <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
-        <li role="menuitem" (click)="callComponent('job_openings')">
-          <a class="dropdown-item">Job Openings</a>
-        </li>
-      </ul>
-    </div> -->
-
-    <div class="btn-group" *ngIf="user.user_type==2">
-      <li (click)="callComponent('job_openings')"> Job Openings </li>
-    </div>
-
-    <div class="btn-group" *ngIf="user.user_type==2">
-      <li (click)="callComponent('settings')"> Settings </li>
-    </div>
-
-    <div class="btn-group">
-      <li (click)="callComponent('feedback')" placement="bottom" tooltip="Let us know, so that we can work upon." container="body">
-        Feedback </li>
-    </div>
-  </div>
-
-  <div class="btn-group userInfo" dropdown>
-    <li dropdownToggle class="dropdown-toggle" aria-controls="dropdown-basic">
-      {{employer.name || employee.name}}
-      <span class="caret"></span>
-    </li>
-    <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="button-basic">
-      <!-- <li role="menuitem">{{user.email}}</li>
-      <li role="menuitem">{{employer.phone || employee.phone}}</li>
-      <li role="menuitem">{{employer.org_name || employee.company}}</li>
-      <div class="dropdown-divider"></div> -->
-      <li (click)="logOut()"> Logout </li>
-    </ul>
-  </div>
-
-</nav>
+    <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+      <div class="w3-container">
+          <h4><b>WeRThere4U</b></h4>  
+         <p>{{employer.name || employee.name | titlecase}}</p>
+      </div>
+      <div class="w3-bar-block">
+          <a (click)="callComponent('profile')" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>PROFILE</a>
+          <a *ngIf="user.user_type==1" (click)="callComponent('post_requirement')" class="w3-bar-item w3-button w3-padding"><i class="fa fa-pencil fa-fw w3-margin-right"></i>ADD/ MODIFY REQUIREMENT</a>
+          <a *ngIf="user.user_type==1" (click)="callComponent('find_candidates')" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw w3-margin-right"></i>FIND CANDIDATES</a>
+          <a *ngIf="user.user_type==2" (click)="shareMyInfo()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-share-alt fa-fw w3-margin-right"></i>SHARE PROFILE</a>
+          <a *ngIf="user.user_type==2" (click)="callComponent('job_openings')" class="w3-bar-item w3-button w3-padding"><i class="fa fa-briefcase fa-fw w3-margin-right"></i>JOB OPENINGS</a>
+          <a (click)="callComponent('settings')" class="w3-bar-item w3-button w3-padding"><i class="fa fa-unlock-alt fa-fw w3-margin-right"></i>CHANGE PASSWORD</a>
+          <a  (click)="callComponent('feedback')" class="w3-bar-item w3-button w3-padding"><i class="fa fa-comment fa-fw w3-margin-right"></i>FEEDBACK</a>
+          <a   (click)="logOut()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-sign-out fa-fw w3-margin-right"></i>LOGOUT</a>
+      </div>
+  </nav>
+  <div class="w3-overlay w3-hide-large w3-animate-opacity" (click)="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>

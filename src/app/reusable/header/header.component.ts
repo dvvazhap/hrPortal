@@ -37,9 +37,20 @@ export class HeaderComponent implements OnInit {
 
   public callComponent(option: string) {
     this.info.selectedComponent(option);
+    this.w3_close();
   }
 
   public logOut() {
     this.info.logOut();
+  }
+
+  public w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+  }
+
+  public shareMyInfo() {
+    var win = window.open("#/profile/" + this.user.email, '_blank');
+    win.focus();
   }
 }
