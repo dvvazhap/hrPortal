@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ServerService } from '../services/server.service';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-verify',
@@ -13,7 +14,7 @@ export class VerifyComponent implements OnInit {
   email: string;
   error:string;
   info:string;
-  constructor(private route: ActivatedRoute, private router: Router, private serverdata: ServerService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private serverdata: ServerService, private login_info: LoginService) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe((params: Params) => {
@@ -26,19 +27,26 @@ export class VerifyComponent implements OnInit {
   public verifyUser = function (tt: string, rr: number) {
     this.email = tt.substring(13);
     this.serverdata.verifyUser(tt, rr, this.email).subscribe(data => {
-      // alert("data :"+data);
-      if (data == "verified") {
+      let temp = JSON.parse(data);
+      if (temp.stat === "verified") {
         this.error = "";
         this.info = "User already verified.";
       }
-      else if (data == "0") {
+      else if (temp.stat === "0") {
         this.info = "";
         this.error = "Email Verification Unsuccessful.";
       }
-      else if (data == "1") {
+      else if (temp.stat === "1") {
         this.error = "";
         this.info = "Email Verification Successful."
       }
+      this.login_info.setStorageInfo(temp.t, this.email, temp.ut);
+      if (temp.ut == "1")
+        this.router.navigate(['employer/' + this.email]);
+      else if (temp.ut == "2")
+        this.router.navigate(['employee/' + this.email]);
+      else if (temp.ut == "3")
+        this.router.navigate(['super/' + this.email]);
     }, error => {
       this.info = "";
       this.error = "Could not verify due to some issues.";

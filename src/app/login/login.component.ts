@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
     loading: false,
     token: "",
 
-    email: 'abe@gmail.com',
+    email: '',
     emailExists: '',
     name: '',
     password: "",
