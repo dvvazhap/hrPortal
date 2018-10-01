@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from "@angular/router";
+import { ReusableModule } from './../reusable/reusable.module';
 
 import { ResetPasswordComponent } from './reset-password.component';
-import { LogoDirective } from '../reusable/logo.directive';
 const resetRoutes: Routes = [
   {
     path: '',
@@ -16,7 +16,7 @@ const resetRoutes: Routes = [
   imports: [
     CommonModule,
     FormsModule,
-    LogoDirective,
+    ReusableModule,
     RouterModule.forChild(resetRoutes)
   ],
   declarations: [ResetPasswordComponent]
