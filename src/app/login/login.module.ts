@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from "@angular/router";
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { ReusableModule } from './../reusable/reusable.module';
 
 
 import { LoginComponent } from './login.component';
@@ -17,6 +18,7 @@ const loginRoutes: Routes = [{
     CommonModule,
     FormsModule,
     AngularFontAwesomeModule,
+    ReusableModule,
     RouterModule.forChild(loginRoutes)
   ],
   declarations: [LoginComponent]

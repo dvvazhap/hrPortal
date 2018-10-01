@@ -16,6 +16,7 @@ import { HeaderComponent } from './header/header.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { SettingsComponent } from './settings/settings.component';
 import { FooterComponent } from './footer/footer.component';
+import { LogoDirective } from './logo.directive';
 
 @NgModule({
   imports: [
@@ -28,9 +29,9 @@ import { FooterComponent } from './footer/footer.component';
     AngularFontAwesomeModule,
     DataTablesModule,
   ],
-  declarations: [AppPropertiesPipe,HeaderComponent,FeedbackComponent,SettingsComponent, FooterComponent],
+  declarations: [AppPropertiesPipe,LogoDirective,HeaderComponent,FeedbackComponent,SettingsComponent, FooterComponent],
   providers: [],
-  exports: [AppPropertiesPipe,HeaderComponent,FeedbackComponent,SettingsComponent,FooterComponent]
+  exports: [AppPropertiesPipe,LogoDirective,HeaderComponent,FeedbackComponent,SettingsComponent,FooterComponent]
 })
 export class ReusableModule { 
   directives: [
