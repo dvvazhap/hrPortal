@@ -1,130 +1,108 @@
-<div class="container-fluid">
-  <div class="mx-auto" style="height: 100px;"></div>
-  <div class="row">
-    <div class="col-lg-7" style="text-align:center">
+<div class="container-fluid login_page">
+  <div class="mx-auto" style="height: 50px;"></div>
+  <div class="row content">
+    <div class="col-sm-7" style="text-align:center">
       <h1>weRThere4U</h1>
     </div>
-    <div class="col-lg-5" style="text-align:center">
-      <div class="form-row align-items-center">
-        <div class="col-sm-8">
-          <div class="input-group mb-2">
-            <div class="input-group-prepend">
-              <div class="input-group-text">@</div>
-            </div>
-            <input type="text" maxlength="50" class="form-control" [(ngModel)]="email" placeholder="Email Address" [disabled]=" emailExists!=''? 'disabled' : null"
-            />
-          </div>
-        </div>
-        <div class="col-sm-4">
+    <div class="col-sm-5 login" >
 
-          <button *ngIf="emailExists=='' && !loading" (click)="validateEmail()" type="submit" class="btn btn-success mb-2 btn-block">
-            <fa name="angle-double-right" size="lg" color="green"></fa>
-          </button>
-          <fa *ngIf="loading" name="spinner" animation="pulse" size="2x"></fa>
+      <form class="row" name="form" (ngSubmit)="validateThisUser()" #f="ngForm">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <!-- <label for="email">Email</label> -->
+            <input type="text" class="form-control" name="email" maxlength="50" [(ngModel)]="user.email" #email="ngModel"
+              [disabled]=" user.emailExists!=''? 'disabled' : null" [ngClass]="{ 'is-invalid': !validEmail() }"
+              placeholder="Email" />
+            <div class="invalid-feedback"> Enter a valid Email Address </div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="form-group">
+            <button *ngIf="user.emailExists=='' && !user.loading" class="btn btn-success mb-2 btn-block" [disabled]="!validEmail()">
+              Next <i class="fa fa-angle-double-right" aria-hidden="true" ></i>
 
-        </div>
-      </div>
-      <div class="form-row align-items-center">
-        <div class="col-sm-8">
-          <div class="alert alert-danger" [hidden]="error==''">
-            <strong>{{error}}</strong>
-          </div>
-          <div class="alert alert-info" [hidden]="msg==''">
-            <strong>{{msg}}</strong>
-          </div>
-          <span [hidden]="!resendVerifyEmail" style="cursor:pointer" (click)="resendEmail()">
-              <b>Send Verification email again </b>
-            </span>
-        </div>
-        <div class="col-sm-4"></div>
-      </div>
-
-      <div *ngIf="getPassword" class="form-row align-items-center">
-        <div class="col-sm-8">
-          <div class="input-group mb-2">
-            <div class="input-group-prepend">
-              <div class="input-group-text">***</div>
-            </div>
-            <input type="{{passwordType}}" maxlength="30" class="form-control" [(ngModel)]="password" placeholder="Password" />
-            <div class="input-group-prepend">
-              <div class="input-group-text" (mouseenter)="showPassword()" (mouseleave)="hidePassword()" style="cursor:pointer">Show</div>
-            </div>
+            </button>
+            <i *ngIf="user.loading" class="fa fa-refresh fa-2x fa-spin load" aria-hidden="true"></i>
           </div>
         </div>
-        <div class="col-sm-4">
-          <button type="submit" class="btn btn-success mb-2 btn-block" (click)="logIn()">Sign In</button>
-        </div>
-        <div class="col-sm-8">
-          <span style="cursor:pointer" (click)="resetPassword()">
-            <b>Forgot Password </b>
+      </form>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="alert alert-danger" [hidden]="user.error==''">
+            <strong>{{user.error}}</strong>
+          </div>
+          <div class="alert alert-info" [hidden]="user.msg==''">
+            <strong>{{user.msg}}</strong>
+          </div>
+          <span [hidden]="!user.resendVerifyEmail" style="cursor:pointer" (click)="resendEmail()">
+            <b>Send Verification email again </b>
           </span>
         </div>
+
       </div>
 
-      <div *ngIf="getSignInData">
-        <div class="mx-auto" style="height: 30px;"></div>
-
-        <div class="form-row align-items-center">
-          <div class="col-sm-8">
-            <div class="input-group mb-2">
-              <div class="input-group-prepend">
-                <div class="input-group-text">Name</div>
-              </div>
-              <input type="text" maxlength="48" class="form-control" [(ngModel)]="name" placeholder="What do people call you ?" />
-            </div>
+      <form *ngIf="user.getSignInData" class="row" name="form" (ngSubmit)="signUp()" #f="ngForm" novalidate>
+        <div class="col-sm-12">
+          <div class="form-group">
+            <!-- <label for="Name">Name</label> -->
+            <input type="text" class="form-control" name="name" [(ngModel)]="user.name" #name="ngModel" [ngClass]="{ 'is-invalid': nameChange() }"
+              maxlength="48" placeholder="Name" autocomplete />
+            <div class="invalid-feedback"> Enter valid name </div>
           </div>
-          <div class="col-sm-4"></div>
         </div>
 
-        <div class="mx-auto" style="height: 30px;"></div>
-
-        <div class="form-row align-items-center">
-          <div class="col-sm-8">
-            <div class="input-group mb-2">
-              <div class="input-group-prepend">
-                <div class="input-group-text">Password</div>
-              </div>
-              <input type="password" maxlength="30" class="form-control" [(ngModel)]="password" placeholder="Password" />
-            </div>
+        <div class="col-sm-12">
+          <div class="form-group">
+            <!-- <label for="password">Password</label> -->
+            <input type="password" class="form-control" name="password" [(ngModel)]="user.password" #password="ngModel"
+              [ngClass]="{ 'is-invalid': passChange() }" maxlength="30" placeholder="Password" autocomplete />
+            <div class="invalid-feedback"> Password should be of minimum 8 characters without space </div>
           </div>
-          <div class="col-sm-4"></div>
         </div>
 
-        <div class="form-row align-items-center">
-          <div class="col-sm-8">
-            <div class="input-group mb-2">
-              <div class="input-group-prepend">
-                <div class="input-group-text">Confirm Password</div>
-              </div>
-              <input type="password" maxlength="30" class="form-control" [(ngModel)]="confirm_password" placeholder="Confirm Password" />
-            </div>
+        <div class="col-sm-12">
+          <div class="form-group">
+            <!-- <label for="confirm_password">Confirm Password</label> -->
+            <input type="password" class="form-control" name="confirm_password" [(ngModel)]="user.confirm_password"
+              maxlength="30" #confirm_password="ngModel" [ngClass]="{ 'is-invalid': confPassChange() }" placeholder="Confirm Password"
+              autocomplete />
+            <div class="invalid-feedback"> Password and Confirm Password should be same </div>
           </div>
-          <div class="col-sm-4"></div>
         </div>
 
-        <div class="mx-auto" style="height: 20px;"></div>
-
-        <div class="form-row align-items-center">
-          <div class="col-sm-4">
-            <label class="tgl">
-              <input type="checkbox" [(ngModel)]="user_type" checked/>
-              <span class="tgl_body">
-                <span class="tgl_switch"></span>
-                <span class="tgl_track">
-                  <span class="tgl_bgd"></span>
-                  <span class="tgl_bgd tgl_bgd-negative"></span>
-                </span>
-              </span>
-            </label>
-
+        <div class="col-sm-12">
+          <div class="form-group">
+            <select class="form-control" name="user_type" [(ngModel)]="user.user_type" #user_type="ngModel" [ngClass]="{ 'is-invalid': selUserType() }">
+              <option value=0>Who are you ?</option>
+              <option value=1>HR Recruiter</option>
+              <option value=2 selected>Candidate</option>
+            </select>
+            <div class="invalid-feedback"> Select the option that decribes you </div>
           </div>
-          <div class="col-sm-1"></div>
-          <div class="col-sm-3">
-            <button type="submit" class="btn btn-primary btn-lg btn-block" (click)="signUp()">Sign Up</button>
-          </div>
-          <div class="col-sm-4"></div>
         </div>
-      </div>
+
+        <div class="col-sm-12">
+          <div class="form-group">
+            <button [disabled]="disableSignUp()" class="btn btn-primary btn-block">Sign Up</button>
+          </div>
+        </div>
+      </form>
+
+      <form *ngIf="user.getPassword" class="row" name="form" (ngSubmit)="logIn()" #f="ngForm" novalidate>
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" [(ngModel)]="user.password" #password="ngModel"
+              maxlength="30" autocomplete />
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="form-group"> <button class="btn btn-primary">Log In</button> </div>
+        </div>
+        <div class="col-sm-12">
+          <span style="cursor:pointer" (click)="resetPassword()"> <b>Forgot Password </b> </span>
+        </div>
+      </form>
     </div>
   </div>
 </div>

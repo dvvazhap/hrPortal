@@ -53,8 +53,6 @@ export class ServerService {
   }
 
   addUser(token, email, password, user_type, name) {
-    user_type == true ? user_type = 1 : user_type = 2;
-
     let body = new HttpParams()
       .set(`token`, token + email)
       .set(`email`, email)

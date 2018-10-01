@@ -10,22 +10,23 @@ import { Md5 } from 'ts-md5/dist/md5';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  currentTime: number = Date.now();
-  emailExists: string = '';
-  loading: boolean = false;
-  email: string = '';
-  error: string = '';
-  msg: string = '';
-  getSignInData: boolean = false;
-  getPassword: boolean = false;
-  passwordType: string = "password";
-  resendVerifyEmail: boolean = false;
+  user: any = {
+    loading: false,
+    token: "",
 
-  token: string;
-  password: string = '';
-  confirm_password: string = '';
-  name: string = '';
-  user_type: boolean = true;
+    email: 'abe@gmail.com',
+    emailExists: '',
+    name: '',
+    password: "",
+    confirm_password: '',
+    user_type: 0,
+    currentTime: Date.now(),
+    error: '',
+    msg: '',
+    getSignInData: false,
+    getPassword: false,
+    resendVerifyEmail: false,
+  };
 
   constructor(private serverdata: ServerService, private info: LoginService, private router: Router) { }
 
@@ -33,133 +34,131 @@ export class LoginComponent implements OnInit {
     this.info.getStorageInfo();
 
   }
-  private validEmail(email) {
+  private validEmail() {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
+    return re.test(String(this.user.email).toLowerCase());
   }
 
-  public validateEmail() {
-    if (!this.validEmail(this.email)) {
-      this.error = "Enter a valid Email Address";
-    } else {
-      this.error = '';
-      this.loading = true;
-      this.serverdata.validateEmail(this.email).subscribe(data => {
-        this.emailExists = data.toString();
-        if (this.emailExists == "nodata") {
-          this.getSignInData = true;
-          this.loading = false;
-          this.msg = "Create your account in 30 seconds";
-        } else if (this.emailExists == "not_valid") {
-          this.getPassword = false;
-          this.error = "Verify your account by clicking on the email you have received.";
-          this.loading = false;
-          this.resendVerifyEmail = true;
-        }
-        else if (this.emailExists == "valid") {
-          this.getPassword = true;
-          this.loading = false;
-        }
-      }, error => {
-        this.loading = false;
-        this.error = "Server is down. Sorry for the inconvenience.";
-      });
-    }
-  }
-
-  public showPassword() { this.passwordType = "text"; }
-  public hidePassword() { this.passwordType = "password"; }
-  public resetPassword() {
-
-    this.serverdata.resetPasswordLink(this.email).subscribe(data => {
-      this.error = "";
-      if (data == "1") {
-        this.error = "";
-        this.msg = "Password reset link has been send to your mail id.";
+  validateThisUser() {
+    this.user.error = '';
+    this.user.loading = true;
+    this.serverdata.validateEmail(this.user.email).subscribe(data => {
+      this.user.emailExists = data.toString();
+      if (this.user.emailExists == "nodata") {
+        this.user.getSignInData = true;
+        this.user.loading = false;
+        this.user.msg = "Create your account in 30 seconds";
+      } else if (this.user.emailExists == "not_valid") {
+        this.user.getPassword = false;
+        this.user.error = "Verify your account by clicking on the email you have received.";
+        this.user.loading = false;
+        this.user.resendVerifyEmail = true;
       }
-      else { //this should never come
-        this.msg = "";
-        this.error = "Could not update the reset link due to some issues.";
+      else if (this.user.emailExists == "valid") {
+        this.user.getPassword = true;
+        this.user.loading = false;
       }
     }, error => {
-      this.msg = ""
-      this.error = "Error :" + JSON.stringify(error);
+      this.user.loading = false;
+      this.user.error = "Server is down. Sorry for the inconvenience.";
+    });
+  }
+
+  public resetPassword() {
+
+    this.serverdata.resetPasswordLink(this.user.email).subscribe(data => {
+      this.user.error = "";
+      if (data == "1") {
+        this.user.error = "";
+        this.user.msg = "Password reset link has been send to your mail id.";
+      }
+      else { //this should never come
+        this.user.msg = "";
+        this.user.error = "Could not update the reset link due to some issues.";
+      }
+    }, error => {
+      this.user.msg = ""
+      this.user.error = "Error :" + JSON.stringify(error);
     });
   }
 
   public logIn() {
-    let password = Md5.hashStr(this.password).toString();
-    this.serverdata.checkUser(this.email, password)
+    let password = Md5.hashStr(this.user.password).toString();
+    this.serverdata.checkUser(this.user.email, password)
       .subscribe(data => {
-        this.error = "";
-        this.msg = "";
+        this.user.error = "";
+        this.user.msg = "";
         let dat = JSON.parse(data.body)
         if (dat.count == 0) {
-          this.error = "Password does not match."
+          this.user.error = "Password does not match."
         }
         else {
-          this.info.setStorageInfo(dat.token, this.email, dat.user_type);
+          this.info.setStorageInfo(dat.token, this.user.email, dat.user_type);
           if (dat.user_type == "1")
-            this.router.navigate(['employer/' + this.email]);
+            this.router.navigate(['employer/' + this.user.email]);
           else if (dat.user_type == "2")
-            this.router.navigate(['employee/' + this.email]);
+            this.router.navigate(['employee/' + this.user.email]);
           else if (dat.user_type == "3")
-            this.router.navigate(['super/' + this.email]);
+            this.router.navigate(['super/' + this.user.email]);
         }
       }, error => {
-        this.loading = false;
-        this.error = "Server is down. Sorry for the inconvenience.";
+        this.user.loading = false;
+        this.user.error = "Server is down. Sorry for the inconvenience.";
       });
   }
   public resendEmail() {
-    this.serverdata.resendEmail(this.email)
+    this.serverdata.resendEmail(this.user.email)
       .subscribe(data => {
         if (data == "send") {
-          this.error = "";
-          this.msg = "Verification email has been sent";
-          this.resendVerifyEmail = false;
+          this.user.error = "";
+          this.user.msg = "Verification email has been sent";
+          this.user.resendVerifyEmail = false;
         } else {
-          this.error = data;
-          this.msg = "";
+          this.user.error = data;
+          this.user.msg = "";
         }
       }, error => {
-        this.loading = false;
-        this.error = "Error :", JSON.stringify(error);
+        this.user.loading = false;
+        this.user.error = "Error :", JSON.stringify(error);
       });
   }
+
+  public nameChange() {
+    if (this.user.name.replace(/\s/g, '').length < 3) { return true; } else { return false; }
+  }
+  public passChange() {
+    if (this.user.password.replace(/\s/g, '').length < 8) { return true; } else { return false }
+  }
+  public confPassChange() {
+    if (this.user.password !== this.user.confirm_password) { return true; } else { return false; }
+  }
+
+  public selUserType(){
+    if (this.user.user_type ==0 ){ return true;} else{ return false;}
+  }
+
+  public disableSignUp() {
+    if (this.user.name.replace(/\s/g, '').length >= 3 && this.user.password.replace(/\s/g, '').length >= 8 && this.user.password !== '' && this.user.password === this.user.confirm_password && this.user.user_type!==0)
+      return false;
+    else return true;
+  }
+
   public signUp() {
-    if(this.name.replace(/\s/g,'').length == 0 ){
-      this.error = 'Name cannot be empty';
-      this.msg = '';
-    }
-    else if(this.name.replace(/\s/g,'').length < 3 ){
-      this.error = 'Name cannot be that small';
-      this.msg = '';
-    }
-    else if (this.password.replace(/\s/g,'').length < 8) {
-      this.error = 'Password should be of minimum 8 characters';
-      this.msg = '';
-    }
-    else if (this.password != this.confirm_password) {
-      this.error = 'Password and Confirm Password should be same';
-      this.msg = '';
-    } else {
-      this.error = '';
-      this.msg = '';
-      this.token = Date.now().toString();
-      let password = Md5.hashStr(this.password).toString();
-      this.getSignInData = false;
-      this.serverdata.addUser(this.token, this.email, password, this.user_type,this.name)
-        .subscribe(data => {
+    console.log("insdie sign up :this.user.name ", this.user.name, "...this.user.password :", this.user.password, "...this.user.confirm_password :", this.user.confirm_password);
+    this.user.error = "";
+    this.user.msg = "";
+    this.user.token = Date.now().toString();
+    let password = Md5.hashStr(this.user.password).toString();
+    this.user.getSignInData = false;
+    this.serverdata.addUser(this.user.token, this.user.email, password, this.user.user_type, this.user.name)
+      .subscribe(data => {
+        this.user.resendVerifyEmail = true;
+        this.user.msg = "Verify your account by clicking on the email you have received.";
+      }, error => {
+        this.user.loading = false;
+        this.user.error = "Something went wrong.";
+      });
 
-          this.resendVerifyEmail = true;
-          this.msg = "Verify your account by clicking on the email you have received.";
-
-        }, error => {
-          this.loading = false;
-          this.error = "Something went wrong.";
-        });
-    }
 
   }
 }
