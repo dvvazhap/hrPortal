@@ -14,6 +14,7 @@ export class FeedbackComponent implements OnInit {
   msg: string = "";
   userInfo: UserInfo = {} as any;
   subject: string;
+  enableSubmit: boolean = false;
 
   constructor(private info: LoginService, private serverdata: ServerService) { }
 
@@ -23,23 +24,19 @@ export class FeedbackComponent implements OnInit {
     });
   }
 
-  public submitFeedback() {
-    if (this.subject == "" || this.subject == null || this.subject == undefined) {
-      this.error = "Kindly type what we can do better for you.";
-    } else {
-      this.serverdata.submitFeedback(this.userInfo.email, this.subject, this.userInfo.user_type).subscribe(data => {
-        if (data == "insert") {
-          this.error = "";
-          this.msg = "Thank you for your valuable feedback.";
-          this.subject = "";
-        }
-      }, error => {
-        this.msg = ""
-        this.error = "Error :" + JSON.stringify(error);
-      });
-    }
-
-
+  public checkFeedback() {
+    this.subject.replace(/\s/g, '') === '' ? this.enableSubmit = false : this.enableSubmit = true;
   }
-
+  public submitFeedback() {
+    this.serverdata.submitFeedback(this.userInfo.email, this.subject, this.userInfo.user_type).subscribe(data => {
+      if (data == "insert") {
+        this.error = "";
+        this.msg = "Thank you for your valuable feedback.";
+        this.subject = "";
+      }
+    }, error => {
+      this.msg = ""
+      this.error = "Error :" + JSON.stringify(error);
+    });
+  }
 }

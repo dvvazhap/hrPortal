@@ -50,15 +50,7 @@ $hr_color: black;
     
     *{box-sizing:border-box;}
     
-    /*Just to center the Form*/
-    .resume {
-      margin: auto; 
-      /* position: absolute;  */
-      top: 0; 
-      left: 0; 
-      bottom: 0; 
-      right: 0; }
-    
+   
     /* A container to position LABELS */
     .container {
     position: relative;
@@ -99,7 +91,7 @@ $hr_color: black;
     }
     
     input[type="text"] ~ label,input[type="number"] ~ label, textarea ~ label{
-      font-size:15px;
+      font-size:13px;
       font-weight:bold;
       color:green;
     }
@@ -127,6 +119,6 @@ $hr_color: black;
   }
 }
 
-@include generate_media_queries(desktop, 24px, 21px);
+@include generate_media_queries(desktop, 20px, 21px);
 @include generate_media_queries(tablet, 20px, 21px);
 @include generate_media_queries(phone, 15px, 18px);

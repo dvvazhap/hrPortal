@@ -1,13 +1,14 @@
 <div class="w3-light-grey w3-content" style="max-width:1600px">
     <app-header></app-header>
-    
+
     <!-- !PAGE CONTENT! -->
     <div class="w3-main" style="margin-left:300px">
         <!-- Header -->
         <header id="portfolio">
             <div class="w3-container w3-bottombar">
                 <h1><span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" (click)="w3_open()"><i class="fa fa-bars"></i></span>
-                    <app-logo></app-logo></h1>
+                    <app-logo></app-logo>
+                </h1>
                 <!-- <div class="w3-section w3-bottombar w3-padding-16">
                     <span class="w3-margin-right">Filter By:</span>
                     <button class="w3-button w3-black">Skill</button>
@@ -18,14 +19,12 @@
                 </div> -->
             </div>
         </header>
-        <div class="container-fluid px-0" style="min-height:62vh;overflow:auto;">
-            <div class="mx-auto" style="height: 30px;"></div>
-            <app-employer-profile [hidden]="callComponent != 'profile'"></app-employer-profile>
-            <app-post-requirement [hidden]="callComponent != 'post_requirement'"></app-post-requirement>
-            <app-find-candidates [hidden]="callComponent != 'find_candidates'"></app-find-candidates>
-            <app-settings [hidden]="callComponent != 'settings'"></app-settings>
-            <app-feedback [hidden]="callComponent != 'feedback'"></app-feedback>
-        </div>
+        <div class="mx-auto" style="height: 30px;"></div>
+        <app-employer-profile [hidden]="callComponent != 'profile'"></app-employer-profile>
+        <app-post-requirement [hidden]="callComponent != 'post_requirement'"></app-post-requirement>
+        <app-find-candidates [hidden]="callComponent != 'find_candidates'"></app-find-candidates>
+        <app-settings [hidden]="callComponent != 'settings'"></app-settings>
+        <app-feedback [hidden]="callComponent != 'feedback'"></app-feedback>
         <app-footer></app-footer>
     </div>
     <!-- End page content -->

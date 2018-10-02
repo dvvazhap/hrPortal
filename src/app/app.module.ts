@@ -5,10 +5,10 @@ import { FormsModule } from '@angular/forms';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { Routes, RouterModule } from "@angular/router";
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
-import { ModalModule } from 'ngx-bootstrap/modal';
+// import { ModalModule } from 'ngx-bootstrap/modal';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-import { DataTablesModule } from 'angular-datatables';
-import { NgTableComponent, NgTableFilteringDirective, NgTablePagingDirective, NgTableSortingDirective } from 'ng2-table/ng2-table';
+// import { DataTablesModule } from 'angular-datatables';
+// import { NgTableComponent, NgTableFilteringDirective, NgTablePagingDirective, NgTableSortingDirective } from 'ng2-table/ng2-table';
 
 import { AppComponent } from './app.component';
 import { ServerService } from './services/server.service';
@@ -50,21 +50,21 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     TooltipModule.forRoot(),
-    ModalModule.forRoot(),
+    // ModalModule.forRoot(),
     HttpClientModule,
     AngularFontAwesomeModule,
     RouterModule.forRoot(appRoutes, {useHash: true}),
-    DataTablesModule
+    // DataTablesModule
   ],
   providers: [ServerService, LoginService,{provide: LocationStrategy, useClass: HashLocationStrategy}],
   exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { 
-  directives: [
-    NgTableComponent,
-    NgTableFilteringDirective,
-    NgTableSortingDirective,
-    NgTablePagingDirective
-  ]
+  //directives: [
+    // NgTableComponent,
+    // NgTableFilteringDirective,
+    // NgTableSortingDirective,
+    // NgTablePagingDirective
+  //]
 }
