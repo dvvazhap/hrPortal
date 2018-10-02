@@ -14,7 +14,6 @@ export class ResetPasswordComponent implements OnInit {
   password: string;
   confirm_password: string;
   error = '';
-  msg = '';
 
   constructor(private route: ActivatedRoute, private router: Router, private serverdata: ServerService) { }
 
@@ -28,14 +27,11 @@ export class ResetPasswordComponent implements OnInit {
   public resetPassword = function () {
     if (this.password.length < 8) {
       this.error = 'Password should be of minimum 8 characters';
-      this.msg = '';
     }
     else if (this.password != this.confirm_password) {
       this.error = 'Password and Confirm Password should be same';
-      this.msg = '';
     } else {
       this.error = '';
-      this.msg = '';
       let password = Md5.hashStr(this.password).toString();
 
       this.serverdata.resetPassword(this.ee, this.rr, password).subscribe(data => {
@@ -44,7 +40,6 @@ export class ResetPasswordComponent implements OnInit {
           this.router.navigate(['/']);
         }
         else if (data == "0") {
-          this.msg = "";
           this.password = "";
           this.confirm_password = "";
           this.error = "Reset Password Unsuccessful.";
@@ -57,7 +52,6 @@ export class ResetPasswordComponent implements OnInit {
           this.router.navigate(['/']);
         }
       }, error => {
-        this.msg = "";
         this.error = "Could not verify due to some issues.Please report this issue";
       });
     }
