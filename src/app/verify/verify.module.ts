@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from "@angular/router";
 import { VerifyComponent } from './verify.component'
-import { ReusableModule } from './../reusable/reusable.module';
+import { LogoModule } from './../reusable/logo/logo.module';
 
 const verifyRoutes: Routes = [
   {
@@ -14,7 +14,7 @@ const verifyRoutes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    ReusableModule,
+    LogoModule,
     RouterModule.forChild(verifyRoutes)
   ],
   declarations: [VerifyComponent]

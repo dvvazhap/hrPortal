@@ -7,7 +7,12 @@ import { EmployeeComponent } from './employee.component';
 import { JobOpeningsComponent } from './job-openings/job-openings.component';
 import { EmployeeProfileComponent } from './employee-profile/employee-profile.component';
 
-import { ReusableModule } from './../reusable/reusable.module';
+import { LogoModule } from './../reusable/logo/logo.module';
+import { HeaderModule } from './../reusable/header/header.module';
+import { FeedbackModule } from './../reusable/feedback/feedback.module';
+import { SettingsModule } from './../reusable/settings/settings.module';
+import { FooterModule } from './../reusable/footer/footer.module';
+
 
 const employeeRoutes: Routes = [{
   path: '',
@@ -21,7 +26,11 @@ const employeeRoutes: Routes = [{
   imports: [
     CommonModule,
     FormsModule,
-    ReusableModule,
+    LogoModule,
+    HeaderModule,
+    FooterModule,
+    FeedbackModule,
+    SettingsModule,
     RouterModule.forChild(employeeRoutes)
   ],
   declarations: [EmployeeComponent,JobOpeningsComponent,EmployeeProfileComponent]

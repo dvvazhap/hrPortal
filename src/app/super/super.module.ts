@@ -2,9 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from "@angular/router";
-import { ReusableModule } from './../reusable/reusable.module';
+import { PipeModule } from './../reusable/pipe/pipe.module';
 
 import { SuperComponent } from './super.component';
+
 
 const superRoutes: Routes = [
   {
@@ -20,7 +21,7 @@ const superRoutes: Routes = [
   imports: [
     CommonModule,
     FormsModule,
-    ReusableModule,
+    PipeModule,
     RouterModule.forChild(superRoutes)
   ],
   declarations: [SuperComponent]

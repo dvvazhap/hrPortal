@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from "@angular/router";
-import { ReusableModule } from './../reusable/reusable.module';
+import { LogoModule } from './../reusable/logo/logo.module';
 
 import { ResetPasswordComponent } from './reset-password.component';
 const resetRoutes: Routes = [
@@ -16,7 +16,7 @@ const resetRoutes: Routes = [
   imports: [
     CommonModule,
     FormsModule,
-    ReusableModule,
+    LogoModule,
     RouterModule.forChild(resetRoutes)
   ],
   declarations: [ResetPasswordComponent]

@@ -10,7 +10,12 @@ import { FindCandidatesComponent } from './find-candidates/find-candidates.compo
 import { EmployerProfileComponent } from './employer-profile/employer-profile.component';
 import { EditRequirementComponent } from './edit-requirement/edit-requirement.component';
 
-import { ReusableModule } from './../reusable/reusable.module';
+import { LogoModule } from './../reusable/logo/logo.module';
+import { HeaderModule } from './../reusable/header/header.module';
+import { FeedbackModule } from './../reusable/feedback/feedback.module';
+import { SettingsModule } from './../reusable/settings/settings.module';
+import { FooterModule } from './../reusable/footer/footer.module';
+
 
 const employerRoutes: Routes = [{
   path: '',
@@ -25,7 +30,11 @@ const employerRoutes: Routes = [{
   imports: [
     CommonModule,
     FormsModule,
-    ReusableModule,
+    LogoModule,
+    HeaderModule,
+    FooterModule,
+    FeedbackModule,
+    SettingsModule,
     AngularMultiSelectModule,
     RouterModule.forChild(employerRoutes)
   ],

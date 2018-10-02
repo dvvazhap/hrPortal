@@ -14,10 +14,6 @@ import { AppComponent } from './app.component';
 import { ServerService } from './services/server.service';
 import { LoginService } from './services/login.service';
 
-
-
-import { ReusableModule } from './reusable/reusable.module';
-
 const appRoutes: Routes = [
   { path: '', loadChildren: './login/login.module#LoginModule' },
   { path: 'verifyUser', loadChildren: './verify/verify.module#VerifyModule'},
@@ -48,7 +44,7 @@ const appRoutes: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,8 +54,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     AngularFontAwesomeModule,
     RouterModule.forRoot(appRoutes, {useHash: true}),
-    DataTablesModule,
-    ReusableModule
+    DataTablesModule
   ],
   providers: [ServerService, LoginService,{provide: LocationStrategy, useClass: HashLocationStrategy}],
   exports: [],

@@ -1,4 +1,4 @@
-import { AppPropertiesPipe } from './app-properties.pipe';
+import { AppPropertiesPipe } from '../app-properties.pipe';
 
 describe('AppPropertiesPipe', () => {
   it('create an instance', () => {

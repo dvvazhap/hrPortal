@@ -1,4 +1,4 @@
-import { LogoDirective } from './logo.directive';
+import { LogoDirective } from '../logo.directive';
 
 describe('LogoDirective', () => {
   it('should create an instance', () => {
