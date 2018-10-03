@@ -1,31 +1,18 @@
 .requirement{
-    color:#191919;
-    font-style: italic;
-    font-weight: 500;
-}
-.requirement .heading{
-    font-size: 30px;
-}
-.requirement .label{
-    font-size: 20px;
-}
-
-.job{
-    background-color: #ff9933;
-    margin:10px;
-    box-shadow: 5px 5px 2px #4d79ff;
-}
-.job > .job_desc{
-    color:#000;
-    font-size:15px;
-    padding:10px;
-}
-.job > .job_button i{
-    color:#fff;
-    text-align: right;
-}
-.job > .job_button i:hover{
-    color:#000;
-    cursor:pointer;
-    text-shadow: 2px 2px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .job_desc{
+        display:flex;flex-direction: row;
+        .job_content{
+            flex-grow: 2;padding:8px;
+        }
+        .job_button{
+            display:flex;flex-direction: column;padding:8px;
+            .fa{
+                cursor:pointer;
+            }
+        }
+    }
 }

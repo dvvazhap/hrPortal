@@ -1,58 +1,55 @@
-<div class="profile">
+<div class="w3-container w3-card w3-white w3-margin-bottom w3-padding-large">
+  <div class="section_heading"> PERSONAL INFORMATION </div>
   <div class="form-row">
-    <div class="col-sm-12 heading">Personal Information</div>
-  </div>
-  <div class="mx-auto" style="height: 15px;"></div>
-  <div class="form-row">
-    <div class="col-sm-12 label">
-      <div class="alert alert-danger" [hidden]="error==''">
-        <strong>{{error}}</strong>
-      </div>
-      <div class="alert alert-info" [hidden]="msg==''">
-        <strong>{{msg}}</strong>
+      <div class="col-sm-12 label">
+        <div class="alert alert-danger" [hidden]="error==''">
+          <strong>{{error}}</strong>
+        </div>
+        <div class="alert alert-info" [hidden]="msg==''">
+          <strong>{{msg}}</strong>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="form-row">
-    <div class="col-sm-4 label">Name</div>
-    <div class="col-sm-8">
-      <input type="text" maxlength="30" class="form-control" [(ngModel)]="employer.name" placeholder="Name" />
+    <div class="form-row">
+      <div class="col-sm-4 label">Name</div>
+      <div class="col-sm-8">
+        <input type="text" maxlength="30" class="form-control" [(ngModel)]="employer.name" placeholder="Name" />
+      </div>
     </div>
-  </div>
-  <div class="mx-auto" style="height: 15px;"></div>
-  <div class="form-row">
-    <div class="col-sm-4 label">Designation</div>
-    <div class="col-sm-8">
-      <input type="text" maxlength="30" class="form-control" [(ngModel)]="employer.designation" placeholder="Designation" />
+    <div class="mx-auto" style="height: 15px;"></div>
+    <div class="form-row">
+      <div class="col-sm-4 label">Designation</div>
+      <div class="col-sm-8">
+        <input type="text" maxlength="30" class="form-control" [(ngModel)]="employer.designation" placeholder="Designation" />
+      </div>
     </div>
-  </div>
-  <div class="mx-auto" style="height: 15px;"></div>
-  <div class="form-row">
-    <div class="col-sm-4 label">Organisation Name</div>
-    <div class="col-sm-8">
-      <input type="text" maxlength="30" class="form-control" [(ngModel)]="employer.org_name" placeholder="Organisation Name" />
+    <div class="mx-auto" style="height: 15px;"></div>
+    <div class="form-row">
+      <div class="col-sm-4 label">Organisation Name</div>
+      <div class="col-sm-8">
+        <input type="text" maxlength="30" class="form-control" [(ngModel)]="employer.org_name" placeholder="Organisation Name" />
+      </div>
     </div>
-  </div>
-  <div class="mx-auto" style="height: 15px;"></div>
-  <div class="form-row">
-    <div class="col-sm-4 label">City</div>
-    <div class="col-sm-8">
-      <input type="text" maxlength="30" class="form-control" [(ngModel)]="employer.city" placeholder="City" />
+    <div class="mx-auto" style="height: 15px;"></div>
+    <div class="form-row">
+      <div class="col-sm-4 label">City</div>
+      <div class="col-sm-8">
+        <input type="text" maxlength="30" class="form-control" [(ngModel)]="employer.city" placeholder="City" />
+      </div>
     </div>
-  </div>
-  <div class="mx-auto" style="height: 15px;"></div>
-  <div class="form-row">
-    <div class="col-sm-4 label">Phone</div>
-    <div class="col-sm-8">
-      <input type="text" maxlength="20" class="form-control" [(ngModel)]="employer.phone" placeholder="Contact Number" />
+    <div class="mx-auto" style="height: 15px;"></div>
+    <div class="form-row">
+      <div class="col-sm-4 label">Phone</div>
+      <div class="col-sm-8">
+        <input type="text" maxlength="20" class="form-control" [(ngModel)]="employer.phone" placeholder="Contact Number" />
+      </div>
     </div>
-  </div>
-  <div class="mx-auto" style="height: 15px;"></div>
-  <div class="form-row">
-    <div class="col-sm-4"></div>
-    <div class="col-sm-4">
-      <button type="button" class="btn btn-primary btn-lg btn-block" (click)="setEmployerInfo()">Save Information</button>
+    <div class="mx-auto" style="height: 15px;"></div>
+    <div class="form-row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4">
+        <button type="button" class="btn btn-primary btn-lg btn-block" (click)="setEmployerInfo()">Save Information</button>
+      </div>
+      <div class="col-sm-4"></div>
     </div>
-    <div class="col-sm-4"></div>
-  </div>
 </div>

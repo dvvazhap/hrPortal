@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from "@angular/router";
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown/angular2-multiselect-dropdown';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 import { EmployerComponent } from './employer.component';
 import { PostRequirementComponent } from './post-requirement/post-requirement.component';
@@ -29,6 +30,7 @@ const employerRoutes: Routes = [{
 @NgModule({
   imports: [
     CommonModule,
+    TooltipModule,
     FormsModule,
     LogoModule,
     HeaderModule,

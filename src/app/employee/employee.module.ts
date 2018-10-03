@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from "@angular/router";
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 import { EmployeeComponent } from './employee.component';
 import { JobOpeningsComponent } from './job-openings/job-openings.component';
@@ -26,6 +27,7 @@ const employeeRoutes: Routes = [{
   imports: [
     CommonModule,
     FormsModule,
+    TooltipModule,
     LogoModule,
     HeaderModule,
     FooterModule,
