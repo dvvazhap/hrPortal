@@ -13,7 +13,7 @@ export class EmployerComponent implements OnInit {
   id: string;
   token: string;
   user: UserInfo;
-  callComponent: string = "edit_requirement";
+  callComponent: string = "profile";
   employer: EmployerInfo;
 
   constructor(private route: ActivatedRoute, private router: Router, private serverdata: ServerService, private info: LoginService) { }

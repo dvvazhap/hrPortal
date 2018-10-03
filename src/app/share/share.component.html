@@ -55,11 +55,11 @@
               days notice period</p>
             <p>
               <i class="fa fa-eye fa-fw w3-margin-right w3-large w3-text-teal"></i>
-              <span *ngIf="employee.fullTime == 1">Full Time</span>
-              <span *ngIf="employee.partTime == 1"> /</span>
-              <span *ngIf="employee.partTime == 1">Part Time</span>
-              <span *ngIf="employee.intern == 1"> /</span>
-              <span *ngIf="employee.intern == 1">Internship </span> - {{employee.fut_location | titlecase}}
+              <span *ngIf="employee.fullTime">Full Time</span>
+              <span *ngIf="employee.fullTime && employee.partTime"> /</span>
+              <span *ngIf="employee.partTime">Part Time</span>
+              <span *ngIf="(employee.fullTime || employee.partTime) && employee.intern"> /</span>
+              <span *ngIf="employee.intern">Internship </span> - {{employee.fut_location | titlecase}}
             </p>
             <hr>
             <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Skills</b></p>

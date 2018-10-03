@@ -19,11 +19,11 @@
           <button type="button" class="btn btn-primary" target="_blank" (click)="shareProfile(can.email)">Complete Profile</button>
         </td>
         <td>
-          <span [hidden]="can.fullTime != 1">Full Time</span>
-          <span [hidden]="can.partTime == 0 || can.intern == 0"> /</span>
-          <span [hidden]="can.partTime != 1">Part Time</span>
-          <span [hidden]="can.intern != 1"> /</span>
-          <span [hidden]="can.intern != 1">Internship </span>
+          <span [hidden]="!can.fullTime">Full Time</span>
+          <span [hidden]="!(can.fullTime && can.partTime)"> /</span>
+          <span [hidden]="!can.partTime">Part Time</span>
+          <span [hidden]="!((can.fullTime || can.partTime) && can.intern)"> /</span>
+          <span [hidden]="!can.intern">Internship </span>
         </td>
         <td>
           <b>{{can.name}}</b> (

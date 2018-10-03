@@ -21,11 +21,11 @@
       <div class="form-row">
         <div class="col-sm-4 heading"><b>Job Type </b></div>
         <div class="col-sm-8 content">
-          <span [hidden]="requirement.fullTime != 1">Full Time</span>
-          <span [hidden]="requirement.partTime == 0 || requirement.intern == 0"> /</span>
-          <span [hidden]="requirement.partTime != 1">Part Time</span>
-          <span [hidden]="requirement.intern != 1"> /</span>
-          <span [hidden]="requirement.intern != 1">Internship </span>
+          <span [hidden]="!requirement.fullTime">Full Time</span>
+          <span [hidden]="!(requirement.fullTime && requirement.partTime)"> /</span>
+          <span [hidden]="!requirement.partTime">Part Time</span>
+          <span [hidden]="!((requirement.fullTime || requirement.partTime) && requirement.intern)"> /</span>
+          <span [hidden]="!requirement.intern">Internship </span>
         </div>
       </div>
       <div class="mx-auto" style="height: 15px;"></div>

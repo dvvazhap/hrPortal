@@ -18,7 +18,7 @@ export class EmployeeProfileComponent implements OnInit {
     name: "",
     email: "",
     phone: "",
-    looking: 0,
+    looking: 1,
     fullTime: 1,
     partTime: 0,
     intern: 0,
@@ -42,15 +42,10 @@ export class EmployeeProfileComponent implements OnInit {
     work_experience: [],
     projects: []
   } as EmployeeInfo;
-
-  // dropdownList = [];
-  // selectedItems = [];
-  // dropdownSettings = {};
   looking: boolean = false;
   fullTime: boolean = true;
   partTime: boolean = false;
   intern: boolean = false;
-
   constructor(private info: LoginService, private serverdata: ServerService,private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -211,10 +206,8 @@ export class EmployeeProfileComponent implements OnInit {
     this.employee.noticePeriod = (isNaN(parseFloat(this.employee.noticePeriod)) ? "0" : (parseFloat(this.employee.noticePeriod)).toString())
 
 
-    if (this.looking == false) {
-      return true;
-    }
-    else if (!(this.fullTime || this.partTime || this.intern)) {
+
+    if (!(this.fullTime || this.partTime || this.intern)) {
       this.error = "Select the type of opportunity you are interested in"; return false;
     }
     else if (this.employee.name == "" || this.employee.name == null) {
@@ -346,8 +339,8 @@ export class EmployeeProfileComponent implements OnInit {
       this.looking == true ? this.employee.looking = 1 : this.employee.looking = 0;
       this.fullTime == true ? this.employee.fullTime = 1 : this.employee.fullTime = 0;
       this.partTime == true ? this.employee.partTime = 1 : this.employee.partTime = 0;
-      this.intern == true ? this.employee.intern = 1 : this.employee.intern = 0;  
-
+      this.intern == true ? this.employee.intern = 1 : this.employee.intern = 0; 
+      
       this.serverdata.setEmployeeInfo(JSON.parse(JSON.stringify(this.employee)), this.userInfo.email).subscribe(data => {
         for (let i = 0; i < this.employee.education.length; i++) {
           this.updateEducation(this.employee.education[i]);

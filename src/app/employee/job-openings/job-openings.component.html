@@ -15,11 +15,11 @@
                                     {{open.timestamp | date: 'd MMM y'}}</p>
                         </div>
                         <div class="w3-half">
-                            <p><b>Type </b> <span [hidden]="open.fullTime != 1">Full Time</span>
-                                <span [hidden]="open.partTime == 0 || open.intern == 0">, </span>
-                                <span [hidden]="open.partTime != 1">Part Time</span>
-                                <span [hidden]="open.intern != 1"> , </span>
-                                <span [hidden]="open.intern != 1">Internship </span></p>
+                            <p><b>Type </b> <span [hidden]="!open.fullTime">Full Time</span>
+                                <span [hidden]="!(open.fullTime && open.partTime)">, </span>
+                                <span [hidden]="!open.partTime">Part Time</span>
+                                <span [hidden]="!((open.fullTime || open.partTime) && open.intern)"> , </span>
+                                <span [hidden]="!open.intern">Internship </span></p>
                         </div>
                         <div class="w3-half">
                             <p><b>Company </b>{{open.company}} ({{open.location}})</p>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../services/login.service';
 import { ServerService } from '../../services/server.service';
-import { UserInfo,OpeningInfo } from '../../interface';
+import { UserInfo, OpeningInfo } from '../../interface';
 
 @Component({
   selector: 'app-post-requirement',
@@ -34,71 +34,31 @@ export class PostRequirementComponent implements OnInit {
     count: 1
   } as OpeningInfo;
 
+  fullTime: boolean = true;
+  partTime: boolean = false;
+  intern: boolean = false;
   constructor(private info: LoginService, private serverdata: ServerService) { }
 
   ngOnInit() {
-    this.dropdownList = [
-      { "id": 1, "itemName": "Full Time" },
-      { "id": 2, "itemName": "Part Time" },
-      { "id": 3, "itemName": "Internship" },
-    ];
-    this.selectedItems = [
-      { "id": 1, "itemName": "Full Time" }
-    ];
-    this.dropdownSettings = {
-      singleSelection: false,
-      text: "Select the Type of Job",
-      enableSearchFilter: false,
-      enableCheckAll: false,
-      classes: "myclass custom-class"
-    };
-
     this.info.currentUserInformation.subscribe(data => {
       this.userInfo = JSON.parse(JSON.stringify(data));
     });
 
-    this.info.deletedJID.subscribe(data => { if(data == this.requirement.ind.toString()) this.addRequirement(); });
+    this.info.deletedJID.subscribe(data => { if (data == this.requirement.ind.toString()) this.addRequirement(); });
 
     this.info.currentEditingJob.subscribe(data => {
 
       this.requirement = JSON.parse(JSON.stringify(data));
+      if (this.requirement.fullTime == 1) this.fullTime = true;
+      if (this.requirement.partTime == 1) this.partTime = true;
+      if (this.requirement.intern == 1) this.intern = true;
       this.error = "";
       this.msg = "All the fields with * are mandatory";
       window.scrollTo(0, document.body.scrollHeight);
-
-      this.selectedItems = [];
-      if (this.requirement.ind == 0) {
-        this.selectedItems.push({ "id": 1, "itemName": "Full Time" });
-      } else {
-        if (this.requirement.fullTime == 1) this.selectedItems.push({ "id": 1, "itemName": "Full Time" });
-        if (this.requirement.partTime == 1) this.selectedItems.push({ "id": 2, "itemName": "Part Time" });
-        if (this.requirement.intern == 1) this.selectedItems.push({ "id": 3, "itemName": "Internship" });
-      }
-
     });
 
     this.info.editRequirement(this.requirement);
   }
-
-  public setJobType(obj) {
-    if (obj == undefined) { return; }
-    if (obj.id == 1) this.requirement.fullTime = 1;
-    else if (obj.id == 2) this.requirement.partTime = 1;
-    else if (obj.id == 3) this.requirement.intern = 1;
-  }
-  public jobTypeSelection(obj) {
-    this.requirement.fullTime = 0;
-    this.requirement.partTime = 0;
-    this.requirement.intern = 0;
-
-    this.setJobType(obj[0]);
-    this.setJobType(obj[1]);
-    this.setJobType(obj[2]);
-
-  }
-
-  public onItemSelect(item: any) { this.jobTypeSelection(this.selectedItems); }
-  public OnItemDeSelect(item: any) { this.jobTypeSelection(this.selectedItems); }
 
   public addRequirement() {
     this.requirement = {
@@ -118,6 +78,9 @@ export class PostRequirementComponent implements OnInit {
       gender: 'Anyone',
       count: 1
     } as OpeningInfo
+    this.fullTime = true;
+    this.partTime = false;
+    this.intern = false;
     this.info.editRequirement(this.requirement);
   }
 
@@ -127,7 +90,7 @@ export class PostRequirementComponent implements OnInit {
 
     let v_exp = parseFloat(this.requirement.min_years.toString()) <= parseFloat(this.requirement.max_years.toString());
 
-    if (!(this.requirement.fullTime || this.requirement.partTime || this.requirement.intern)) {
+    if (!(this.fullTime || this.partTime || this.intern)) {
       this.error = "Select the type(s) of Job"; return false;
     }
     else if (this.requirement.designation == "") {
@@ -160,19 +123,22 @@ export class PostRequirementComponent implements OnInit {
       this.requirement.email = this.userInfo.email;
       this.requirement.min_years = Math.abs(Math.round(this.requirement.min_years * 10) / 10);
       this.requirement.max_years = Math.abs(Math.round(this.requirement.max_years * 10) / 10);
+      this.fullTime == true ? this.requirement.fullTime = 1 : this.requirement.fullTime = 0;
+      this.partTime == true ? this.requirement.partTime = 1 : this.requirement.partTime = 0;
+      this.intern == true ? this.requirement.intern = 1 : this.requirement.intern = 0;
       this.serverdata.postRequirements(JSON.parse(JSON.stringify(this.requirement))).subscribe(data => {
         if (data == "1") {
           this.error = "";
           this.msg = "Requirement posted";
 
           this.addRequirement();
-          this.info.getOpenings(this.userInfo.email,"");
+          this.info.getOpenings(this.userInfo.email, "");
         }
         else if (data == "0") {
           this.error = "Something went wrong";
           this.msg = "";
 
-          this.info.getOpenings(this.userInfo.email,"");
+          this.info.getOpenings(this.userInfo.email, "");
           this.addRequirement();
         }
       }, error => {
@@ -189,11 +155,14 @@ export class PostRequirementComponent implements OnInit {
       this.requirement.email = this.userInfo.email;
       this.requirement.min_years = Math.abs(Math.round(this.requirement.min_years * 10) / 10);
       this.requirement.max_years = Math.abs(Math.round(this.requirement.max_years * 10) / 10);
+      this.fullTime == true ? this.requirement.fullTime = 1 : this.requirement.fullTime = 0;
+      this.partTime == true ? this.requirement.partTime = 1 : this.requirement.partTime = 0;
+      this.intern == true ? this.requirement.intern = 1 : this.requirement.intern = 0;
       this.serverdata.updateRequirement(JSON.parse(JSON.stringify(this.requirement))).subscribe(data => {
         if (data == "1") {
           this.error = "";
           this.msg = "Requirement saved";
-          this.info.getOpenings(this.userInfo.email,"");
+          this.info.getOpenings(this.userInfo.email, "");
         }
         else if (data == "0") {
           this.error = "Something went wrong";
