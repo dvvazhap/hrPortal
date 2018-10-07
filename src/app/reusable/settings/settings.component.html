@@ -1,9 +1,9 @@
 <div class="w3-container w3-card w3-white w3-margin-bottom w3-padding-large">
   <div class="section_heading"> RESET PASSWORD </div>
   <div class="form-row">
-    <div class="col-sm-12 settings">
+    <div class="col-sm-12">
       <div class="form-row">
-        <div class="col-sm-12 label">
+        <div class="col-sm-12">
           <div class="alert alert-danger" [hidden]="password_error==''">
             <strong>{{password_error}}</strong>
           </div>
@@ -12,34 +12,43 @@
           </div>
         </div>
       </div>
-      <div class="form-row">
-        <div class="col-sm-4 label">Old Password</div>
-        <div class="col-sm-8">
-          <input type="password" class="form-control" [(ngModel)]="old_password" placeholder="Old Password" />
+      <form class="row" name="form" (ngSubmit)="changePassord()" #f="ngForm" novalidate>
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label for="old_password">Old Password</label>
+            <input type="password" class="form-control" name="old_password" [(ngModel)]="settings.old_password"
+              [ngClass]="{ 'is-invalid': oldPassChange() }" maxlength="30" #old_password="ngModel" placeholder="Old Password"
+              autocomplete />
+            <div class="invalid-feedback"> Enter the old password</div>
+          </div>
         </div>
-      </div>
-      <div class="mx-auto" style="height: 15px;"></div>
-      <div class="form-row">
-        <div class="col-sm-4 label">New Password</div>
-        <div class="col-sm-8">
-          <input type="password" class="form-control" [(ngModel)]="new_password" placeholder="New Password" />
+
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label for="new_password">New Password</label>
+            <input type="password" class="form-control" name="new_password" [(ngModel)]="settings.new_password"
+              [ngClass]="{ 'is-invalid': newPassChange() }" maxlength="30" #new_password="ngModel" placeholder="New Password"
+              autocomplete />
+            <div class="invalid-feedback"> New Password should be of minimum 8 characters without space </div>
+          </div>
         </div>
-      </div>
-      <div class="mx-auto" style="height: 15px;"></div>
-      <div class="form-row">
-        <div class="col-sm-4 label">Confirm Password</div>
-        <div class="col-sm-8">
-          <input type="password" class="form-control" [(ngModel)]="confirm_password" placeholder="Confirm Password" />
+
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label for="confirm_password">Confirm Password</label>
+            <input type="password" class="form-control" name="confirm_password" [(ngModel)]="settings.confirm_password"
+              [ngClass]="{ 'is-invalid': confPassChange() }" maxlength="30" #confirm_password="ngModel" placeholder="Confirm Password"
+              autocomplete />
+            <div class="invalid-feedback"> New Password and Confirm Password should be same </div>
+          </div>
         </div>
-      </div>
-      <div class="mx-auto" style="height: 15px;"></div>
-      <div class="form-row">
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4">
-          <button type="button" class="btn btn-primary btn-lg btn-block" (click)="changePassord()">Change Password</button>
+
+        <div class="col-sm-12">
+          <div class="form-group">
+            <button [disabled]="disablePassChange()" class="btn btn-primary btn-block">Change Password</button>
+          </div>
         </div>
-        <div class="col-sm-4"></div>
-      </div>
+      </form>
     </div>
   </div>
 </div>

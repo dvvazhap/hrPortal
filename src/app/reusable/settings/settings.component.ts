@@ -12,18 +12,14 @@ import { UserInfo, EmployeeInfo, EmployerInfo } from '../../interface';
 export class SettingsComponent implements OnInit {
 
   userInfo: UserInfo = {} as UserInfo;
-  employee: EmployeeInfo = {
-    education: [],
-    work_experience: [],
-    projects: []
-  } as EmployeeInfo;
-  employer: EmployerInfo = {} as EmployerInfo;
+  settings:any =  {
+    old_password: "",
+    new_password: "",
+    confirm_password: ""
+  } as any;
 
   password_error: string = "";
   password_msg: string = "";
-  old_password: string = "";
-  new_password: string = "";
-  confirm_password: string = "";
 
   constructor(private info: LoginService, private serverdata: ServerService) { }
 
@@ -33,16 +29,33 @@ export class SettingsComponent implements OnInit {
     });
   }
 
+  public oldPassChange() {
+    if (this.settings.old_password.replace(/\s/g, '').length === 0 ) { return true; } else { return false; }
+  }
+  public newPassChange() {
+    if (this.settings.new_password.replace(/\s/g, '').length < 8) { return true; } else { return false }
+  }
+  public confPassChange() {
+    if (this.settings.new_password !== this.settings.confirm_password) { return true; } else { return false; }
+  }
+
+  public disablePassChange() {
+    if (this.settings.old_password.replace(/\s/g, '').length >0 && this.settings.new_password.replace(/\s/g, '').length >= 8 && 
+    this.settings.new_password !== '' && this.settings.new_password === this.settings.confirm_password)
+      return false;
+    else return true;
+  }
+
   public changePassord() {
-    if (this.new_password.length < 8) {
+    if (this.settings.new_password.length < 8) {
       this.password_error = 'Password should be of minimum 8 characters.';
       this.password_msg = '';
     }
-    else if (this.new_password != this.confirm_password) {
+    else if (this.settings.new_password != this.settings.confirm_password) {
       this.password_error = "'Password' and 'Confirm Password' should be same.";
       this.password_msg = '';
     }
-    else if (this.new_password == this.old_password) {
+    else if (this.settings.new_password == this.settings.old_password) {
       this.password_error = "'Old password' and 'New password' is same.";
       this.password_msg = '';
     }
@@ -51,8 +64,8 @@ export class SettingsComponent implements OnInit {
       this.password_msg = '';
       //alert("sign In :"+this.email+this.phone+this.password+this.confirm_password+this.type);
       let token = this.info.getToken()
-      let old_password = Md5.hashStr(this.old_password).toString();
-      let new_password = Md5.hashStr(this.new_password).toString();
+      let old_password = Md5.hashStr(this.settings.old_password).toString();
+      let new_password = Md5.hashStr(this.settings.new_password).toString();
 
       this.serverdata.changePassword(token, old_password, new_password).subscribe(data => {
         if (data == "1") {
